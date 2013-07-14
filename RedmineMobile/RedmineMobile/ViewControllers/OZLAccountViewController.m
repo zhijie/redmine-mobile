@@ -1,27 +1,30 @@
 //
-//  OZLProjectViewController.m
+//  OZLAccountViewController.m
 //  RedmineMobile
 //
 //  Created by Lee Zhijie on 7/14/13.
 //  Copyright (c) 2013 Lee Zhijie. All rights reserved.
 //
 
-#import "OZLProjectViewController.h"
+#import "OZLAccountViewController.h"
 #import "PPRevealSideViewController.h"
 #import "OZLProjectListViewController.h"
+#import "OZLSingleton.h"
+#import "OZLNetwork.h"
 
-@interface OZLProjectViewController () {
+@interface OZLAccountViewController (){
     float _sideviewOffset;
 }
 
 @end
 
-@implementation OZLProjectViewController
+@implementation OZLAccountViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        // Custom initialization
     }
     return self;
 }
@@ -31,8 +34,11 @@
     [super viewDidLoad];
     [self changeSideViewOffset:90];
     
-    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showLeft)];
+    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showLeft)];
     [self.navigationItem setLeftBarButtonItem:projectListBtn];
+
+    _redmineHomeURL.text = [[OZLSingleton sharedInstance] redmineHomeURL];
+    _redmineUserKey.text = [[OZLSingleton sharedInstance] redmineUserKey];
 }
 
 
@@ -65,7 +71,6 @@
                                    forDirection:PPRevealSideDirectionTop];
     [self.revealSideViewController changeOffset:_sideviewOffset
                                    forDirection:PPRevealSideDirectionBottom];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,4 +79,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setRedmineHomeURL:nil];
+    [self setRedmineUserKey:nil];
+    [super viewDidUnload];
+}
+- (IBAction)onOk:(id)sender {
+    [[OZLSingleton sharedInstance] setRedmineUserKey:_redmineUserKey.text];
+    [[OZLSingleton sharedInstance] setRedmineHomeURL:_redmineHomeURL.text];
+    
+    [OZLNetwork getProjectListWithBlock:^(NSDictionary *respond, NSError *error) {
+        NSLog(@"respond:%@",respond.description);
+    }];
+}
 @end

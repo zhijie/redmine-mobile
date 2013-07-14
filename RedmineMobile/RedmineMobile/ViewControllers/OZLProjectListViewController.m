@@ -9,6 +9,7 @@
 #import "OZLProjectListViewController.h"
 #import "PPRevealSideViewController.h"
 #import "OZLProjectViewController.h"
+#import "OZLAccountViewController.h"
 
 @interface OZLProjectListViewController ()
 
@@ -44,6 +45,12 @@
     UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
     [self.revealSideViewController popViewControllerWithNewCenterController:n
                                                                    animated:YES];
-    
+}
+
+- (IBAction)showAccountView:(id)sender {
+    OZLAccountViewController *c = [[OZLAccountViewController alloc] initWithNibName:@"OZLAccountViewController" bundle:nil];
+    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
+    [self.revealSideViewController popViewControllerWithNewCenterController:n
+                                                                   animated:YES];
 }
 @end

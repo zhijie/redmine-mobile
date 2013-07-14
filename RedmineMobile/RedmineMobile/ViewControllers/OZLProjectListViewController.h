@@ -10,4 +10,5 @@
 
 @interface OZLProjectListViewController : UIViewController
 
+- (IBAction)showAccountView:(id)sender;
 @end

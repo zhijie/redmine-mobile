@@ -33,6 +33,11 @@
 		D5DB80A71792F4DE0081662A /* OZLProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80A51792F4DE0081662A /* OZLProjectListViewController.xib */; };
 		D5DB80AC1792F6980081662A /* OZLProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80AA1792F6980081662A /* OZLProjectViewController.m */; };
 		D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */; };
+		D5DB80B1179300B90081662A /* OZLNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80B0179300B90081662A /* OZLNetwork.m */; };
+		D5DB80B51793016B0081662A /* OZLAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80B31793016B0081662A /* OZLAccountViewController.m */; };
+		D5DB80B61793016B0081662A /* OZLAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80B41793016B0081662A /* OZLAccountViewController.xib */; };
+		D5DB80BA17930C830081662A /* OZLNetworkBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80B917930C830081662A /* OZLNetworkBase.m */; };
+		D5DB80BD17930ECD0081662A /* OZLSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80BC17930ECD0081662A /* OZLSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +87,15 @@
 		D5DB80A91792F6980081662A /* OZLProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLProjectViewController.h; path = ViewControllers/OZLProjectViewController.h; sourceTree = "<group>"; };
 		D5DB80AA1792F6980081662A /* OZLProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLProjectViewController.m; path = ViewControllers/OZLProjectViewController.m; sourceTree = "<group>"; };
 		D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLProjectViewController.xib; path = ViewControllers/OZLProjectViewController.xib; sourceTree = "<group>"; };
+		D5DB80AF179300B90081662A /* OZLNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLNetwork.h; path = Utils/OZLNetwork.h; sourceTree = "<group>"; };
+		D5DB80B0179300B90081662A /* OZLNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLNetwork.m; path = Utils/OZLNetwork.m; sourceTree = "<group>"; };
+		D5DB80B21793016B0081662A /* OZLAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLAccountViewController.h; path = ViewControllers/OZLAccountViewController.h; sourceTree = "<group>"; };
+		D5DB80B31793016B0081662A /* OZLAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLAccountViewController.m; path = ViewControllers/OZLAccountViewController.m; sourceTree = "<group>"; };
+		D5DB80B41793016B0081662A /* OZLAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLAccountViewController.xib; path = ViewControllers/OZLAccountViewController.xib; sourceTree = "<group>"; };
+		D5DB80B817930C830081662A /* OZLNetworkBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLNetworkBase.h; path = Utils/OZLNetworkBase.h; sourceTree = "<group>"; };
+		D5DB80B917930C830081662A /* OZLNetworkBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLNetworkBase.m; path = Utils/OZLNetworkBase.m; sourceTree = "<group>"; };
+		D5DB80BB17930ECD0081662A /* OZLSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLSingleton.h; path = Utils/OZLSingleton.h; sourceTree = "<group>"; };
+		D5DB80BC17930ECD0081662A /* OZLSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLSingleton.m; path = Utils/OZLSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +143,7 @@
 		D5DB805F1792F2BF0081662A /* RedmineMobile */ = {
 			isa = PBXGroup;
 			children = (
+				D5DB80AE1793008F0081662A /* Utils */,
 				D5DB80A81792F4E40081662A /* ViewControllers */,
 				D5DB80681792F2BF0081662A /* OZLAppDelegate.h */,
 				D5DB80691792F2BF0081662A /* OZLAppDelegate.m */,
@@ -226,8 +241,24 @@
 				D5DB80A91792F6980081662A /* OZLProjectViewController.h */,
 				D5DB80AA1792F6980081662A /* OZLProjectViewController.m */,
 				D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */,
+				D5DB80B21793016B0081662A /* OZLAccountViewController.h */,
+				D5DB80B31793016B0081662A /* OZLAccountViewController.m */,
+				D5DB80B41793016B0081662A /* OZLAccountViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D5DB80AE1793008F0081662A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80AF179300B90081662A /* OZLNetwork.h */,
+				D5DB80B0179300B90081662A /* OZLNetwork.m */,
+				D5DB80B817930C830081662A /* OZLNetworkBase.h */,
+				D5DB80B917930C830081662A /* OZLNetworkBase.m */,
+				D5DB80BB17930ECD0081662A /* OZLSingleton.h */,
+				D5DB80BC17930ECD0081662A /* OZLSingleton.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +319,7 @@
 				D5DB80701792F2BF0081662A /* Default-568h@2x.png in Resources */,
 				D5DB80A71792F4DE0081662A /* OZLProjectListViewController.xib in Resources */,
 				D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */,
+				D5DB80B61793016B0081662A /* OZLAccountViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +347,10 @@
 				D5DB80A21792F3EE0081662A /* PPRevealSideViewController.m in Sources */,
 				D5DB80A61792F4DE0081662A /* OZLProjectListViewController.m in Sources */,
 				D5DB80AC1792F6980081662A /* OZLProjectViewController.m in Sources */,
+				D5DB80B1179300B90081662A /* OZLNetwork.m in Sources */,
+				D5DB80B51793016B0081662A /* OZLAccountViewController.m in Sources */,
+				D5DB80BA17930C830081662A /* OZLNetworkBase.m in Sources */,
+				D5DB80BD17930ECD0081662A /* OZLSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
