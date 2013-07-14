@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
+		D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
+		D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805D1792F2BF0081662A /* CoreGraphics.framework */; };
+		D5DB80641792F2BF0081662A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80621792F2BF0081662A /* InfoPlist.strings */; };
+		D5DB80661792F2BF0081662A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80651792F2BF0081662A /* main.m */; };
+		D5DB806A1792F2BF0081662A /* OZLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80691792F2BF0081662A /* OZLAppDelegate.m */; };
+		D5DB806C1792F2BF0081662A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DB806B1792F2BF0081662A /* Default.png */; };
+		D5DB806E1792F2BF0081662A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DB806D1792F2BF0081662A /* Default@2x.png */; };
+		D5DB80701792F2BF0081662A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DB806F1792F2BF0081662A /* Default-568h@2x.png */; };
+		D5DB80961792F3EE0081662A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80791792F3EE0081662A /* AFHTTPClient.m */; };
+		D5DB80971792F3EE0081662A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB807B1792F3EE0081662A /* AFHTTPRequestOperation.m */; };
+		D5DB80981792F3EE0081662A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB807D1792F3EE0081662A /* AFImageRequestOperation.m */; };
+		D5DB80991792F3EE0081662A /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB807F1792F3EE0081662A /* AFJSONRequestOperation.m */; };
+		D5DB809A1792F3EE0081662A /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80811792F3EE0081662A /* AFNetworkActivityIndicatorManager.m */; };
+		D5DB809B1792F3EE0081662A /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80841792F3EE0081662A /* AFPropertyListRequestOperation.m */; };
+		D5DB809C1792F3EE0081662A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80861792F3EE0081662A /* AFURLConnectionOperation.m */; };
+		D5DB809D1792F3EE0081662A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80881792F3EE0081662A /* AFXMLRequestOperation.m */; };
+		D5DB809E1792F3EE0081662A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB808A1792F3EE0081662A /* UIImageView+AFNetworking.m */; };
+		D5DB809F1792F3EE0081662A /* PCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB808D1792F3EE0081662A /* PCLineChartView.m */; };
+		D5DB80A01792F3EE0081662A /* PCPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB808F1792F3EE0081662A /* PCPieChart.m */; };
+		D5DB80A11792F3EE0081662A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80921792F3EE0081662A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D5DB80A21792F3EE0081662A /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80951792F3EE0081662A /* PPRevealSideViewController.m */; };
+		D5DB80A61792F4DE0081662A /* OZLProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80A41792F4DE0081662A /* OZLProjectListViewController.m */; };
+		D5DB80A71792F4DE0081662A /* OZLProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80A51792F4DE0081662A /* OZLProjectListViewController.xib */; };
+		D5DB80AC1792F6980081662A /* OZLProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80AA1792F6980081662A /* OZLProjectViewController.m */; };
+		D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D5DB80561792F2BF0081662A /* RedmineMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedmineMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5DB80591792F2BF0081662A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D5DB805B1792F2BF0081662A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D5DB805D1792F2BF0081662A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D5DB80611792F2BF0081662A /* RedmineMobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedmineMobile-Info.plist"; sourceTree = "<group>"; };
+		D5DB80631792F2BF0081662A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D5DB80651792F2BF0081662A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D5DB80671792F2BF0081662A /* RedmineMobile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedmineMobile-Prefix.pch"; sourceTree = "<group>"; };
+		D5DB80681792F2BF0081662A /* OZLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OZLAppDelegate.h; sourceTree = "<group>"; };
+		D5DB80691792F2BF0081662A /* OZLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OZLAppDelegate.m; sourceTree = "<group>"; };
+		D5DB806B1792F2BF0081662A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D5DB806D1792F2BF0081662A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D5DB806F1792F2BF0081662A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D5DB80781792F3EE0081662A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		D5DB80791792F3EE0081662A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		D5DB807A1792F3EE0081662A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		D5DB807B1792F3EE0081662A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		D5DB807C1792F3EE0081662A /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		D5DB807D1792F3EE0081662A /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		D5DB807E1792F3EE0081662A /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		D5DB807F1792F3EE0081662A /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		D5DB80801792F3EE0081662A /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		D5DB80811792F3EE0081662A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		D5DB80821792F3EE0081662A /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		D5DB80831792F3EE0081662A /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		D5DB80841792F3EE0081662A /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		D5DB80851792F3EE0081662A /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		D5DB80861792F3EE0081662A /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		D5DB80871792F3EE0081662A /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		D5DB80881792F3EE0081662A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		D5DB80891792F3EE0081662A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		D5DB808A1792F3EE0081662A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		D5DB808C1792F3EE0081662A /* PCLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLineChartView.h; sourceTree = "<group>"; };
+		D5DB808D1792F3EE0081662A /* PCLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLineChartView.m; sourceTree = "<group>"; };
+		D5DB808E1792F3EE0081662A /* PCPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPieChart.h; sourceTree = "<group>"; };
+		D5DB808F1792F3EE0081662A /* PCPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPieChart.m; sourceTree = "<group>"; };
+		D5DB80911792F3EE0081662A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		D5DB80921792F3EE0081662A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		D5DB80941792F3EE0081662A /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
+		D5DB80951792F3EE0081662A /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
+		D5DB80A31792F4DE0081662A /* OZLProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLProjectListViewController.h; path = ViewControllers/OZLProjectListViewController.h; sourceTree = "<group>"; };
+		D5DB80A41792F4DE0081662A /* OZLProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLProjectListViewController.m; path = ViewControllers/OZLProjectListViewController.m; sourceTree = "<group>"; };
+		D5DB80A51792F4DE0081662A /* OZLProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLProjectListViewController.xib; path = ViewControllers/OZLProjectListViewController.xib; sourceTree = "<group>"; };
+		D5DB80A91792F6980081662A /* OZLProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLProjectViewController.h; path = ViewControllers/OZLProjectViewController.h; sourceTree = "<group>"; };
+		D5DB80AA1792F6980081662A /* OZLProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLProjectViewController.m; path = ViewControllers/OZLProjectViewController.m; sourceTree = "<group>"; };
+		D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLProjectViewController.xib; path = ViewControllers/OZLProjectViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5DB80531792F2BF0081662A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */,
+				D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */,
+				D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D5DB804D1792F2BF0081662A = {
+			isa = PBXGroup;
+			children = (
+				D5DB80761792F3EE0081662A /* Libs */,
+				D5DB805F1792F2BF0081662A /* RedmineMobile */,
+				D5DB80581792F2BF0081662A /* Frameworks */,
+				D5DB80571792F2BF0081662A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D5DB80571792F2BF0081662A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80561792F2BF0081662A /* RedmineMobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5DB80581792F2BF0081662A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80591792F2BF0081662A /* UIKit.framework */,
+				D5DB805B1792F2BF0081662A /* Foundation.framework */,
+				D5DB805D1792F2BF0081662A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5DB805F1792F2BF0081662A /* RedmineMobile */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80A81792F4E40081662A /* ViewControllers */,
+				D5DB80681792F2BF0081662A /* OZLAppDelegate.h */,
+				D5DB80691792F2BF0081662A /* OZLAppDelegate.m */,
+				D5DB80601792F2BF0081662A /* Supporting Files */,
+			);
+			path = RedmineMobile;
+			sourceTree = "<group>";
+		};
+		D5DB80601792F2BF0081662A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80611792F2BF0081662A /* RedmineMobile-Info.plist */,
+				D5DB80621792F2BF0081662A /* InfoPlist.strings */,
+				D5DB80651792F2BF0081662A /* main.m */,
+				D5DB80671792F2BF0081662A /* RedmineMobile-Prefix.pch */,
+				D5DB806B1792F2BF0081662A /* Default.png */,
+				D5DB806D1792F2BF0081662A /* Default@2x.png */,
+				D5DB806F1792F2BF0081662A /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5DB80761792F3EE0081662A /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80771792F3EE0081662A /* AFNetworking */,
+				D5DB808B1792F3EE0081662A /* iOSPlot */,
+				D5DB80901792F3EE0081662A /* JSONKit */,
+				D5DB80931792F3EE0081662A /* PPRevealSideViewController */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		D5DB80771792F3EE0081662A /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80781792F3EE0081662A /* AFHTTPClient.h */,
+				D5DB80791792F3EE0081662A /* AFHTTPClient.m */,
+				D5DB807A1792F3EE0081662A /* AFHTTPRequestOperation.h */,
+				D5DB807B1792F3EE0081662A /* AFHTTPRequestOperation.m */,
+				D5DB807C1792F3EE0081662A /* AFImageRequestOperation.h */,
+				D5DB807D1792F3EE0081662A /* AFImageRequestOperation.m */,
+				D5DB807E1792F3EE0081662A /* AFJSONRequestOperation.h */,
+				D5DB807F1792F3EE0081662A /* AFJSONRequestOperation.m */,
+				D5DB80801792F3EE0081662A /* AFNetworkActivityIndicatorManager.h */,
+				D5DB80811792F3EE0081662A /* AFNetworkActivityIndicatorManager.m */,
+				D5DB80821792F3EE0081662A /* AFNetworking.h */,
+				D5DB80831792F3EE0081662A /* AFPropertyListRequestOperation.h */,
+				D5DB80841792F3EE0081662A /* AFPropertyListRequestOperation.m */,
+				D5DB80851792F3EE0081662A /* AFURLConnectionOperation.h */,
+				D5DB80861792F3EE0081662A /* AFURLConnectionOperation.m */,
+				D5DB80871792F3EE0081662A /* AFXMLRequestOperation.h */,
+				D5DB80881792F3EE0081662A /* AFXMLRequestOperation.m */,
+				D5DB80891792F3EE0081662A /* UIImageView+AFNetworking.h */,
+				D5DB808A1792F3EE0081662A /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		D5DB808B1792F3EE0081662A /* iOSPlot */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB808C1792F3EE0081662A /* PCLineChartView.h */,
+				D5DB808D1792F3EE0081662A /* PCLineChartView.m */,
+				D5DB808E1792F3EE0081662A /* PCPieChart.h */,
+				D5DB808F1792F3EE0081662A /* PCPieChart.m */,
+			);
+			path = iOSPlot;
+			sourceTree = "<group>";
+		};
+		D5DB80901792F3EE0081662A /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80911792F3EE0081662A /* JSONKit.h */,
+				D5DB80921792F3EE0081662A /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		D5DB80931792F3EE0081662A /* PPRevealSideViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80941792F3EE0081662A /* PPRevealSideViewController.h */,
+				D5DB80951792F3EE0081662A /* PPRevealSideViewController.m */,
+			);
+			path = PPRevealSideViewController;
+			sourceTree = "<group>";
+		};
+		D5DB80A81792F4E40081662A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB80A31792F4DE0081662A /* OZLProjectListViewController.h */,
+				D5DB80A41792F4DE0081662A /* OZLProjectListViewController.m */,
+				D5DB80A51792F4DE0081662A /* OZLProjectListViewController.xib */,
+				D5DB80A91792F6980081662A /* OZLProjectViewController.h */,
+				D5DB80AA1792F6980081662A /* OZLProjectViewController.m */,
+				D5DB80AB1792F6980081662A /* OZLProjectViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D5DB80551792F2BF0081662A /* RedmineMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5DB80731792F2BF0081662A /* Build configuration list for PBXNativeTarget "RedmineMobile" */;
+			buildPhases = (
+				D5DB80521792F2BF0081662A /* Sources */,
+				D5DB80531792F2BF0081662A /* Frameworks */,
+				D5DB80541792F2BF0081662A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RedmineMobile;
+			productName = RedmineMobile;
+			productReference = D5DB80561792F2BF0081662A /* RedmineMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5DB804E1792F2BF0081662A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OZL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Lee Zhijie";
+			};
+			buildConfigurationList = D5DB80511792F2BF0081662A /* Build configuration list for PBXProject "RedmineMobile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D5DB804D1792F2BF0081662A;
+			productRefGroup = D5DB80571792F2BF0081662A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D5DB80551792F2BF0081662A /* RedmineMobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D5DB80541792F2BF0081662A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5DB80641792F2BF0081662A /* InfoPlist.strings in Resources */,
+				D5DB806C1792F2BF0081662A /* Default.png in Resources */,
+				D5DB806E1792F2BF0081662A /* Default@2x.png in Resources */,
+				D5DB80701792F2BF0081662A /* Default-568h@2x.png in Resources */,
+				D5DB80A71792F4DE0081662A /* OZLProjectListViewController.xib in Resources */,
+				D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D5DB80521792F2BF0081662A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5DB80661792F2BF0081662A /* main.m in Sources */,
+				D5DB806A1792F2BF0081662A /* OZLAppDelegate.m in Sources */,
+				D5DB80961792F3EE0081662A /* AFHTTPClient.m in Sources */,
+				D5DB80971792F3EE0081662A /* AFHTTPRequestOperation.m in Sources */,
+				D5DB80981792F3EE0081662A /* AFImageRequestOperation.m in Sources */,
+				D5DB80991792F3EE0081662A /* AFJSONRequestOperation.m in Sources */,
+				D5DB809A1792F3EE0081662A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D5DB809B1792F3EE0081662A /* AFPropertyListRequestOperation.m in Sources */,
+				D5DB809C1792F3EE0081662A /* AFURLConnectionOperation.m in Sources */,
+				D5DB809D1792F3EE0081662A /* AFXMLRequestOperation.m in Sources */,
+				D5DB809E1792F3EE0081662A /* UIImageView+AFNetworking.m in Sources */,
+				D5DB809F1792F3EE0081662A /* PCLineChartView.m in Sources */,
+				D5DB80A01792F3EE0081662A /* PCPieChart.m in Sources */,
+				D5DB80A11792F3EE0081662A /* JSONKit.m in Sources */,
+				D5DB80A21792F3EE0081662A /* PPRevealSideViewController.m in Sources */,
+				D5DB80A61792F4DE0081662A /* OZLProjectListViewController.m in Sources */,
+				D5DB80AC1792F6980081662A /* OZLProjectViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D5DB80621792F2BF0081662A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5DB80631792F2BF0081662A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D5DB80711792F2BF0081662A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5DB80721792F2BF0081662A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D5DB80741792F2BF0081662A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RedmineMobile/RedmineMobile-Prefix.pch";
+				INFOPLIST_FILE = "RedmineMobile/RedmineMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D5DB80751792F2BF0081662A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RedmineMobile/RedmineMobile-Prefix.pch";
+				INFOPLIST_FILE = "RedmineMobile/RedmineMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D5DB80511792F2BF0081662A /* Build configuration list for PBXProject "RedmineMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5DB80711792F2BF0081662A /* Debug */,
+				D5DB80721792F2BF0081662A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5DB80731792F2BF0081662A /* Build configuration list for PBXNativeTarget "RedmineMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5DB80741792F2BF0081662A /* Debug */,
+				D5DB80751792F2BF0081662A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5DB804E1792F2BF0081662A /* Project object */;
+}
