@@ -10,6 +10,6 @@
 
 @interface OZLNetwork : NSObject
 
-+(void)getProjectListWithBlock:(void (^)(NSDictionary *result, NSError *error))block;
++(void)getProjectListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 
 @end

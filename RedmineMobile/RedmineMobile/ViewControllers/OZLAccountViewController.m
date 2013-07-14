@@ -88,8 +88,6 @@
     [[OZLSingleton sharedInstance] setRedmineUserKey:_redmineUserKey.text];
     [[OZLSingleton sharedInstance] setRedmineHomeURL:_redmineHomeURL.text];
     
-    [OZLNetwork getProjectListWithBlock:^(NSDictionary *respond, NSError *error) {
-        NSLog(@"respond:%@",respond.description);
-    }];
+    [self showLeft];
 }
 @end

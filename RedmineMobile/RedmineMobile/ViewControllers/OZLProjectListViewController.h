@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OZLProjectListViewController : UIViewController
+@interface OZLProjectListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *projectsTableview;
 - (IBAction)showAccountView:(id)sender;
 @end

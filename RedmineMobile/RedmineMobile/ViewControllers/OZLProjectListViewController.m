@@ -10,8 +10,13 @@
 #import "PPRevealSideViewController.h"
 #import "OZLProjectViewController.h"
 #import "OZLAccountViewController.h"
+#import "OZLNetwork.h"
+#import "OZLModelProject.h"
 
-@interface OZLProjectListViewController ()
+@interface OZLProjectListViewController (){
+    NSMutableArray* _projectList;
+    
+}
 
 @end
 
@@ -29,9 +34,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _projectsTableview.delegate = self;
+    _projectsTableview.dataSource = self;
+
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    // refresh project list
+    [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        NSLog(@"respond:%@",result.description);
+        _projectList = [[NSMutableArray alloc] initWithArray: result];
+        [_projectsTableview reloadData];
+    }];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -53,4 +69,90 @@
     [self.revealSideViewController popViewControllerWithNewCenterController:n
                                                                    animated:YES];
 }
+- (void)viewDidUnload {
+    [self setProjectsTableview:nil];
+    [super viewDidUnload];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return [_projectList count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString* cellidentifier = [NSString stringWithFormat:@"project_cell_id_%d",indexPath.row];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellidentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellidentifier];
+    }
+    OZLModelProject* project = [_projectList objectAtIndex:indexPath.row];
+    cell.textLabel.text = project.name;
+    cell.detailTextLabel.text = project.description;
+    return cell;
+}
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    
+}
+
 @end
