@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self changeSideViewOffset:90];
+    [self changeSideViewOffset:40];
     
     UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showLeft)];
     [self.navigationItem setLeftBarButtonItem:projectListBtn];

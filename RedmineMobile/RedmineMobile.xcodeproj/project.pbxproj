@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BCF880C1793A26A006FC859 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880B1793A26A006FC859 /* MBProgressHUD.m */; };
+		2BCF88101793ABA0006FC859 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880F1793ABA0006FC859 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2BCF88121793CB4F006FC859 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCF88111793CB4F006FC859 /* CFNetwork.framework */; };
+		2BCF88141793CB94006FC859 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCF88131793CB94006FC859 /* SystemConfiguration.framework */; };
 		D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
 		D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
 		D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805D1792F2BF0081662A /* CoreGraphics.framework */; };
@@ -42,6 +46,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BCF880A1793A26A006FC859 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2BCF880B1793A26A006FC859 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2BCF880E1793ABA0006FC859 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2BCF880F1793ABA0006FC859 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		2BCF88111793CB4F006FC859 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2BCF88131793CB94006FC859 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D5DB80561792F2BF0081662A /* RedmineMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedmineMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB80591792F2BF0081662A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D5DB805B1792F2BF0081662A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCF88141793CB94006FC859 /* SystemConfiguration.framework in Frameworks */,
+				2BCF88121793CB4F006FC859 /* CFNetwork.framework in Frameworks */,
 				D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */,
 				D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */,
 				D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */,
@@ -115,6 +127,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BCF88091793A26A006FC859 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2BCF880A1793A26A006FC859 /* MBProgressHUD.h */,
+				2BCF880B1793A26A006FC859 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		2BCF880D1793ABA0006FC859 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2BCF880E1793ABA0006FC859 /* Reachability.h */,
+				2BCF880F1793ABA0006FC859 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		D5DB804D1792F2BF0081662A = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +166,8 @@
 		D5DB80581792F2BF0081662A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BCF88131793CB94006FC859 /* SystemConfiguration.framework */,
+				2BCF88111793CB4F006FC859 /* CFNetwork.framework */,
 				D5DB80591792F2BF0081662A /* UIKit.framework */,
 				D5DB805B1792F2BF0081662A /* Foundation.framework */,
 				D5DB805D1792F2BF0081662A /* CoreGraphics.framework */,
@@ -173,6 +205,8 @@
 		D5DB80761792F3EE0081662A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				2BCF880D1793ABA0006FC859 /* Reachability */,
+				2BCF88091793A26A006FC859 /* MBProgressHUD */,
 				D5DB80771792F3EE0081662A /* AFNetworking */,
 				D5DB808B1792F3EE0081662A /* iOSPlot */,
 				D5DB80901792F3EE0081662A /* JSONKit */,
@@ -365,6 +399,8 @@
 				D5DB80BA17930C830081662A /* OZLNetworkBase.m in Sources */,
 				D5DB80BD17930ECD0081662A /* OZLSingleton.m in Sources */,
 				D5DB80C217931C8B0081662A /* OZLModelProject.m in Sources */,
+				2BCF880C1793A26A006FC859 /* MBProgressHUD.m in Sources */,
+				2BCF88101793ABA0006FC859 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +519,7 @@
 				D5DB80751792F2BF0081662A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

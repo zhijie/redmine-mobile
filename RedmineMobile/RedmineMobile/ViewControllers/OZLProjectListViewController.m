@@ -12,10 +12,11 @@
 #import "OZLAccountViewController.h"
 #import "OZLNetwork.h"
 #import "OZLModelProject.h"
+#import "MBProgressHUD.h"
 
 @interface OZLProjectListViewController (){
     NSMutableArray* _projectList;
-    
+	MBProgressHUD * _HUD;
 }
 
 @end
@@ -37,15 +38,21 @@
     _projectsTableview.delegate = self;
     _projectsTableview.dataSource = self;
 
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:_HUD];
+	_HUD.labelText = @"Refreshing...";
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [_HUD show:YES];
+    
     // refresh project list
     [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
         NSLog(@"respond:%@",result.description);
         _projectList = [[NSMutableArray alloc] initWithArray: result];
         [_projectsTableview reloadData];
+        [_HUD hide:YES];
     }];
 }
 - (void)didReceiveMemoryWarning
@@ -80,14 +87,14 @@
 {
     
     // Return the number of sections.
-    return [_projectList count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     // Return the number of rows in the section.
-    return 1;
+    return [_projectList count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,7 +104,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString* cellidentifier = [NSString stringWithFormat:@"project_cell_id_%d",indexPath.row];
+    NSString* cellidentifier = [NSString stringWithFormat:@"project_cell_id"];
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellidentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellidentifier];
