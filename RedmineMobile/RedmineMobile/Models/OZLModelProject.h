@@ -38,4 +38,5 @@
 @property(nonatomic,strong) NSString* updatedOn;
 
 -(id)initWithDictionary:(NSDictionary*)dic;
+
 @end

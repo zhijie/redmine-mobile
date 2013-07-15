@@ -61,6 +61,10 @@
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Refreshing...";
+
+
+    UIBarButtonItem* accountBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAccountView:)];
+    [self.navigationItem setLeftBarButtonItem:accountBtn];
 }
 
 -(void) viewWillAppear:(BOOL)animated

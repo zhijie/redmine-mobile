@@ -28,11 +28,20 @@
 
 #import <Foundation/Foundation.h>
 #import "OZLModelProject.h"
+#import "OZLModelIssue.h"
+#import "OZLModelPriority.h"
+#import "OZLModelStatus.h"
+#import "OZLModelTracker.h"
+#import "OZLModelUser.h"
 
 @interface OZLNetwork : NSObject
 
 // project 
 +(void)getProjectListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 +(void)getDetailForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelProject *result, NSError *error))block;
+
+// issue
++(void)getIssueListForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
++(void)getDetailFoIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelIssue *result, NSError *error))block;
 
 @end

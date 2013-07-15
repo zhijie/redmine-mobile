@@ -30,7 +30,6 @@
 #import "OZLNetworkBase.h"
 #import "AFHTTPRequestOperation.h"
 #import "JSONKit.h"
-#import "OZLModelProject.h"
 
 @implementation OZLNetwork
 
@@ -83,6 +82,60 @@
             block([NSArray array], error);
         }
 
+    }];
+}
+
++(void)getIssueListForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = [NSString stringWithFormat:@"/issues.json"];
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    [dic setObject:[NSNumber numberWithInt:projectid] forKey:@"project_id"];
+    
+    [[OZLNetworkBase sharedClient] getPath:path parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+
+            NSMutableArray* issues = [[NSMutableArray alloc] init];
+
+            NSArray* issuesDic = [responseObject objectForKey:@"issues"];
+            for (NSDictionary* p in issuesDic) {
+                [issues addObject:[[OZLModelIssue alloc] initWithDictionary:p]];
+            }
+            block(issues,nil);
+        }
+
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+        
+    }];
+}
+
++(void)getDetailFoIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelIssue *result, NSError *error))block
+{
+    NSString* path = [NSString stringWithFormat:@"/issues/%d.json",issueid];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+
+            NSDictionary* projectDic = [responseObject objectForKey:@"issue"];
+            OZLModelIssue* issue = [[OZLModelIssue alloc] initWithDictionary:projectDic];
+
+            block(issue,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+
+        if (block) {
+            block([NSArray array], error);
+        }
+        
     }];
 }
 

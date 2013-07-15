@@ -30,5 +30,6 @@
 #import "OZLModelProject.h"
 
 @interface OZLProjectViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
 @property (nonatomic,strong) OZLModelProject* projectData;
 @end
