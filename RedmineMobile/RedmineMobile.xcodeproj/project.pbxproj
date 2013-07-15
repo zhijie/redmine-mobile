@@ -18,6 +18,8 @@
 		2BCF88271793F4AA006FC859 /* OZLModelStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88261793F4AA006FC859 /* OZLModelStatus.m */; };
 		2BCF882A1793F4C9006FC859 /* OZLModelPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88291793F4C9006FC859 /* OZLModelPriority.m */; };
 		2BCF88301793F5CE006FC859 /* OZLModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF882F1793F5CE006FC859 /* OZLModelUser.m */; };
+		2BCF88341793FFD1006FC859 /* OZLIssueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88321793FFD0006FC859 /* OZLIssueDetailViewController.m */; };
+		2BCF88351793FFD1006FC859 /* OZLIssueDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BCF88331793FFD1006FC859 /* OZLIssueDetailViewController.xib */; };
 		D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
 		D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
 		D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805D1792F2BF0081662A /* CoreGraphics.framework */; };
@@ -72,6 +74,9 @@
 		2BCF88291793F4C9006FC859 /* OZLModelPriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelPriority.m; path = Models/OZLModelPriority.m; sourceTree = "<group>"; };
 		2BCF882E1793F5CE006FC859 /* OZLModelUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelUser.h; path = Models/OZLModelUser.h; sourceTree = "<group>"; };
 		2BCF882F1793F5CE006FC859 /* OZLModelUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelUser.m; path = Models/OZLModelUser.m; sourceTree = "<group>"; };
+		2BCF88311793FFD0006FC859 /* OZLIssueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueDetailViewController.h; path = ViewControllers/OZLIssueDetailViewController.h; sourceTree = "<group>"; };
+		2BCF88321793FFD0006FC859 /* OZLIssueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueDetailViewController.m; path = ViewControllers/OZLIssueDetailViewController.m; sourceTree = "<group>"; };
+		2BCF88331793FFD1006FC859 /* OZLIssueDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLIssueDetailViewController.xib; path = ViewControllers/OZLIssueDetailViewController.xib; sourceTree = "<group>"; };
 		D5DB80561792F2BF0081662A /* RedmineMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedmineMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB80591792F2BF0081662A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D5DB805B1792F2BF0081662A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +189,9 @@
 		2BCF881B1793EFB7006FC859 /* Issue */ = {
 			isa = PBXGroup;
 			children = (
+				2BCF88311793FFD0006FC859 /* OZLIssueDetailViewController.h */,
+				2BCF88321793FFD0006FC859 /* OZLIssueDetailViewController.m */,
+				2BCF88331793FFD1006FC859 /* OZLIssueDetailViewController.xib */,
 			);
 			name = Issue;
 			sourceTree = "<group>";
@@ -417,6 +425,7 @@
 				D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */,
 				D5DB80B61793016B0081662A /* OZLAccountViewController.xib in Resources */,
 				2BCF88191793E353006FC859 /* OZLProjectDetailViewController.xib in Resources */,
+				2BCF88351793FFD1006FC859 /* OZLIssueDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +466,7 @@
 				2BCF88271793F4AA006FC859 /* OZLModelStatus.m in Sources */,
 				2BCF882A1793F4C9006FC859 /* OZLModelPriority.m in Sources */,
 				2BCF88301793F5CE006FC859 /* OZLModelUser.m in Sources */,
+				2BCF88341793FFD1006FC859 /* OZLIssueDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

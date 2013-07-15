@@ -32,6 +32,7 @@
 #import "OZLNetwork.h"
 #import "MBProgressHUD.h"
 #import "OZLProjectDetailViewController.h"
+#import "OZLIssueDetailViewController.h"
 
 
 @interface OZLProjectViewController () {
@@ -223,9 +224,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    [self showProjectView:[_issuesList objectAtIndex:indexPath.row]];
-
+    OZLIssueDetailViewController* detail = [[OZLIssueDetailViewController alloc] initWithNibName:@"OZLIssueDetailViewController" bundle:nil];
+    [detail setIssueData:[_issuesList objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
