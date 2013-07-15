@@ -11,6 +11,8 @@
 		2BCF88101793ABA0006FC859 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880F1793ABA0006FC859 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2BCF88121793CB4F006FC859 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCF88111793CB4F006FC859 /* CFNetwork.framework */; };
 		2BCF88141793CB94006FC859 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCF88131793CB94006FC859 /* SystemConfiguration.framework */; };
+		2BCF88181793E353006FC859 /* OZLProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88161793E353006FC859 /* OZLProjectDetailViewController.m */; };
+		2BCF88191793E353006FC859 /* OZLProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BCF88171793E353006FC859 /* OZLProjectDetailViewController.xib */; };
 		D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
 		D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
 		D5DB805E1792F2BF0081662A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805D1792F2BF0081662A /* CoreGraphics.framework */; };
@@ -52,6 +54,9 @@
 		2BCF880F1793ABA0006FC859 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2BCF88111793CB4F006FC859 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2BCF88131793CB94006FC859 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2BCF88151793E352006FC859 /* OZLProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLProjectDetailViewController.h; path = ViewControllers/OZLProjectDetailViewController.h; sourceTree = "<group>"; };
+		2BCF88161793E353006FC859 /* OZLProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLProjectDetailViewController.m; path = ViewControllers/OZLProjectDetailViewController.m; sourceTree = "<group>"; };
+		2BCF88171793E353006FC859 /* OZLProjectDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLProjectDetailViewController.xib; path = ViewControllers/OZLProjectDetailViewController.xib; sourceTree = "<group>"; };
 		D5DB80561792F2BF0081662A /* RedmineMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedmineMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB80591792F2BF0081662A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D5DB805B1792F2BF0081662A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -282,6 +287,9 @@
 				D5DB80B21793016B0081662A /* OZLAccountViewController.h */,
 				D5DB80B31793016B0081662A /* OZLAccountViewController.m */,
 				D5DB80B41793016B0081662A /* OZLAccountViewController.xib */,
+				2BCF88151793E352006FC859 /* OZLProjectDetailViewController.h */,
+				2BCF88161793E353006FC859 /* OZLProjectDetailViewController.m */,
+				2BCF88171793E353006FC859 /* OZLProjectDetailViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -367,6 +375,7 @@
 				D5DB80A71792F4DE0081662A /* OZLProjectListViewController.xib in Resources */,
 				D5DB80AD1792F6980081662A /* OZLProjectViewController.xib in Resources */,
 				D5DB80B61793016B0081662A /* OZLAccountViewController.xib in Resources */,
+				2BCF88191793E353006FC859 /* OZLProjectDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +410,7 @@
 				D5DB80C217931C8B0081662A /* OZLModelProject.m in Sources */,
 				2BCF880C1793A26A006FC859 /* MBProgressHUD.m in Sources */,
 				2BCF88101793ABA0006FC859 /* Reachability.m in Sources */,
+				2BCF88181793E353006FC859 /* OZLProjectDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

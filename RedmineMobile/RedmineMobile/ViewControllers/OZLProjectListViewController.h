@@ -30,6 +30,9 @@
 
 @interface OZLProjectListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic) BOOL needRefresh;
 @property (strong, nonatomic) IBOutlet UITableView *projectsTableview;
 - (IBAction)showAccountView:(id)sender;
+
+
 @end

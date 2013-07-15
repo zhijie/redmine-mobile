@@ -32,6 +32,7 @@
 
 NSString* USER_DEFUALTS_REDMINE_HOME_URL = @"USER_DEFUALTS_REDMINE_HOME_URL";
 NSString* USER_DEFUALTS_REDMINE_USER_KEY = @"USER_DEFUALTS_REDMINE_USER_KEY";
+NSString* USER_DEFUALTS_LAST_PROJECT_ID = @"USER_DEFUALTS_LAST_PROJECT_ID";
 
 
 static OZLSingleton* sharedInstance = nil;
@@ -44,6 +45,7 @@ static OZLSingleton* sharedInstance = nil;
         NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:
                              @"http://demo.redmine.org/",USER_DEFUALTS_REDMINE_HOME_URL,
                              @"",USER_DEFUALTS_REDMINE_USER_KEY,
+                             [NSNumber numberWithInt:-1],USER_DEFUALTS_LAST_PROJECT_ID,
                              nil];
         [defaults registerDefaults:dic];
     }
@@ -71,6 +73,17 @@ static OZLSingleton* sharedInstance = nil;
     NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults setObject:redmineUserKey forKey:USER_DEFUALTS_REDMINE_USER_KEY];
     [userdefaults synchronize];    
+}
+-(int)lastProjectID
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [userdefaults integerForKey:USER_DEFUALTS_LAST_PROJECT_ID];
+}
+-(void)setLastProjectID:(int)projectid
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setInteger:projectid forKey:USER_DEFUALTS_LAST_PROJECT_ID];
+    [userdefaults synchronize];
 }
 
 @end

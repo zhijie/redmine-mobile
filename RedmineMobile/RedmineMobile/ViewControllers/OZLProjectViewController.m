@@ -29,9 +29,14 @@
 #import "OZLProjectViewController.h"
 #import "PPRevealSideViewController.h"
 #import "OZLProjectListViewController.h"
+#import "OZLNetwork.h"
+#import "MBProgressHUD.h"
+#import "OZLProjectDetailViewController.h"
+
 
 @interface OZLProjectViewController () {
     float _sideviewOffset;
+    MBProgressHUD * _HUD;
 }
 
 @end
@@ -50,11 +55,48 @@
 {
     [super viewDidLoad];
     [self changeSideViewOffset:40];
-    
+
     UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showLeft)];
     [self.navigationItem setLeftBarButtonItem:projectListBtn];
+
+    UIBarButtonItem* inforBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showProjectDetail)];
+    [self.navigationItem setRightBarButtonItem:inforBtn];
+
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:_HUD];
+	_HUD.labelText = @"Loading...";
+
+    [self reloadData];
 }
 
+-(void) reloadData
+{
+    if (_projectData == nil) {
+        NSLog(@"error: _projectData have to be set");
+        return;
+    }
+    [_HUD show:YES];
+    [OZLNetwork getDetailForProject:_projectData.index withParams:nil andBlock:^(OZLModelProject *result, NSError *error) {
+        _projectData = result;
+        [self.navigationItem setTitle:_projectData.name];
+
+        [_HUD hide:YES];
+    }];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preloadLeft) object:nil];
+    [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
+
+}
+
+- (void) showProjectDetail
+{
+    OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
+    [detail setProjectData:_projectData];
+    [self.navigationController pushViewController:detail animated:YES];
+}
 
 - (void) preloadLeft {
     OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
@@ -62,11 +104,6 @@
                                                  forSide:PPRevealSideDirectionLeft
                                               withOffset:_sideviewOffset];
     PP_RELEASE(c);
-}
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preloadLeft) object:nil];
-    [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
 }
 
 - (void) showLeft {

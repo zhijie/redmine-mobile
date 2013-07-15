@@ -28,14 +28,26 @@
 
 #import "OZLAppDelegate.h"
 #import "OZLProjectViewController.h"
+#import "OZLSingleton.h"
+#import "OZLModelProject.h"
+#import "OZLAccountViewController.h"
 
 @implementation OZLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = PP_AUTORELEASE([[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]);
-    
-    OZLProjectViewController *main = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
+
+    id main = nil;
+    int lastProjectID = [[OZLSingleton sharedInstance] lastProjectID];
+    if (lastProjectID < 0) {
+        main = [[OZLAccountViewController alloc] initWithNibName:@"OZLAccountViewController" bundle:nil];
+    }else {
+        main = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
+        OZLModelProject* data = [[OZLModelProject alloc] init];
+        data.index = lastProjectID;
+        [main setProjectData:data];
+    }
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
     _revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:nav];

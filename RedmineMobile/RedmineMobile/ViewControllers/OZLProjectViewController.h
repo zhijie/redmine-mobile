@@ -27,7 +27,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "OZLModelProject.h"
 
 @interface OZLProjectViewController : UIViewController
-
+@property (nonatomic,strong) OZLModelProject* projectData;
 @end

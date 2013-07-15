@@ -77,6 +77,7 @@
 
 - (void) showLeft {
     OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
+    [c setNeedRefresh:YES];
     [self.revealSideViewController pushViewController:c onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
     PP_RELEASE(c);
 }

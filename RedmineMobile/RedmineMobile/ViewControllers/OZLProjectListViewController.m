@@ -65,26 +65,31 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [_HUD show:YES];
-    
-    // refresh project list
-    [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        NSLog(@"respond:%@",result.description);
-        _projectList = [[NSMutableArray alloc] initWithArray: result];
-        [_projectsTableview reloadData];
-        [_HUD hide:YES];
-    }];
+//    if (_needRefresh) {
+        _needRefresh = NO;
+
+        [_HUD show:YES];
+        // refresh project list
+        [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            NSLog(@"respond:%@",result.description);
+            _projectList = [[NSMutableArray alloc] initWithArray: result];
+            [_projectsTableview reloadData];
+            [_HUD hide:YES];
+        }];
+//    }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showProjectView
+- (void)showProjectView:(OZLModelProject*)project
 {
-    
+
     OZLProjectViewController *c = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
+    [c setProjectData:project];
     UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
     [self.revealSideViewController popViewControllerWithNewCenterController:n
                                                                    animated:YES];
@@ -178,7 +183,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
+    [self showProjectView:[_projectList objectAtIndex:indexPath.row]];
     
 }
 

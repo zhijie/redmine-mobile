@@ -27,9 +27,12 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "OZLModelProject.h"
 
 @interface OZLNetwork : NSObject
 
+// project 
 +(void)getProjectListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
++(void)getDetailForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelProject *result, NSError *error))block;
 
 @end

@@ -61,5 +61,29 @@
     }];
 }
 
++(void)getDetailForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelProject *result, NSError *error))block
+{
+    NSString* path = [NSString stringWithFormat:@"/projects/%d.json",projectid];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+
+            NSDictionary* projectDic = [responseObject objectForKey:@"project"];
+            OZLModelProject* project = [[OZLModelProject alloc] initWithDictionary:projectDic];
+
+            block(project,nil);
+        }
+
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+
+        if (block) {
+            block([NSArray array], error);
+        }
+
+    }];
+}
 
 @end
