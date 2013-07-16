@@ -32,6 +32,10 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *redmineHomeURL;
 @property (strong, nonatomic) IBOutlet UITextField *redmineUserKey;
+
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
 - (IBAction)onOk:(id)sender;
 
 @end

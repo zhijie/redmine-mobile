@@ -35,6 +35,8 @@
 //network
 @property(nonatomic,strong) NSString* redmineHomeURL;
 @property(nonatomic,strong) NSString* redmineUserKey;
+@property(nonatomic,strong) NSString* redmineUserName;
+@property(nonatomic,strong) NSString* redminePassword;
 
 //app status
 @property(nonatomic) int lastProjectID;// last viewed project id

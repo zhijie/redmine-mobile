@@ -27,13 +27,15 @@
 // THE SOFTWARE.
 
 #import "OZLSingleton.h"
+#import "OZLConstants.h"
 
 @implementation OZLSingleton
 
 NSString* USER_DEFUALTS_REDMINE_HOME_URL = @"USER_DEFUALTS_REDMINE_HOME_URL";
 NSString* USER_DEFUALTS_REDMINE_USER_KEY = @"USER_DEFUALTS_REDMINE_USER_KEY";
 NSString* USER_DEFUALTS_LAST_PROJECT_ID = @"USER_DEFUALTS_LAST_PROJECT_ID";
-
+NSString* USER_DEFUALTS_REDMINE_USER_NAME = @"USER_DEFUALTS_REDMINE_USER_NAME";
+NSString* USER_DEFUALTS_REDMINE_PASSWORD = @"USER_DEFUALTS_REDMINE_PASSWORD";
 
 static OZLSingleton* sharedInstance = nil;
 +(OZLSingleton*) sharedInstance
@@ -46,6 +48,8 @@ static OZLSingleton* sharedInstance = nil;
                              @"http://demo.redmine.org/",USER_DEFUALTS_REDMINE_HOME_URL,
                              @"",USER_DEFUALTS_REDMINE_USER_KEY,
                              [NSNumber numberWithInt:-1],USER_DEFUALTS_LAST_PROJECT_ID,
+                             @"",USER_DEFUALTS_REDMINE_USER_NAME,
+                             @"",USER_DEFUALTS_REDMINE_PASSWORD,
                              nil];
         [defaults registerDefaults:dic];
     }
@@ -62,6 +66,7 @@ static OZLSingleton* sharedInstance = nil;
     NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults setObject:redmineHomeURL forKey:USER_DEFUALTS_REDMINE_HOME_URL];
     [userdefaults synchronize];
+    
 }
 -(NSString*)redmineUserKey
 {
@@ -86,4 +91,29 @@ static OZLSingleton* sharedInstance = nil;
     [userdefaults synchronize];
 }
 
+-(NSString*)redmineUserName
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [userdefaults objectForKey:USER_DEFUALTS_REDMINE_USER_NAME];
+}
+
+-(void)setRedmineUserName:(NSString *)redmineUserName
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setObject:redmineUserName forKey:USER_DEFUALTS_REDMINE_USER_NAME];
+    [userdefaults synchronize];
+}
+
+-(NSString*)redminePassword
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [userdefaults objectForKey:USER_DEFUALTS_REDMINE_PASSWORD];
+}
+
+-(void)setRedminePassword:(NSString *)redminePassword
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setObject:redminePassword forKey:USER_DEFUALTS_REDMINE_PASSWORD];
+    [userdefaults synchronize];
+}
 @end

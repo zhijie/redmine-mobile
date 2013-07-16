@@ -30,6 +30,7 @@
 #import "PPRevealSideViewController.h"
 #import "OZLProjectListViewController.h"
 #import "OZLSingleton.h"
+#import "OZLConstants.h"
 #import "OZLNetwork.h"
 
 @interface OZLAccountViewController (){
@@ -59,8 +60,17 @@
 
     _redmineHomeURL.text = [[OZLSingleton sharedInstance] redmineHomeURL];
     _redmineUserKey.text = [[OZLSingleton sharedInstance] redmineUserKey];
+    _username.text = [[OZLSingleton sharedInstance] redmineUserName];
+    _password.text = [[OZLSingleton sharedInstance] redminePassword];
+
+    UITapGestureRecognizer* tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapped)];
+    [self.view addGestureRecognizer:tapper];
 }
 
+-(void)backgroundTapped
+{
+    [self.view endEditing:YES];
+}
 
 - (void) preloadLeft {
     OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
@@ -106,11 +116,19 @@
 - (void)viewDidUnload {
     [self setRedmineHomeURL:nil];
     [self setRedmineUserKey:nil];
+    [self setUsername:nil];
+    [self setPassword:nil];
     [super viewDidUnload];
 }
 - (IBAction)onOk:(id)sender {
     [[OZLSingleton sharedInstance] setRedmineUserKey:_redmineUserKey.text];
     [[OZLSingleton sharedInstance] setRedmineHomeURL:_redmineHomeURL.text];
+    [[OZLSingleton sharedInstance] setRedmineUserName:_username.text];
+    [[OZLSingleton sharedInstance] setRedminePassword:_password.text];
+    [[OZLSingleton sharedInstance] setLastProjectID:-1];
+
+    NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
+    [center postNotificationName:NOTIFICATION_REDMINE_ACCOUNT_CHANGED object:nil];
     
     [self showProjectList];
 }

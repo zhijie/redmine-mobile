@@ -34,6 +34,7 @@
 #import "OZLProjectDetailViewController.h"
 #import "OZLIssueDetailViewController.h"
 #import "OZLIssueCreateViewController.h"
+#import "OZLSingleton.h"
 
 
 @interface OZLProjectViewController () {
@@ -71,6 +72,8 @@
 	_HUD.labelText = @"Loading...";
 
     [self reloadData];
+
+    [[OZLSingleton sharedInstance] setLastProjectID:_projectData.index];
 }
 
 -(void) reloadData

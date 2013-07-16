@@ -30,6 +30,7 @@
 #import "OZLNetworkBase.h"
 #import "AFHTTPRequestOperation.h"
 #import "JSONKit.h"
+#import "OZLSingleton.h"
 
 @implementation OZLNetwork
 
@@ -38,7 +39,14 @@
 +(void)getProjectListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 {
     NSString* path = @"/projects.json";
-    [[OZLNetworkBase sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
@@ -63,7 +71,13 @@
 +(void)getDetailForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelProject *result, NSError *error))block
 {
     NSString* path = [NSString stringWithFormat:@"/projects/%d.json",projectid];
-    [[OZLNetworkBase sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
@@ -82,6 +96,7 @@
 
     }];
 }
+
 +(void)createProject:(OZLModelProject*)projectData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block
 {
     NSString* path = @"/projects.json";
@@ -90,6 +105,11 @@
     NSMutableDictionary* projectDic = [projectData toParametersDic];
     [projectDic addEntriesFromDictionary:params];
     
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [projectDic setObject:accessKey forKey:@"key"];
+    }
+
     [[OZLNetworkBase sharedClient] postPath:path parameters:projectDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
@@ -106,6 +126,7 @@
 
     }];
 }
+
 +(void)updateProject:(OZLModelProject*)projectData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block
 {
     NSString* path = [NSString stringWithFormat:@"/projects/%d.json",projectData.index];
@@ -113,7 +134,12 @@
     //project info
     NSMutableDictionary* projectDic = [projectData toParametersDic];
     [projectDic addEntriesFromDictionary:params];
-    
+
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [projectDic setObject:accessKey forKey:@"key"];
+    }
+
     [[OZLNetworkBase sharedClient] putPath:path parameters:projectDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
@@ -124,7 +150,6 @@
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
-
         if (block) {
             block(NO, error);
         }
@@ -132,11 +157,17 @@
     }];
 
 }
+
 +(void)deleteProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block
 {
     NSString* path = [NSString stringWithFormat:@"/projects/%d.json",projectid];
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
 
-    [[OZLNetworkBase sharedClient] deletePath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[OZLNetworkBase sharedClient] deletePath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
@@ -145,7 +176,6 @@
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
 
         if (block) {
             block(NO, error);
@@ -160,10 +190,14 @@
 +(void)getIssueListForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
 {
     NSString* path = [NSString stringWithFormat:@"/issues.json"];
-    NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithDictionary:params];
-    [dic setObject:[NSNumber numberWithInt:projectid] forKey:@"project_id"];
-    
-    [[OZLNetworkBase sharedClient] getPath:path parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    [paramsDic setObject:[NSNumber numberWithInt:projectid] forKey:@"project_id"];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
@@ -189,7 +223,14 @@
 +(void)getDetailFoIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelIssue *result, NSError *error))block
 {
     NSString* path = [NSString stringWithFormat:@"/issues/%d.json",issueid];
-    [[OZLNetworkBase sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
@@ -218,6 +259,11 @@
     NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
     [paramsDic addEntriesFromDictionary:[issueData toParametersDic]];
 
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
     [[OZLNetworkBase sharedClient] postPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
@@ -241,7 +287,12 @@
     //project info
     NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
     [paramsDic addEntriesFromDictionary:[issueData toParametersDic]];
-    
+
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
     [[OZLNetworkBase sharedClient] putPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
@@ -263,7 +314,13 @@
 {
     NSString* path = [NSString stringWithFormat:@"/issues/%d.json",issueid];
 
-    [[OZLNetworkBase sharedClient] deletePath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+    
+    [[OZLNetworkBase sharedClient] deletePath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);

@@ -62,6 +62,18 @@
 */
     OZLProjectListViewController* projectList = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:projectList];
+
+    int lastProjectID = [[OZLSingleton sharedInstance] lastProjectID];
+    if (lastProjectID < 0) {
+        
+    }else {
+        OZLProjectViewController* projectview = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
+        OZLModelProject* data = [[OZLModelProject alloc] init];
+        data.index = lastProjectID;
+        [projectview setProjectData:data];
+        [_navigationController pushViewController:projectview animated:NO];
+    }
+
     self.window.rootViewController = _navigationController;
     
     self.window.backgroundColor = [UIColor whiteColor];
@@ -99,7 +111,6 @@
     
     return PPRevealSideDirectionLeft ;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

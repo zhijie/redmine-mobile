@@ -34,6 +34,7 @@
 #import "OZLNetwork.h"
 #import "OZLModelProject.h"
 #import "MBProgressHUD.h"
+#import "OZLSingleton.h"
 
 @interface OZLProjectListViewController (){
     NSMutableArray* _projectList;
@@ -67,6 +68,8 @@
     [self.navigationItem setLeftBarButtonItem:accountBtn];
 
     [self.navigationItem setTitle:@"Projects"];
+
+    [[OZLSingleton sharedInstance] setLastProjectID:-1];
 }
 
 -(void) viewWillAppear:(BOOL)animated

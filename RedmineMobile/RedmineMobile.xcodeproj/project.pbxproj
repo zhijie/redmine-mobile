@@ -12,6 +12,7 @@
 		2B9968B01794FC0A0086F115 /* OZLProjectCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9968AE1794FC0A0086F115 /* OZLProjectCreateViewController.xib */; };
 		2B9968B417951A5C0086F115 /* OZLIssueCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968B217951A5C0086F115 /* OZLIssueCreateViewController.m */; };
 		2B9968B517951A5C0086F115 /* OZLIssueCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9968B317951A5C0086F115 /* OZLIssueCreateViewController.xib */; };
+		2BCCA0541795312E00FA8B1A /* OZLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCCA0531795312E00FA8B1A /* OZLConstants.m */; };
 		2BCF880C1793A26A006FC859 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880B1793A26A006FC859 /* MBProgressHUD.m */; };
 		2BCF88101793ABA0006FC859 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880F1793ABA0006FC859 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2BCF88121793CB4F006FC859 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCF88111793CB4F006FC859 /* CFNetwork.framework */; };
@@ -68,6 +69,8 @@
 		2B9968B117951A5C0086F115 /* OZLIssueCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueCreateViewController.h; path = ViewControllers/OZLIssueCreateViewController.h; sourceTree = "<group>"; };
 		2B9968B217951A5C0086F115 /* OZLIssueCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueCreateViewController.m; path = ViewControllers/OZLIssueCreateViewController.m; sourceTree = "<group>"; };
 		2B9968B317951A5C0086F115 /* OZLIssueCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OZLIssueCreateViewController.xib; path = ViewControllers/OZLIssueCreateViewController.xib; sourceTree = "<group>"; };
+		2BCCA0521795312E00FA8B1A /* OZLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLConstants.h; path = Models/OZLConstants.h; sourceTree = "<group>"; };
+		2BCCA0531795312E00FA8B1A /* OZLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLConstants.m; path = Models/OZLConstants.m; sourceTree = "<group>"; };
 		2BCF880A1793A26A006FC859 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2BCF880B1793A26A006FC859 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		2BCF880E1793ABA0006FC859 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				D5DB80B917930C830081662A /* OZLNetworkBase.m */,
 				D5DB80BB17930ECD0081662A /* OZLSingleton.h */,
 				D5DB80BC17930ECD0081662A /* OZLSingleton.m */,
+				2BCCA0521795312E00FA8B1A /* OZLConstants.h */,
+				2BCCA0531795312E00FA8B1A /* OZLConstants.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				2B9968AB1794F71B0086F115 /* OZLModelIssueCategory.m in Sources */,
 				2B9968AF1794FC0A0086F115 /* OZLProjectCreateViewController.m in Sources */,
 				2B9968B417951A5C0086F115 /* OZLIssueCreateViewController.m in Sources */,
+				2BCCA0541795312E00FA8B1A /* OZLConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
