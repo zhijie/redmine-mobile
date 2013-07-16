@@ -31,13 +31,14 @@
 #import "OZLSingleton.h"
 #import "OZLModelProject.h"
 #import "OZLAccountViewController.h"
+#import "OZLProjectListViewController.h"
 
 @implementation OZLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = PP_AUTORELEASE([[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]);
-
+/*
     id main = nil;
     int lastProjectID = [[OZLSingleton sharedInstance] lastProjectID];
     if (lastProjectID < 0) {
@@ -58,6 +59,10 @@
     
     PP_RELEASE(main);
     PP_RELEASE(nav);
+*/
+    OZLProjectListViewController* projectList = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
+    _navigationController = [[UINavigationController alloc] initWithRootViewController:projectList];
+    self.window.rootViewController = _navigationController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

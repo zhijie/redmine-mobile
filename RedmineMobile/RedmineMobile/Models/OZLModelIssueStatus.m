@@ -1,14 +1,14 @@
 //
-//  OZLModelStatus.m
+//  OZLModelIssueStatus.m
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/15/13.
 //  Copyright (c) 2013 Lee Zhijie. All rights reserved.
 //
 
-#import "OZLModelStatus.h"
+#import "OZLModelIssueStatus.h"
 
-@implementation OZLModelStatus
+@implementation OZLModelIssueStatus
 
 -(id)initWithDictionary:(NSDictionary*)dic
 {

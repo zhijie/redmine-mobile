@@ -30,7 +30,7 @@
 #import "OZLModelProject.h"
 #import "OZLModelIssue.h"
 #import "OZLModelPriority.h"
-#import "OZLModelStatus.h"
+#import "OZLModelIssueStatus.h"
 #import "OZLModelTracker.h"
 #import "OZLModelUser.h"
 
@@ -39,9 +39,17 @@
 // project 
 +(void)getProjectListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 +(void)getDetailForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelProject *result, NSError *error))block;
++(void)createProject:(OZLModelProject*)projectData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
++(void)updateProject:(OZLModelProject*)projectData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
++(void)deleteProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
+
 
 // issue
 +(void)getIssueListForProject:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 +(void)getDetailFoIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(OZLModelIssue *result, NSError *error))block;
++(void)createIssue:(OZLModelIssue*)issueData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
++(void)updateIssue:(OZLModelIssue*)issueData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
++(void)deleteIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
+
 
 @end

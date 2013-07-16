@@ -31,6 +31,7 @@
 @interface OZLModelProject : NSObject
 
 @property(nonatomic) int index;
+@property(nonatomic,strong) NSString* identifier;
 @property(nonatomic,strong) NSString* description;
 @property(nonatomic,strong) NSString* name;
 @property(nonatomic) int parentId;
@@ -38,5 +39,6 @@
 @property(nonatomic,strong) NSString* updatedOn;
 
 -(id)initWithDictionary:(NSDictionary*)dic;
+-(NSMutableDictionary*) toParametersDic;
 
 @end

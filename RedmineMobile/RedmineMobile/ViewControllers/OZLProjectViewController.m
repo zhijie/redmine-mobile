@@ -33,6 +33,7 @@
 #import "MBProgressHUD.h"
 #import "OZLProjectDetailViewController.h"
 #import "OZLIssueDetailViewController.h"
+#import "OZLIssueCreateViewController.h"
 
 
 @interface OZLProjectViewController () {
@@ -57,10 +58,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self changeSideViewOffset:40];
+//    [self changeSideViewOffset:40];
 
-    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showLeft)];
-    [self.navigationItem setLeftBarButtonItem:projectListBtn];
+//    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showProjectList)];
+//    [self.navigationItem setLeftBarButtonItem:projectListBtn];
 
     UIBarButtonItem* inforBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showProjectDetail)];
     [self.navigationItem setRightBarButtonItem:inforBtn];
@@ -109,17 +110,20 @@
 }
 
 - (void) preloadLeft {
-    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
-    [self.revealSideViewController preloadViewController:c
-                                                 forSide:PPRevealSideDirectionLeft
-                                              withOffset:_sideviewOffset];
-    PP_RELEASE(c);
+//    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
+//    [self.revealSideViewController preloadViewController:c
+//                                                 forSide:PPRevealSideDirectionLeft
+//                                              withOffset:_sideviewOffset];
+//    PP_RELEASE(c);
 }
 
-- (void) showLeft {
-    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
-    [self.revealSideViewController pushViewController:c onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
-    PP_RELEASE(c);
+- (void) showProjectList {
+    [self.navigationController popViewControllerAnimated:YES];
+
+//    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
+//    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:c];
+//    [self.revealSideViewController pushViewController:navigationController onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
+//    PP_RELEASE(c);
 }
 
 - (IBAction)changeSideViewOffset:(int)offset {
@@ -230,4 +234,8 @@
 }
 
 
+- (IBAction)onNewIssue:(id)sender {
+    OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
+    [self.navigationController presentModalViewController:creator animated:YES];
+}
 @end

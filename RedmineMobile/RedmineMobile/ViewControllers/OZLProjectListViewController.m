@@ -30,6 +30,7 @@
 #import "PPRevealSideViewController.h"
 #import "OZLProjectViewController.h"
 #import "OZLAccountViewController.h"
+#import "OZLProjectCreateViewController.h"
 #import "OZLNetwork.h"
 #import "OZLModelProject.h"
 #import "MBProgressHUD.h"
@@ -62,15 +63,16 @@
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Refreshing...";
 
-
     UIBarButtonItem* accountBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAccountView:)];
     [self.navigationItem setLeftBarButtonItem:accountBtn];
+
+    [self.navigationItem setTitle:@"Projects"];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
 //    if (_needRefresh) {
-        _needRefresh = NO;
+//        _needRefresh = NO;
 
         [_HUD show:YES];
         // refresh project list
@@ -94,17 +96,29 @@
 
     OZLProjectViewController *c = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
     [c setProjectData:project];
-    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
-    [self.revealSideViewController popViewControllerWithNewCenterController:n
-                                                                   animated:YES];
+
+    [self.navigationController pushViewController:c animated:YES];
+    
+//    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
+//    [self.revealSideViewController popViewControllerWithNewCenterController:n
+//                                                                   animated:YES];
 }
 
 - (IBAction)showAccountView:(id)sender {
     OZLAccountViewController *c = [[OZLAccountViewController alloc] initWithNibName:@"OZLAccountViewController" bundle:nil];
-    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
-    [self.revealSideViewController popViewControllerWithNewCenterController:n
-                                                                   animated:YES];
+
+    [self.navigationController pushViewController:c animated:YES];
+    
+//    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
+//    [self.revealSideViewController popViewControllerWithNewCenterController:n
+//                                                                   animated:YES];
 }
+
+- (IBAction)createProject:(id)sender {
+    OZLProjectCreateViewController* creator = [[OZLProjectCreateViewController alloc] initWithNibName:@"OZLProjectCreateViewController" bundle:nil];
+    [self.navigationController presentModalViewController:creator animated:YES];
+}
+
 - (void)viewDidUnload {
     [self setProjectsTableview:nil];
     [super viewDidUnload];

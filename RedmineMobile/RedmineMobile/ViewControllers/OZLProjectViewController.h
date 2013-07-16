@@ -32,4 +32,5 @@
 @interface OZLProjectViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
 @property (nonatomic,strong) OZLModelProject* projectData;
+- (IBAction)onNewIssue:(id)sender;
 @end

@@ -38,6 +38,7 @@
     }
 
     _index = [[dic objectForKey:@"id"] intValue];
+    _identifier = [dic objectForKey:@"identifier"];
     _name = [dic objectForKey:@"name"];
     _description = [dic objectForKey:@"description"];
     _createdOn = [dic objectForKey:@"created_on"];
@@ -51,4 +52,18 @@
     return self;
 }
 
+-(NSMutableDictionary*) toParametersDic
+{
+    NSMutableDictionary* projectDic = [[NSMutableDictionary alloc] init];
+    [projectDic setObject:_name forKey:@"name"];
+    [projectDic setObject:_identifier forKey:@"identifier"];
+    if (_description.length > 0) {
+        [projectDic setObject:_description forKey:@"description"];
+    }
+    if (_parentId > 0) {
+        [projectDic setObject:[NSNumber numberWithInt:_parentId] forKey:@"parent"];
+    }
+
+    return [[NSMutableDictionary alloc] initWithObjectsAndKeys:projectDic,@"project",nil];
+}
 @end

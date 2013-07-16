@@ -52,10 +52,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self changeSideViewOffset:40];
-    
-    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showLeft)];
-    [self.navigationItem setLeftBarButtonItem:projectListBtn];
+//    [self changeSideViewOffset:40];
+
+//    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showProjectList)];
+//    [self.navigationItem setLeftBarButtonItem:projectListBtn];
 
     _redmineHomeURL.text = [[OZLSingleton sharedInstance] redmineHomeURL];
     _redmineUserKey.text = [[OZLSingleton sharedInstance] redmineUserKey];
@@ -75,11 +75,14 @@
     [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
 }
 
-- (void) showLeft {
-    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
-    [c setNeedRefresh:YES];
-    [self.revealSideViewController pushViewController:c onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
-    PP_RELEASE(c);
+- (void) showProjectList {
+    [self.navigationController popViewControllerAnimated:YES];
+
+//    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
+//    [c setNeedRefresh:YES];
+//    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:c];
+//    [self.revealSideViewController pushViewController:navigationController onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
+//    PP_RELEASE(c);
 }
 
 - (IBAction)changeSideViewOffset:(int)offset {
@@ -109,6 +112,6 @@
     [[OZLSingleton sharedInstance] setRedmineUserKey:_redmineUserKey.text];
     [[OZLSingleton sharedInstance] setRedmineHomeURL:_redmineHomeURL.text];
     
-    [self showLeft];
+    [self showProjectList];
 }
 @end

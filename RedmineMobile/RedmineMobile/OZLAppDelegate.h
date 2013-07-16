@@ -32,6 +32,6 @@
 @interface OZLAppDelegate : UIResponder <UIApplicationDelegate,PPRevealSideViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) PPRevealSideViewController *revealSideViewController;
-
+//@property (strong, nonatomic) PPRevealSideViewController *revealSideViewController;
+@property(strong, nonatomic) UINavigationController* navigationController;
 @end

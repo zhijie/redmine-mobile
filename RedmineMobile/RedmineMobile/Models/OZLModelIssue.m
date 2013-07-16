@@ -16,21 +16,6 @@
     if (!self) {
         return nil;
     }
-
-//    @property(nonatomic) int index;
-//    @property(nonatomic) int projectId;
-//    @property(nonatomic) int parentIssueId;
-//    @property(nonatomic,strong) OZLModelTracker* tracker;
-//    @property(nonatomic,strong) OZLModelUser* author;
-//    @property(nonatomic,strong) OZLModelUser* assignedTo;
-//    @property(nonatomic,strong) OZLModelPriority* priority;
-//    @property(nonatomic,strong) NSString* subject;
-//    @property(nonatomic,strong) NSString* description;
-//    @property(nonatomic,strong) NSString* startDate;
-//    @property(nonatomic,strong) NSString* dueDate;
-//    @property(nonatomic,strong) NSString* createdOn;
-//    @property(nonatomic,strong) NSString* updatedOn;
-//    @property(nonatomic) float doneRatio;
     _index = [[dic objectForKey:@"id"] intValue];
     _projectId = [[[dic objectForKey:@"project"] objectForKey:@"id"] intValue];
     id parent = [dic objectForKey:@"parent"];
@@ -55,6 +40,14 @@
     if (priority != nil) {
         _priority = [[OZLModelPriority alloc] initWithDictionary:priority];
     }
+    id status = [dic objectForKey:@"status"];
+    if (status) {
+        _status = [[OZLModelIssueStatus alloc ] initWithDictionary:status];
+    }
+    id category = [dic objectForKey:@"category"];
+    if (status) {
+        _category = [[OZLModelIssueCategory alloc ] initWithDictionary:category];
+    }
     _subject = [dic objectForKey:@"subject"];
     _description = [dic objectForKey:@"description"];
     _startDate = [dic objectForKey:@"start_date"];
@@ -62,7 +55,45 @@
     _createdOn = [dic objectForKey:@"created_on"];
     _updatedOn = [dic objectForKey:@"updated_on"];
     _doneRatio = [[dic objectForKey:@"done_ratio"] floatValue];
+    id spentHours = [dic objectForKey:@"spent_hours"];
+    if (spentHours ) {
+        _spentHours = [spentHours floatValue];
+    }else {
+        _spentHours = 0.0f;
+    }
     return self;
 }
+-(NSMutableDictionary*) toParametersDic
+{
+    NSMutableDictionary* issueData = [[NSMutableDictionary alloc] init];
+    if (_projectId > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_projectId] forKey:@"project_id"];
+    }
+    if (_tracker && _tracker.index > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_tracker.index] forKey:@"tracker_id"];
+    }
+    if (_status && _status.index > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_status.index] forKey:@"status_id"];
+    }
+    if (_priority && _priority.init > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_priority.index] forKey:@"priority_id"];
+    }
+    if (_subject.length > 0) {
+        [issueData setObject:_subject forKey:@"subject"];
+    }
+    if (_description.length > 0) {
+        [issueData setObject:_description forKey:@"description"];
+    }
+    if (_category && _category) {
+        [issueData setObject:[NSNumber numberWithInt:_category.index ] forKey:@"categroy_id"];
+    }
+    if (_assignedTo && _assignedTo.index > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_assignedTo.index] forKey:@"assigned_to_id"];
+    }
+    if (_parentIssueId > 0) {
+        [issueData setObject:[NSNumber numberWithInt:_parentIssueId] forKey:@"parent_issue_id"];
+    }
 
+    return [[NSMutableDictionary alloc] initWithObjectsAndKeys:issueData,@"issue",nil];
+}
 @end
