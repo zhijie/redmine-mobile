@@ -84,17 +84,25 @@
     }
     [_HUD show:YES];
     [OZLNetwork getDetailForProject:_projectData.index withParams:nil andBlock:^(OZLModelProject *result, NSError *error) {
-        _projectData = result;
-        [self.navigationItem setTitle:_projectData.name];
-
-        // load issues
-        [OZLNetwork getIssueListForProject:_projectData.index withParams:nil andBlock:^(NSArray *result, NSError *error) {
-            _issuesList = result;
-
-            [_issuesTableview reloadData];
+        if (error) {
+            NSLog(@"error getDetailForProject: %@",error.description);
             [_HUD hide:YES];
-        }];
+        }else {
+            _projectData = result;
+            [self.navigationItem setTitle:_projectData.name];
+            
+            // load issues
+            [OZLNetwork getIssueListForProject:_projectData.index withParams:nil andBlock:^(NSArray *result, NSError *error) {
+                if (error) {
+                    NSLog(@"error getIssueListForProject: %@",error.description);
+                }else {
+                    _issuesList = result;
 
+                    [_issuesTableview reloadData];
+                }
+                [_HUD hide:YES];
+            }];
+        }
     }];
 }
 
@@ -241,7 +249,9 @@
 }
 
 - (IBAction)onNewIssue:(id)sender {
-    OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
+    //OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
+    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
+    OZLIssueDetailViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
     [self.navigationController presentModalViewController:creator animated:YES];
 }
 @end

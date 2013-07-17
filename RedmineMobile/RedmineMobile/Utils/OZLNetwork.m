@@ -91,7 +91,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
         if (block) {
-            block([NSArray array], error);
+            block(nil, error);
         }
 
     }];
