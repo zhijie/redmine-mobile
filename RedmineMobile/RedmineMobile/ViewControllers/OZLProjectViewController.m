@@ -252,6 +252,7 @@
     //OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
     OZLIssueDetailViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
-    [self.navigationController presentModalViewController:creator animated:YES];
+    //[self.navigationController presentModalViewController:creator animated:YES];
+    [self.navigationController pushViewController:creator animated:YES];
 }
 @end

@@ -118,8 +118,11 @@
 }
 
 - (IBAction)createProject:(id)sender {
-    OZLProjectCreateViewController* creator = [[OZLProjectCreateViewController alloc] initWithNibName:@"OZLProjectCreateViewController" bundle:nil];
-    [self.navigationController presentModalViewController:creator animated:YES];
+    //OZLProjectCreateViewController* creator = [[OZLProjectCreateViewController alloc] initWithNibName:@"OZLProjectCreateViewController" bundle:nil];
+    //[self.navigationController presentModalViewController:creator animated:YES];
+    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLProjectCreateViewController" bundle:nil];
+    OZLProjectCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectCreateViewController"];
+    [self.navigationController pushViewController:creator animated:YES];
 }
 
 - (void)viewDidUnload {

@@ -26,7 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancel:)];
+    [self.navigationItem setLeftBarButtonItem:cancelBtn];
+    UIBarButtonItem* saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(onSave:)];
+    [self.navigationItem setRightBarButtonItem:saveBtn];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +41,7 @@
 
 - (IBAction)onCancel:(id)sender {
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onSave:(id)sender {

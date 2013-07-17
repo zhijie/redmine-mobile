@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OZLProjectCreateViewController : UIViewController
+@interface OZLProjectCreateViewController : UITableViewController
 - (IBAction)onCancel:(id)sender;
 - (IBAction)onSave:(id)sender;
 

@@ -41,7 +41,7 @@
 }
 
 - (IBAction)onCancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onSave:(id)sender {
