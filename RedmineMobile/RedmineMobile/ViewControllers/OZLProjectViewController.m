@@ -107,7 +107,9 @@
 
 - (void) showProjectDetail
 {
-    OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
+    //OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OZLProjectDetailViewController" bundle:nil];
+    OZLProjectDetailViewController* detail = [storyboard instantiateViewControllerWithIdentifier:@"OZLProjectDetailViewController"];
     [detail setProjectData:_projectData];
     [self.navigationController pushViewController:detail animated:YES];
 }
@@ -231,11 +233,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OZLIssueDetailViewController* detail = [[OZLIssueDetailViewController alloc] initWithNibName:@"OZLIssueDetailViewController" bundle:nil];
+    //OZLIssueDetailViewController* detail = [[OZLIssueDetailViewController alloc] initWithNibName:@"OZLIssueDetailViewController" bundle:nil];
+    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueDetailViewController" bundle:nil];
+    OZLIssueDetailViewController* detail = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueDetailViewController"];
     [detail setIssueData:[_issuesList objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:detail animated:YES];
 }
-
 
 - (IBAction)onNewIssue:(id)sender {
     OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
