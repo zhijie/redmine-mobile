@@ -10,6 +10,8 @@
 		2B62D0DF1796498800AC3C19 /* OZLIssueCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0DE1796498800AC3C19 /* OZLIssueCreateViewController.storyboard */; };
 		2B62D0E1179649A800AC3C19 /* OZLIssueDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */; };
 		2B62D0E31796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E21796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard */; };
+		2B62D0E51796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */; };
+		2B62D0E81796A8D800AC3C19 /* OZLIssueFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */; };
 		2B8A11E217963CE500906D34 /* OZLIssueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A11E117963CE500906D34 /* OZLIssueDetailViewController.m */; };
 		2B9968AB1794F71B0086F115 /* OZLModelIssueCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968AA1794F71B0086F115 /* OZLModelIssueCategory.m */; };
 		2B9968AF1794FC0A0086F115 /* OZLProjectCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968AD1794FC0A0086F115 /* OZLProjectCreateViewController.m */; };
@@ -64,6 +66,9 @@
 		2B62D0DE1796498800AC3C19 /* OZLIssueCreateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueCreateViewController.storyboard; path = ViewControllers/OZLIssueCreateViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueDetailViewController.storyboard; path = ViewControllers/OZLIssueDetailViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E21796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLProjectCreateViewController.storyboard; path = ViewControllers/OZLProjectCreateViewController.storyboard; sourceTree = "<group>"; };
+		2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueFilterViewController.storyboard; path = ViewControllers/OZLIssueFilterViewController.storyboard; sourceTree = "<group>"; };
+		2B62D0E61796A8D800AC3C19 /* OZLIssueFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueFilterViewController.h; path = ViewControllers/OZLIssueFilterViewController.h; sourceTree = "<group>"; };
+		2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueFilterViewController.m; path = ViewControllers/OZLIssueFilterViewController.m; sourceTree = "<group>"; };
 		2B8A11E017963CE500906D34 /* OZLIssueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueDetailViewController.h; path = ViewControllers/OZLIssueDetailViewController.h; sourceTree = "<group>"; };
 		2B8A11E117963CE500906D34 /* OZLIssueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueDetailViewController.m; path = ViewControllers/OZLIssueDetailViewController.m; sourceTree = "<group>"; };
 		2B9968A91794F71B0086F115 /* OZLModelIssueCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelIssueCategory.h; path = Models/OZLModelIssueCategory.h; sourceTree = "<group>"; };
@@ -221,6 +226,9 @@
 				2B8A11E017963CE500906D34 /* OZLIssueDetailViewController.h */,
 				2B8A11E117963CE500906D34 /* OZLIssueDetailViewController.m */,
 				2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */,
+				2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */,
+				2B62D0E61796A8D800AC3C19 /* OZLIssueFilterViewController.h */,
+				2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */,
 			);
 			name = Issue;
 			sourceTree = "<group>";
@@ -462,6 +470,7 @@
 				2B62D0DF1796498800AC3C19 /* OZLIssueCreateViewController.storyboard in Resources */,
 				2B62D0E1179649A800AC3C19 /* OZLIssueDetailViewController.storyboard in Resources */,
 				2B62D0E31796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard in Resources */,
+				2B62D0E51796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +516,7 @@
 				2B9968B417951A5C0086F115 /* OZLIssueCreateViewController.m in Sources */,
 				2BCCA0541795312E00FA8B1A /* OZLConstants.m in Sources */,
 				2B8A11E217963CE500906D34 /* OZLIssueDetailViewController.m in Sources */,
+				2B62D0E81796A8D800AC3C19 /* OZLIssueFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
