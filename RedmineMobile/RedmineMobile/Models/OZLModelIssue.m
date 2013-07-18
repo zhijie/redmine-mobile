@@ -38,7 +38,7 @@
     }
     id priority = [dic objectForKey:@"priority"];
     if (priority != nil) {
-        _priority = [[OZLModelPriority alloc] initWithDictionary:priority];
+        _priority = [[OZLModelIssuePriority alloc] initWithDictionary:priority];
     }
     id status = [dic objectForKey:@"status"];
     if (status) {
@@ -61,6 +61,13 @@
     }else {
         _spentHours = 0.0f;
     }
+    id estimatedHours = [dic objectForKey:@"estimated_hours"];
+    if (spentHours ) {
+        _estimatedHours = [estimatedHours floatValue];
+    }else {
+        _estimatedHours = 0.0f;
+    }
+
     return self;
 }
 -(NSMutableDictionary*) toParametersDic
@@ -92,6 +99,12 @@
     }
     if (_parentIssueId > 0) {
         [issueData setObject:[NSNumber numberWithInt:_parentIssueId] forKey:@"parent_issue_id"];
+    }
+    if (_spentHours > 0) {
+        [issueData setObject:[NSNumber numberWithFloat:_spentHours] forKey:@"spent_hours"];
+    }
+    if (_estimatedHours > 0) {
+        [issueData setObject:[NSNumber numberWithFloat:_estimatedHours] forKey:@"estimated_hours"];
     }
 
     return [[NSMutableDictionary alloc] initWithObjectsAndKeys:issueData,@"issue",nil];

@@ -112,7 +112,7 @@
         // create the alert
         MLTableAlert* tableAlert = [MLTableAlert tableAlertWithTitle:@"Parent Project" cancelButtonTitle:@"Cancel" numberOfRows:^NSInteger (NSInteger section)
                                       {
-                                          return  _projectList.count;
+                                          return  _projectList.count + 1;
                                       }
                                                               andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
                                       {

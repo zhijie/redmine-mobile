@@ -18,9 +18,16 @@
     }
 
     _index = [[dic objectForKey:@"id"] intValue];
-    _name = [dic objectForKey:@"name"];
+    _login = [dic objectForKey:@"login"];
+    _firstname = [dic objectForKey:@"firstname"];
+    _lastname = [dic objectForKey:@"lastname"];
+    _mail = [dic objectForKey:@"mail"];
+    _createdOn = [dic objectForKey:@"created_on"];
+    _lastLoginIn = [dic objectForKey:@"last_login_on"];
 
+    _name = _login;
     return  self;
 }
+
 
 @end

@@ -41,8 +41,8 @@
     _progressbar.progress = _issueData.doneRatio/100;
     _status.text = _issueData.status.name ;
     _priority.text = _issueData.priority.name;
-    _author.text = _issueData.author.name;
-    _assignedTo.text = _issueData.assignedTo.name;
+    _author.text = _issueData.author.login;
+    _assignedTo.text = _issueData.assignedTo.login;
     _startTime.text = _issueData.startDate;
     _dueTime.text = _issueData.dueDate;
 }

@@ -36,7 +36,7 @@
 		2BCF881E1793F3C8006FC859 /* OZLModelIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF881D1793F3C8006FC859 /* OZLModelIssue.m */; };
 		2BCF88211793F478006FC859 /* OZLModelTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88201793F478006FC859 /* OZLModelTracker.m */; };
 		2BCF88271793F4AA006FC859 /* OZLModelIssueStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88261793F4AA006FC859 /* OZLModelIssueStatus.m */; };
-		2BCF882A1793F4C9006FC859 /* OZLModelPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88291793F4C9006FC859 /* OZLModelPriority.m */; };
+		2BCF882A1793F4C9006FC859 /* OZLModelIssuePriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF88291793F4C9006FC859 /* OZLModelIssuePriority.m */; };
 		2BCF88301793F5CE006FC859 /* OZLModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF882F1793F5CE006FC859 /* OZLModelUser.m */; };
 		D5DB805A1792F2BF0081662A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
 		D5DB805C1792F2BF0081662A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
@@ -115,8 +115,8 @@
 		2BCF88201793F478006FC859 /* OZLModelTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelTracker.m; path = Models/OZLModelTracker.m; sourceTree = "<group>"; };
 		2BCF88251793F4AA006FC859 /* OZLModelIssueStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelIssueStatus.h; path = Models/OZLModelIssueStatus.h; sourceTree = "<group>"; };
 		2BCF88261793F4AA006FC859 /* OZLModelIssueStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelIssueStatus.m; path = Models/OZLModelIssueStatus.m; sourceTree = "<group>"; };
-		2BCF88281793F4C9006FC859 /* OZLModelPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelPriority.h; path = Models/OZLModelPriority.h; sourceTree = "<group>"; };
-		2BCF88291793F4C9006FC859 /* OZLModelPriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelPriority.m; path = Models/OZLModelPriority.m; sourceTree = "<group>"; };
+		2BCF88281793F4C9006FC859 /* OZLModelIssuePriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelIssuePriority.h; path = Models/OZLModelIssuePriority.h; sourceTree = "<group>"; };
+		2BCF88291793F4C9006FC859 /* OZLModelIssuePriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelIssuePriority.m; path = Models/OZLModelIssuePriority.m; sourceTree = "<group>"; };
 		2BCF882E1793F5CE006FC859 /* OZLModelUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLModelUser.h; path = Models/OZLModelUser.h; sourceTree = "<group>"; };
 		2BCF882F1793F5CE006FC859 /* OZLModelUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLModelUser.m; path = Models/OZLModelUser.m; sourceTree = "<group>"; };
 		D5DB80561792F2BF0081662A /* RedmineMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedmineMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -446,8 +446,8 @@
 				2BCF881D1793F3C8006FC859 /* OZLModelIssue.m */,
 				2BCF881F1793F478006FC859 /* OZLModelTracker.h */,
 				2BCF88201793F478006FC859 /* OZLModelTracker.m */,
-				2BCF88281793F4C9006FC859 /* OZLModelPriority.h */,
-				2BCF88291793F4C9006FC859 /* OZLModelPriority.m */,
+				2BCF88281793F4C9006FC859 /* OZLModelIssuePriority.h */,
+				2BCF88291793F4C9006FC859 /* OZLModelIssuePriority.m */,
 				2BCF882E1793F5CE006FC859 /* OZLModelUser.h */,
 				2BCF882F1793F5CE006FC859 /* OZLModelUser.m */,
 				2B9968A91794F71B0086F115 /* OZLModelIssueCategory.h */,
@@ -566,7 +566,7 @@
 				2BCF881E1793F3C8006FC859 /* OZLModelIssue.m in Sources */,
 				2BCF88211793F478006FC859 /* OZLModelTracker.m in Sources */,
 				2BCF88271793F4AA006FC859 /* OZLModelIssueStatus.m in Sources */,
-				2BCF882A1793F4C9006FC859 /* OZLModelPriority.m in Sources */,
+				2BCF882A1793F4C9006FC859 /* OZLModelIssuePriority.m in Sources */,
 				2BCF88301793F5CE006FC859 /* OZLModelUser.m in Sources */,
 				2B9968AB1794F71B0086F115 /* OZLModelIssueCategory.m in Sources */,
 				2B9968AF1794FC0A0086F115 /* OZLProjectCreateViewController.m in Sources */,

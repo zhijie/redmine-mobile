@@ -29,7 +29,7 @@
 #import <Foundation/Foundation.h>
 #import "OZLModelProject.h"
 #import "OZLModelIssue.h"
-#import "OZLModelPriority.h"
+#import "OZLModelIssuePriority.h"
 #import "OZLModelIssueStatus.h"
 #import "OZLModelTracker.h"
 #import "OZLModelUser.h"
@@ -50,6 +50,15 @@
 +(void)createIssue:(OZLModelIssue*)issueData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
 +(void)updateIssue:(OZLModelIssue*)issueData withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
 +(void)deleteIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block;
+
+// priority
++(void)getPriorityListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
+// user
++(void)getUserListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
+// issue status
++(void)getIssueStatusListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
+// tracker
++(void)getTrackerListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 
 
 @end

@@ -1,5 +1,5 @@
 //
-//  OZLModelPriority.h
+//  OZLModelIssuePriority.h
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/15/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OZLModelPriority : NSObject
+@interface OZLModelIssuePriority : NSObject
 
 @property(nonatomic) int index;
 @property(nonatomic, strong) NSString* name;

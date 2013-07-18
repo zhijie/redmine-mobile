@@ -267,8 +267,7 @@
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
-            int repondNumber = [responseObject intValue];
-            block(repondNumber == 201,nil);
+            block(YES,nil);
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -336,4 +335,141 @@
     }];
 }
 
+
+#pragma mark -
+#pragma mark priority api
+// priority
++(void)getPriorityListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/enumerations/issue_priorities.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"issue_priorities"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelIssuePriority alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
+#pragma mark -
+#pragma mark user api
+// user
++(void)getUserListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/users.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"users"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelUser alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
+
+#pragma mark -
+#pragma mark issue status api
+// issue status
++(void)getIssueStatusListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/issue_statuses.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"issue_statuses"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelIssueStatus alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
+#pragma mark -
+#pragma mark tracker api
+// tracker
++(void)getTrackerListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/trackers.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"trackers"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelTracker alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
 @end
