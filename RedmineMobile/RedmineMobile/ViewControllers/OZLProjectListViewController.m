@@ -122,6 +122,7 @@
     //[self.navigationController presentModalViewController:creator animated:YES];
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLProjectCreateViewController" bundle:nil];
     OZLProjectCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectCreateViewController"];
+    [creator setProjectList:_projectList];
     [self.navigationController pushViewController:creator animated:YES];
 }
 

@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OZLModelProject.h"
 
 @interface OZLProjectCreateViewController : UITableViewController
 - (IBAction)onCancel:(id)sender;
 - (IBAction)onSave:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *identifier;
+@property (weak, nonatomic) IBOutlet UITextField *homepageUrl;
+@property (weak, nonatomic) IBOutlet UITextView *description;
+@property (nonatomic) BOOL isPublic;
+@property (nonatomic,strong) OZLModelProject* parentProject;
+@property (nonatomic,strong) NSArray* projectList;
 
 @end

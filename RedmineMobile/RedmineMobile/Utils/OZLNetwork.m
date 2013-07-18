@@ -114,8 +114,7 @@
 
         if (block) {
             NSLog(@"the repsonse:%@",responseObject);
-            int repondNumber = [responseObject intValue];
-            block(repondNumber == 201,nil);
+            block(YES,nil);
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

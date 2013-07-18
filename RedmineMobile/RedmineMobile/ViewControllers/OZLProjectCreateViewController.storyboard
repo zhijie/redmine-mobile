@@ -112,7 +112,7 @@
                                                     <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-o2-yxn">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="None" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-o2-yxn">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,6 +158,12 @@
                         </connections>
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="description" destination="AT8-cJ-4t0" id="Rsn-N4-neo"/>
+                        <outlet property="homepageUrl" destination="Wxn-cY-Rz5" id="AOY-OA-hUq"/>
+                        <outlet property="identifier" destination="w24-vv-ngl" id="PFN-kY-lkq"/>
+                        <outlet property="name" destination="WVH-aU-Pta" id="eg9-ak-RD6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4U-Yd-PmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,6 +179,10 @@
             <relationships>
                 <relationship kind="action" name="onCancel:"/>
                 <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="homepageUrl" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="identifier" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>

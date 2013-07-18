@@ -41,6 +41,7 @@
     _identifier = [dic objectForKey:@"identifier"];
     _name = [dic objectForKey:@"name"];
     _description = [dic objectForKey:@"description"];
+    _homepage = [dic objectForKey:@"homepage"];
     _createdOn = [dic objectForKey:@"created_on"];
     _updatedOn = [dic objectForKey:@"updated_on"];
     NSDictionary* parent = [dic objectForKey:@"parent"];
@@ -61,7 +62,10 @@
         [projectDic setObject:_description forKey:@"description"];
     }
     if (_parentId > 0) {
-        [projectDic setObject:[NSNumber numberWithInt:_parentId] forKey:@"parent"];
+        [projectDic setObject:[NSNumber numberWithInt:_parentId] forKey:@"parent_id"];
+    }
+    if (_homepage.length > 0) {
+        [projectDic setObject:_homepage forKey:@"homepage"];
     }
 
     return [[NSMutableDictionary alloc] initWithObjectsAndKeys:projectDic,@"project",nil];

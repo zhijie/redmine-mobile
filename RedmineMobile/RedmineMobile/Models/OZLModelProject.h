@@ -35,6 +35,8 @@
 @property(nonatomic,strong) NSString* description;
 @property(nonatomic,strong) NSString* name;
 @property(nonatomic) int parentId;
+@property(nonatomic) BOOL isPublic;
+@property(nonatomic,strong) NSString* homepage;
 @property(nonatomic,strong) NSString* createdOn;
 @property(nonatomic,strong) NSString* updatedOn;
 
