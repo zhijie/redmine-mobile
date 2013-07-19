@@ -8,8 +8,12 @@
 
 #import "OZLIssueFilterViewController.h"
 
-@interface OZLIssueFilterViewController ()
+@interface OZLIssueFilterViewController () {
+    NSArray* _cellArray;
+    NSArray* _headerArray;
+    int _checkedCell[3];
 
+}
 @end
 
 @implementation OZLIssueFilterViewController
@@ -27,11 +31,30 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancel:)];
+    [self.navigationItem setLeftBarButtonItem:cancelBtn];
+    UIBarButtonItem* saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(onSave:)];
+    [self.navigationItem setRightBarButtonItem:saveBtn];
+
+    _cellArray = @[
+                    @[@"Assigned to me",@"Open",@"Reported by me"],
+                    @[@"Id", @"Tracker", @"Status", @"Priority", @"Category", @"Asssigned to", @"Fixed Version", @"Start Date", @"Due Date", @"Estimated Date", @"Done", @"Updated on"],
+                    @[@"Ascending", @"Descending"]];
+    _headerArray = @[@"Filter by", @"Sort by", @""];
+
+    _checkedCell[0] = 0;
+    _checkedCell[1] = 0;
+    _checkedCell[2] = 0;
+}
+
+-(void) onCancel:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) onSave:(id) sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,78 +67,43 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return _cellArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    return [[_cellArray objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
+    static NSString *CellIdentifier = @"OZLIssueFilterViewControllerCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    if (_checkedCell[indexPath.section] == indexPath.row ) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    cell.textLabel.text = [[_cellArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return [_headerArray objectAtIndex:section];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    _checkedCell[indexPath.section] = indexPath.row;
+    [self.tableView reloadData];
 }
 
 @end

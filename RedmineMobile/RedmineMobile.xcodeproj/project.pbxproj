@@ -10,7 +10,6 @@
 		2B62D0DF1796498800AC3C19 /* OZLIssueCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0DE1796498800AC3C19 /* OZLIssueCreateViewController.storyboard */; };
 		2B62D0E1179649A800AC3C19 /* OZLIssueDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */; };
 		2B62D0E31796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E21796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard */; };
-		2B62D0E51796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */; };
 		2B62D0E81796A8D800AC3C19 /* OZLIssueFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */; };
 		2B6F382F1797A00A00D06F51 /* MLTableAlertBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B6F38251797A00A00D06F51 /* MLTableAlertBackground.png */; };
 		2B6F38301797A00A00D06F51 /* MLTableAlertBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B6F38261797A00A00D06F51 /* MLTableAlertBackground@2x.png */; };
@@ -76,7 +75,6 @@
 		2B62D0DE1796498800AC3C19 /* OZLIssueCreateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueCreateViewController.storyboard; path = ViewControllers/OZLIssueCreateViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueDetailViewController.storyboard; path = ViewControllers/OZLIssueDetailViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E21796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLProjectCreateViewController.storyboard; path = ViewControllers/OZLProjectCreateViewController.storyboard; sourceTree = "<group>"; };
-		2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueFilterViewController.storyboard; path = ViewControllers/OZLIssueFilterViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E61796A8D800AC3C19 /* OZLIssueFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueFilterViewController.h; path = ViewControllers/OZLIssueFilterViewController.h; sourceTree = "<group>"; };
 		2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueFilterViewController.m; path = ViewControllers/OZLIssueFilterViewController.m; sourceTree = "<group>"; };
 		2B6F38251797A00A00D06F51 /* MLTableAlertBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MLTableAlertBackground.png; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				2B8A11E017963CE500906D34 /* OZLIssueDetailViewController.h */,
 				2B8A11E117963CE500906D34 /* OZLIssueDetailViewController.m */,
 				2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */,
-				2B62D0E41796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard */,
 				2B62D0E61796A8D800AC3C19 /* OZLIssueFilterViewController.h */,
 				2B62D0E71796A8D800AC3C19 /* OZLIssueFilterViewController.m */,
 			);
@@ -519,7 +516,6 @@
 				2B62D0DF1796498800AC3C19 /* OZLIssueCreateViewController.storyboard in Resources */,
 				2B62D0E1179649A800AC3C19 /* OZLIssueDetailViewController.storyboard in Resources */,
 				2B62D0E31796A15C00AC3C19 /* OZLProjectCreateViewController.storyboard in Resources */,
-				2B62D0E51796A8C800AC3C19 /* OZLIssueFilterViewController.storyboard in Resources */,
 				2B6F382F1797A00A00D06F51 /* MLTableAlertBackground.png in Resources */,
 				2B6F38301797A00A00D06F51 /* MLTableAlertBackground@2x.png in Resources */,
 				2B6F38311797A00A00D06F51 /* MLTableAlertButton.png in Resources */,

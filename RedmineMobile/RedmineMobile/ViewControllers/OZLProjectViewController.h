@@ -33,4 +33,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
 @property (nonatomic,strong) OZLModelProject* projectData;
 - (IBAction)onNewIssue:(id)sender;
+- (IBAction)onSortSetting:(id)sender;
+
 @end

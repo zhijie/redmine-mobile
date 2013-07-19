@@ -34,6 +34,7 @@
 #import "OZLProjectDetailViewController.h"
 #import "OZLIssueDetailViewController.h"
 #import "OZLIssueCreateViewController.h"
+#import "OZLIssueFilterViewController.h"
 #import "OZLSingleton.h"
 
 
@@ -71,9 +72,12 @@
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Loading...";
 
-    [self reloadData];
-
     [[OZLSingleton sharedInstance] setLastProjectID:_projectData.index];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self reloadData];
 }
 
 -(void) reloadData
@@ -108,8 +112,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preloadLeft) object:nil];
-    [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
+//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preloadLeft) object:nil];
+//    [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
 
 }
 
@@ -255,5 +259,10 @@
     [creator setParentProject:_projectData];
     //[self.navigationController presentModalViewController:creator animated:YES];
     [self.navigationController pushViewController:creator animated:YES];
+}
+
+- (IBAction)onSortSetting:(id)sender {
+    OZLIssueFilterViewController* filter = [[OZLIssueFilterViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:filter animated:YES];
 }
 @end

@@ -116,6 +116,7 @@
         doneCount ++;
         if (doneCount == 4) {
             [_HUD hide:YES];
+            doneCount = 0;
         }
     }];
 
@@ -128,6 +129,7 @@
         doneCount ++;
         if (doneCount == 4) {
             [_HUD hide:YES];
+            doneCount = 0;
         }
     }];
     [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
@@ -139,6 +141,7 @@
         doneCount ++;
         if (doneCount == 4) {
             [_HUD hide:YES];
+            doneCount = 0;
         }
     }];
     [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
@@ -150,6 +153,7 @@
         doneCount ++;
         if (doneCount == 4) {
             [_HUD hide:YES];
+            doneCount = 0;
         }
     }];
 }
@@ -341,11 +345,11 @@
         }
     }
 
+    [self.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark delegate of textfield inputview
-
 
 #pragma mark data picker value changed
 -(void)datePickerValueChanged:(id)sender
