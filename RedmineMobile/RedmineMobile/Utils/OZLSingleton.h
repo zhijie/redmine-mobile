@@ -38,6 +38,11 @@
 @property(nonatomic,strong) NSString* redmineUserName;
 @property(nonatomic,strong) NSString* redminePassword;
 
+// issue list option
+@property(nonatomic) int issueListFilterType;
+@property(nonatomic) int issueListSortType;
+@property(nonatomic) int issueListSortAscending;
+
 //app status
 @property(nonatomic) int lastProjectID;// last viewed project id
 

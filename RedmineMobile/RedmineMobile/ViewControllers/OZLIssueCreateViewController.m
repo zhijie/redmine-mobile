@@ -3,8 +3,28 @@
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/16/13.
-//  Copyright (c) 2013 Lee Zhijie. All rights reserved.
+
+// This code is distributed under the terms and conditions of the MIT license.
+
+// Copyright (c) 2013 Zhijie Lee(onezeros.lee@gmail.com)
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "OZLIssueCreateViewController.h"
 #import "OZLNetwork.h"
@@ -16,10 +36,6 @@
 #import "MLTableAlert.h"
 
 @interface OZLIssueCreateViewController () {
-    NSArray* _trackerList;
-    NSArray* _priorityList;
-    NSArray* _statusList;
-    NSArray* _userList;
 
     OZLModelTracker* _currentTracker;
     OZLModelIssuePriority* _currentPriority;
@@ -62,7 +78,6 @@
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Loading...";
 
-    [self loadIssueRelatedData];
 }
 
 -(void) setupInputviews
@@ -101,57 +116,6 @@
     _doneProgressLabel.inputView = percentageView;
     _doneProgressLabel.inputAccessoryView = inputAccessoryView;
     _doneProgressLabel.delegate = self;
-}
-
--(void)loadIssueRelatedData
-{
-    static int doneCount = 0;
-    [_HUD show:YES];
-    [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _trackerList = result;
-        }else {
-            NSLog(@"get tracker list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-        }
-    }];
-
-    [OZLNetwork getIssueStatusListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _statusList = result;
-        }else {
-            NSLog(@"get issue status list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-        }
-    }];
-    [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _priorityList = result;
-        }else {
-            NSLog(@"get priority list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-        }
-    }];
-    [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _userList = result;
-        }else {
-            NSLog(@"get user list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-        }
-    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -341,11 +305,11 @@
         }
     }
 
+    [self.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark delegate of textfield inputview
-
 
 #pragma mark data picker value changed
 -(void)datePickerValueChanged:(id)sender
