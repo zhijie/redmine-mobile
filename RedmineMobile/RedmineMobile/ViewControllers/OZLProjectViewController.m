@@ -43,6 +43,8 @@
 
     float _sideviewOffset;
     MBProgressHUD * _HUD;
+
+    NSMutableDictionary* _issueListOption;
 }
 
 @end
@@ -71,7 +73,7 @@
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Loading...";
-
+    
     [[OZLSingleton sharedInstance] setLastProjectID:_projectData.index];
 }
 
@@ -87,6 +89,38 @@
         return;
     }
     [_HUD show:YES];
+
+    if (_issueListOption == nil) {
+        [self loadIssueRelatedData];
+    }else {
+        [self loadProjectDetail];
+    }
+}
+
+-(void)loadProjectDetail
+{
+    // TODO: issue filter not working yet
+
+    // prepare parameters
+    OZLSingleton* singleton = [OZLSingleton sharedInstance];
+    // meaning of these values is defined in OZLIssueFilterViewController
+    int filterType = [singleton issueListFilterType];
+    int sortType = [singleton issueListSortType];
+    int scendingType = [singleton issueListSortAscending];
+    if (filterType == 0) {// assigned to me
+        // TODO:
+    }else if(filterType == 1) {// open
+
+        [_issueListOption setObject:@"open" forKey:@"status_id"];
+
+    }else if(filterType == 2) {// reported by me
+        // TODO: 
+    }
+    
+    NSArray* sortCol = @[@"id",@"tracker",@"status",@"priority",@"category",@"assigned_to_id",@"fixed_version",@"start_date",@"due_date",@"estimated_hours",@"done_ratio",@"updated_on"];
+    NSString* sortstring = [NSString stringWithFormat:@"%@%@",[sortCol objectAtIndex:sortType],(scendingType == 0 ? @"" : @":desc")];
+    [_issueListOption setObject:sortstring forKey:@"sort"];
+    
     [OZLNetwork getDetailForProject:_projectData.index withParams:nil andBlock:^(OZLModelProject *result, NSError *error) {
         if (error) {
             NSLog(@"error getDetailForProject: %@",error.description);
@@ -94,9 +128,9 @@
         }else {
             _projectData = result;
             [self.navigationItem setTitle:_projectData.name];
-            
+
             // load issues
-            [OZLNetwork getIssueListForProject:_projectData.index withParams:nil andBlock:^(NSArray *result, NSError *error) {
+            [OZLNetwork getIssueListForProject:_projectData.index withParams:_issueListOption andBlock:^(NSArray *result, NSError *error) {
                 if (error) {
                     NSLog(@"error getIssueListForProject: %@",error.description);
                 }else {
@@ -109,6 +143,63 @@
         }
     }];
 }
+
+-(void)loadIssueRelatedData
+{
+    _issueListOption = [[NSMutableDictionary alloc] init];
+
+    static int doneCount = 0;
+    [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        if (!error) {
+            _trackerList = result;
+        }else {
+            NSLog(@"get tracker list error : %@",error.description);
+        }
+        doneCount ++;
+        if (doneCount == 4) {
+            [self loadProjectDetail];
+            doneCount = 0;
+        }
+    }];
+
+    [OZLNetwork getIssueStatusListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        if (!error) {
+            _statusList = result;
+        }else {
+            NSLog(@"get issue status list error : %@",error.description);
+        }
+        doneCount ++;
+        if (doneCount == 4) {
+            [self loadProjectDetail];
+            doneCount = 0;
+        }
+    }];
+    [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        if (!error) {
+            _priorityList = result;
+        }else {
+            NSLog(@"get priority list error : %@",error.description);
+        }
+        doneCount ++;
+        if (doneCount == 4) {
+            [self loadProjectDetail];
+            doneCount = 0;
+        }
+    }];
+    [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        if (!error) {
+            _userList = result;
+        }else {
+            NSLog(@"get user list error : %@",error.description);
+        }
+        doneCount ++;
+        if (doneCount == 4) {
+            [self loadProjectDetail];
+            doneCount = 0;
+        }
+    }];
+}
+
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -257,6 +348,10 @@
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
     OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
     [creator setParentProject:_projectData];
+    creator.userList = _userList;
+    creator.trackerList = _trackerList;
+    creator.priorityList = _priorityList;
+    creator.statusList = _statusList;
     //[self.navigationController presentModalViewController:creator animated:YES];
     [self.navigationController pushViewController:creator animated:YES];
 }

@@ -36,10 +36,6 @@
 #import "MLTableAlert.h"
 
 @interface OZLIssueCreateViewController () {
-    NSArray* _trackerList;
-    NSArray* _priorityList;
-    NSArray* _statusList;
-    NSArray* _userList;
 
     OZLModelTracker* _currentTracker;
     OZLModelIssuePriority* _currentPriority;
@@ -82,7 +78,6 @@
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Loading...";
 
-    [self loadIssueRelatedData];
 }
 
 -(void) setupInputviews
@@ -121,61 +116,6 @@
     _doneProgressLabel.inputView = percentageView;
     _doneProgressLabel.inputAccessoryView = inputAccessoryView;
     _doneProgressLabel.delegate = self;
-}
-
--(void)loadIssueRelatedData
-{
-    static int doneCount = 0;
-    [_HUD show:YES];
-    [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _trackerList = result;
-        }else {
-            NSLog(@"get tracker list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-            doneCount = 0;
-        }
-    }];
-
-    [OZLNetwork getIssueStatusListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _statusList = result;
-        }else {
-            NSLog(@"get issue status list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-            doneCount = 0;
-        }
-    }];
-    [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _priorityList = result;
-        }else {
-            NSLog(@"get priority list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-            doneCount = 0;
-        }
-    }];
-    [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _userList = result;
-        }else {
-            NSLog(@"get user list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == 4) {
-            [_HUD hide:YES];
-            doneCount = 0;
-        }
-    }];
 }
 
 - (void)didReceiveMemoryWarning

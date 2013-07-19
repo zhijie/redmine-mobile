@@ -27,6 +27,7 @@
 // THE SOFTWARE.
 
 #import "OZLIssueFilterViewController.h"
+#import "OZLSingleton.h"
 
 @interface OZLIssueFilterViewController () {
     NSArray* _cellArray;
@@ -62,9 +63,10 @@
                     @[@"Ascending", @"Descending"]];
     _headerArray = @[@"Filter by", @"Sort by", @""];
 
-    _checkedCell[0] = 0;
-    _checkedCell[1] = 0;
-    _checkedCell[2] = 0;
+    OZLSingleton* singleton =[OZLSingleton sharedInstance];
+    _checkedCell[0] = [singleton issueListFilterType];
+    _checkedCell[1] = [singleton issueListSortType];
+    _checkedCell[2] = [singleton issueListSortAscending];
 }
 
 -(void) onCancel:(id)sender
@@ -74,7 +76,14 @@
 
 -(void) onSave:(id) sender
 {
-    
+
+    OZLSingleton* singleton =[OZLSingleton sharedInstance];
+
+    [singleton setIssueListFilterType:_checkedCell[0]];
+    [singleton setIssueListSortType:_checkedCell[1]];
+    [singleton setIssueListSortAscending:_checkedCell[2]];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,6 +132,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _checkedCell[indexPath.section] = indexPath.row;
+
     [self.tableView reloadData];
 }
 

@@ -35,4 +35,10 @@
 - (IBAction)onNewIssue:(id)sender;
 - (IBAction)onSortSetting:(id)sender;
 
+
+@property (weak, nonatomic) NSArray* trackerList;
+@property (weak, nonatomic) NSArray* priorityList;
+@property (weak, nonatomic) NSArray* statusList;
+@property (weak, nonatomic) NSArray* userList;
+
 @end

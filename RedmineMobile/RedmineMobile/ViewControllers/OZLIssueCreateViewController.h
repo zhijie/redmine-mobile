@@ -34,6 +34,12 @@
 - (IBAction)onCancel:(id)sender;
 - (IBAction)onSave:(id)sender;
 
+@property (weak, nonatomic) NSArray* trackerList;
+@property (weak, nonatomic) NSArray* priorityList;
+@property (weak, nonatomic) NSArray* statusList;
+@property (weak, nonatomic) NSArray* userList;
+
+
 // neccessory
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 @property (weak, nonatomic) IBOutlet UILabel *trackerLabel;

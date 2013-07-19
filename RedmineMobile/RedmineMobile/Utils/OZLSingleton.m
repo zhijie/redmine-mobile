@@ -37,6 +37,11 @@ NSString* USER_DEFUALTS_LAST_PROJECT_ID = @"USER_DEFUALTS_LAST_PROJECT_ID";
 NSString* USER_DEFUALTS_REDMINE_USER_NAME = @"USER_DEFUALTS_REDMINE_USER_NAME";
 NSString* USER_DEFUALTS_REDMINE_PASSWORD = @"USER_DEFUALTS_REDMINE_PASSWORD";
 
+//issue list option
+NSString* USER_DEFAULTS_ISSUE_LIST_ASCEND = @"USER_DEFUALTS_ISSUE_LIST_ASCEND";// ascend or descend
+NSString* USER_DEFAULTS_ISSUE_LIST_FILTER = @"USER_DEFAULTS_ISSUE_LIST_FILTER";
+NSString* USER_DEFAULTS_ISSUE_LIST_SORT = @"USER_DEFAULTS_ISSUE_LIST_SORT";
+
 static OZLSingleton* sharedInstance = nil;
 +(OZLSingleton*) sharedInstance
 {
@@ -50,6 +55,9 @@ static OZLSingleton* sharedInstance = nil;
                              [NSNumber numberWithInt:-1],USER_DEFUALTS_LAST_PROJECT_ID,
                              @"",USER_DEFUALTS_REDMINE_USER_NAME,
                              @"",USER_DEFUALTS_REDMINE_PASSWORD,
+                             [NSNumber numberWithInt:0],USER_DEFAULTS_ISSUE_LIST_FILTER,
+                             [NSNumber numberWithInt:0],USER_DEFAULTS_ISSUE_LIST_SORT,
+                             [NSNumber numberWithInt:0],USER_DEFAULTS_ISSUE_LIST_ASCEND,
                              nil];
         [defaults registerDefaults:dic];
     }
@@ -114,6 +122,42 @@ static OZLSingleton* sharedInstance = nil;
 {
     NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults setObject:redminePassword forKey:USER_DEFUALTS_REDMINE_PASSWORD];
+    [userdefaults synchronize];
+}
+
+-(int)issueListFilterType
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [[userdefaults objectForKey:USER_DEFAULTS_ISSUE_LIST_FILTER] intValue];
+}
+-(void)setIssueListFilterType:(int)issueListFilterType
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setObject:[NSNumber numberWithInt:issueListFilterType] forKey:USER_DEFAULTS_ISSUE_LIST_FILTER];
+    [userdefaults synchronize];
+}
+
+-(int)issueListSortAscending
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [[userdefaults objectForKey:USER_DEFAULTS_ISSUE_LIST_ASCEND] intValue];
+}
+-(void)setIssueListSortAscending:(int)issueListSortAscending
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setObject:[NSNumber numberWithInt:issueListSortAscending] forKey:USER_DEFAULTS_ISSUE_LIST_ASCEND];
+    [userdefaults synchronize];
+}
+
+-(int)issueListSortType
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    return [[userdefaults objectForKey:USER_DEFAULTS_ISSUE_LIST_SORT] intValue];
+}
+-(void)setIssueListSortType:(int)issueListSortType
+{
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults setObject:[NSNumber numberWithInt:issueListSortType] forKey:USER_DEFAULTS_ISSUE_LIST_SORT];
     [userdefaults synchronize];
 }
 @end
