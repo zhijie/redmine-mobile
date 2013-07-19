@@ -25,6 +25,11 @@
 		2B9968AB1794F71B0086F115 /* OZLModelIssueCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968AA1794F71B0086F115 /* OZLModelIssueCategory.m */; };
 		2B9968AF1794FC0A0086F115 /* OZLProjectCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968AD1794FC0A0086F115 /* OZLProjectCreateViewController.m */; };
 		2B9968B417951A5C0086F115 /* OZLIssueCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9968B217951A5C0086F115 /* OZLIssueCreateViewController.m */; };
+		2BC4DD8C179928C80090F52C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC4DD8B179928C80090F52C /* SenTestingKit.framework */; };
+		2BC4DD8D179928C80090F52C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB80591792F2BF0081662A /* UIKit.framework */; };
+		2BC4DD8E179928C80090F52C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DB805B1792F2BF0081662A /* Foundation.framework */; };
+		2BC4DD94179928C80090F52C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BC4DD92179928C80090F52C /* InfoPlist.strings */; };
+		2BC4DD97179928C80090F52C /* RedmineMobileUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4DD96179928C80090F52C /* RedmineMobileUnitTest.m */; };
 		2BCCA0541795312E00FA8B1A /* OZLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCCA0531795312E00FA8B1A /* OZLConstants.m */; };
 		2BCF880C1793A26A006FC859 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880B1793A26A006FC859 /* MBProgressHUD.m */; };
 		2BCF88101793ABA0006FC859 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCF880F1793ABA0006FC859 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -71,6 +76,16 @@
 		D5DB80C217931C8B0081662A /* OZLModelProject.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DB80C117931C8B0081662A /* OZLModelProject.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2BC4DD9C17992A4D0090F52C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5DB804E1792F2BF0081662A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5DB80551792F2BF0081662A;
+			remoteInfo = RedmineMobile;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2B62D0DE1796498800AC3C19 /* OZLIssueCreateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueCreateViewController.storyboard; path = ViewControllers/OZLIssueCreateViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueDetailViewController.storyboard; path = ViewControllers/OZLIssueDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -96,6 +111,13 @@
 		2B9968AD1794FC0A0086F115 /* OZLProjectCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLProjectCreateViewController.m; path = ViewControllers/OZLProjectCreateViewController.m; sourceTree = "<group>"; };
 		2B9968B117951A5C0086F115 /* OZLIssueCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLIssueCreateViewController.h; path = ViewControllers/OZLIssueCreateViewController.h; sourceTree = "<group>"; };
 		2B9968B217951A5C0086F115 /* OZLIssueCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLIssueCreateViewController.m; path = ViewControllers/OZLIssueCreateViewController.m; sourceTree = "<group>"; };
+		2BC4DD8A179928C80090F52C /* RedmineMobileUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedmineMobileUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BC4DD8B179928C80090F52C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2BC4DD91179928C80090F52C /* RedmineMobileUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedmineMobileUnitTest-Info.plist"; sourceTree = "<group>"; };
+		2BC4DD93179928C80090F52C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BC4DD95179928C80090F52C /* RedmineMobileUnitTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedmineMobileUnitTest.h; sourceTree = "<group>"; };
+		2BC4DD96179928C80090F52C /* RedmineMobileUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedmineMobileUnitTest.m; sourceTree = "<group>"; };
+		2BC4DD98179928C80090F52C /* RedmineMobileUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedmineMobileUnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		2BCCA0521795312E00FA8B1A /* OZLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OZLConstants.h; path = Models/OZLConstants.h; sourceTree = "<group>"; };
 		2BCCA0531795312E00FA8B1A /* OZLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OZLConstants.m; path = Models/OZLConstants.m; sourceTree = "<group>"; };
 		2BCF880A1793A26A006FC859 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -177,6 +199,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2BC4DD86179928C80090F52C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC4DD8C179928C80090F52C /* SenTestingKit.framework in Frameworks */,
+				2BC4DD8D179928C80090F52C /* UIKit.framework in Frameworks */,
+				2BC4DD8E179928C80090F52C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D5DB80531792F2BF0081662A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,6 +248,26 @@
 				2B6F382C1797A00A00D06F51 /* MLTableAlertShadowMask@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		2BC4DD8F179928C80090F52C /* RedmineMobileUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				2BC4DD95179928C80090F52C /* RedmineMobileUnitTest.h */,
+				2BC4DD96179928C80090F52C /* RedmineMobileUnitTest.m */,
+				2BC4DD90179928C80090F52C /* Supporting Files */,
+			);
+			path = RedmineMobileUnitTest;
+			sourceTree = "<group>";
+		};
+		2BC4DD90179928C80090F52C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BC4DD91179928C80090F52C /* RedmineMobileUnitTest-Info.plist */,
+				2BC4DD92179928C80090F52C /* InfoPlist.strings */,
+				2BC4DD98179928C80090F52C /* RedmineMobileUnitTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2BCB50FD1796370F006845AC /* Views */ = {
@@ -282,6 +334,7 @@
 			children = (
 				D5DB80761792F3EE0081662A /* Libs */,
 				D5DB805F1792F2BF0081662A /* RedmineMobile */,
+				2BC4DD8F179928C80090F52C /* RedmineMobileUnitTest */,
 				D5DB80581792F2BF0081662A /* Frameworks */,
 				D5DB80571792F2BF0081662A /* Products */,
 			);
@@ -291,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				D5DB80561792F2BF0081662A /* RedmineMobile.app */,
+				2BC4DD8A179928C80090F52C /* RedmineMobileUnitTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +358,7 @@
 				D5DB80591792F2BF0081662A /* UIKit.framework */,
 				D5DB805B1792F2BF0081662A /* Foundation.framework */,
 				D5DB805D1792F2BF0081662A /* CoreGraphics.framework */,
+				2BC4DD8B179928C80090F52C /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -456,6 +511,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2BC4DD89179928C80090F52C /* RedmineMobileUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BC4DD99179928C80090F52C /* Build configuration list for PBXNativeTarget "RedmineMobileUnitTest" */;
+			buildPhases = (
+				2BC4DD85179928C80090F52C /* Sources */,
+				2BC4DD86179928C80090F52C /* Frameworks */,
+				2BC4DD87179928C80090F52C /* Resources */,
+				2BC4DD88179928C80090F52C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BC4DD9D17992A4D0090F52C /* PBXTargetDependency */,
+			);
+			name = RedmineMobileUnitTest;
+			productName = RedmineMobileUnitTest;
+			productReference = 2BC4DD8A179928C80090F52C /* RedmineMobileUnitTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		D5DB80551792F2BF0081662A /* RedmineMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5DB80731792F2BF0081662A /* Build configuration list for PBXNativeTarget "RedmineMobile" */;
@@ -496,11 +570,20 @@
 			projectRoot = "";
 			targets = (
 				D5DB80551792F2BF0081662A /* RedmineMobile */,
+				2BC4DD89179928C80090F52C /* RedmineMobileUnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2BC4DD87179928C80090F52C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC4DD94179928C80090F52C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D5DB80541792F2BF0081662A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -529,7 +612,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BC4DD88179928C80090F52C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2BC4DD85179928C80090F52C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC4DD97179928C80090F52C /* RedmineMobileUnitTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D5DB80521792F2BF0081662A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,7 +683,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2BC4DD9D17992A4D0090F52C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5DB80551792F2BF0081662A /* RedmineMobile */;
+			targetProxy = 2BC4DD9C17992A4D0090F52C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		2BC4DD92179928C80090F52C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BC4DD93179928C80090F52C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		D5DB80621792F2BF0081662A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -588,6 +711,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2BC4DD9A179928C80090F52C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RedmineMobile.app/RedmineMobile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RedmineMobileUnitTest/RedmineMobileUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "RedmineMobileUnitTest/RedmineMobileUnitTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2BC4DD9B179928C80090F52C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RedmineMobile.app/RedmineMobile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RedmineMobileUnitTest/RedmineMobileUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "RedmineMobileUnitTest/RedmineMobileUnitTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		D5DB80711792F2BF0081662A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -613,7 +770,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -638,7 +795,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -673,6 +830,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2BC4DD99179928C80090F52C /* Build configuration list for PBXNativeTarget "RedmineMobileUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC4DD9A179928C80090F52C /* Debug */,
+				2BC4DD9B179928C80090F52C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D5DB80511792F2BF0081662A /* Build configuration list for PBXProject "RedmineMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
