@@ -1,4 +1,5 @@
-package com.resolr.redminemobileforandroid;
+package com.resolr.redmine;
+
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,9 +13,5 @@ public class ProjectListActivity extends Activity {
         setContentView(R.layout.activity_project_list);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_project_list, menu);
-        return true;
-    }
+
 }
