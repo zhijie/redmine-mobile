@@ -60,5 +60,8 @@
 // tracker
 +(void)getTrackerListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 
-
+// time entries
++(void)getTimeEntriesWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
++(void)getTimeEntriesForIssueId:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
++(void)getTimeEntriesForProjectId:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block;
 @end

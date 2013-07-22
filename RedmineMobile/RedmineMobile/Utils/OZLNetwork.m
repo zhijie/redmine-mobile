@@ -472,4 +472,50 @@
         }
     }];
 }
+
+
+#pragma mark -
+#pragma mark time entries
+// time entries
++(void)getTimeEntriesWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/time_entries.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"time_entries"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelTracker alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+
+}
+
++(void)getTimeEntriesForIssueId:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+
+}
+
++(void)getTimeEntriesForProjectId:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    
+}
 @end
