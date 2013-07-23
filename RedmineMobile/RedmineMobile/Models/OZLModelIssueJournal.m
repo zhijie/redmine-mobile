@@ -44,7 +44,8 @@
     NSMutableArray* detailItems = [[NSMutableArray alloc] init];
     NSArray* dataArray = [dic objectForKey:@"details"];
     for (NSDictionary* detailDic in dataArray) {
-        [detailItems addObject:[[OZLModelIssueJournalDetail alloc] initWithDictionary:detailDic]];
+        OZLModelIssueJournalDetail* detail = [[OZLModelIssueJournalDetail alloc] initWithDictionary:detailDic];
+        [detailItems addObject:detail];
     }
     _detailArray = detailItems;
     return self;

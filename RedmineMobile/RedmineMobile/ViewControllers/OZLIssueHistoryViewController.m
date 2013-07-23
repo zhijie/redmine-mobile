@@ -103,13 +103,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"timeEntryCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
     if (!cell) {
         cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     OZLModelIssueJournal* journal = [_journalList objectAtIndex:indexPath.row];
-    cell.textLabel.text = journal.user.name;
+    [cell.textLabel setText: journal.user.name];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"number of change: %d",journal.detailArray.count]];
     return cell;
 }
 
