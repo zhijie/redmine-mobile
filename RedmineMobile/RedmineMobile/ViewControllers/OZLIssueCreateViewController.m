@@ -90,7 +90,7 @@
     UIToolbar* inputAccessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     UIBarButtonItem* accessoryDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(accessoryDoneClicked:)];
     UIBarButtonItem* flexleft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    inputAccessoryView.items = [NSArray arrayWithObjects:flexleft, accessoryDoneButton, nil];;
+    inputAccessoryView.items = [NSArray arrayWithObjects:flexleft, accessoryDoneButton, nil];
 
     _startDateLabel.inputView = datePicker;
     _startDateLabel.inputAccessoryView = inputAccessoryView;
@@ -288,16 +288,16 @@
     }else if( indexPath.section == 2){
         switch (indexPath.row) {
             case 0:{//start date
-
+                [_startDateLabel becomeFirstResponder];
             }break;
             case 1:{//due date
-
+                [_dueDateLabel becomeFirstResponder];
             }break;
             case 2:{//estimated hours
-
+                [_estimatedHoursLabel becomeFirstResponder];
             }break;
             case 3:{//done
-
+                [_doneProgressLabel becomeFirstResponder];
             }break;
                 
             default:

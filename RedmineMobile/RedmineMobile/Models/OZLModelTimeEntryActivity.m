@@ -1,8 +1,8 @@
 //
-//  OZLProjectViewController.h
+//  OZLModelTimeEntryActivity.m
 //  RedmineMobile
 //
-//  Created by Lee Zhijie on 7/14/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -26,20 +26,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "OZLModelProject.h"
+#import "OZLModelTimeEntryActivity.h"
 
-@interface OZLProjectViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
-@property (nonatomic,strong) OZLModelProject* projectData;
-- (IBAction)onNewIssue:(id)sender;
-- (IBAction)onSortSetting:(id)sender;
+@implementation OZLModelTimeEntryActivity
+-(id)initWithDictionary:(NSDictionary*)dic
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _index = [[dic objectForKey:@"id"] intValue];
+    _name = [dic objectForKey:@"name"];
+    return self;
+}
 
-
-@property (strong, nonatomic) NSArray* trackerList;
-@property (strong, nonatomic) NSArray* priorityList;
-@property (strong, nonatomic) NSArray* statusList;
-@property (strong, nonatomic) NSArray* userList;
-@property (strong, nonatomic) NSArray* timeEntryActivityList;
+-(NSMutableDictionary*) toParametersDic
+{
+    return nil;
+}
 
 @end

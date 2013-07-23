@@ -1,8 +1,8 @@
 //
-//  OZLProjectViewController.h
+//  OZLModelIssueJournal.m
 //  RedmineMobile
 //
-//  Created by Lee Zhijie on 7/14/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -26,20 +26,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "OZLModelProject.h"
+#import "OZLModelIssueJournal.h"
 
-@interface OZLProjectViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
-@property (nonatomic,strong) OZLModelProject* projectData;
-- (IBAction)onNewIssue:(id)sender;
-- (IBAction)onSortSetting:(id)sender;
+@implementation OZLModelIssueJournal
 
 
-@property (strong, nonatomic) NSArray* trackerList;
-@property (strong, nonatomic) NSArray* priorityList;
-@property (strong, nonatomic) NSArray* statusList;
-@property (strong, nonatomic) NSArray* userList;
-@property (strong, nonatomic) NSArray* timeEntryActivityList;
+-(id)initWithDictionary:(NSDictionary*)dic
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _index = [[dic objectForKey:@"index"] intValue];
+    _notes = [dic objectForKey:@"notes"];
+    _createdOn = [dic objectForKey:@"created_on"];
+    _user = [[ OZLModelUser alloc] initWithDictionary:[dic objectForKey:@"user"]];
+    NSMutableArray* detailItems = [[NSMutableArray alloc] init];
+    NSArray* dataArray = [dic objectForKey:@"details"];
+    for (NSDictionary* detailDic in dataArray) {
+        [detailItems addObject:[[OZLModelIssueJournalDetail alloc] initWithDictionary:detailDic]];
+    }
+    _detailArray = detailItems;
+    return self;
+
+}
+
+-(NSMutableDictionary*) toParametersDic
+{
+    return  nil;
+}
 
 @end

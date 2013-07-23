@@ -41,9 +41,9 @@
     _name = [dic objectForKey:@"name"];
     return self;
 }
-//-(NSMutableDictionary*) toParametersDic
-//{
-//    
-//}
+-(NSMutableDictionary*) toParametersDic
+{
+    return nil;
+}
 
 @end

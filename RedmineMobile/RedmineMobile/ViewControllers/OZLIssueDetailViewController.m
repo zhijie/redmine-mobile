@@ -27,6 +27,8 @@
 // THE SOFTWARE.
 
 #import "OZLIssueDetailViewController.h"
+#import "OZLIssueHistoryViewController.h"
+#import "OZLIssueLogtimeViewController.h"
 
 @interface OZLIssueDetailViewController ()
 
@@ -81,16 +83,22 @@
 {
     if (indexPath.section == 1) {
         switch (indexPath.row) {
-            case 0:{
-
+            case 0:{//history
+                OZLIssueHistoryViewController* history = [[OZLIssueHistoryViewController alloc] init];
+                [history setIssueData:_issueData];
+                [self.navigationController pushViewController:history animated:YES];
             }break;
-            case 1:{
-
+            case 1:{// add sub task
+                
             }break;
-            case 2:{
-
+            case 2:{//logtime
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueLogtimeViewController" bundle:nil];
+                OZLIssueLogtimeViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueLogtimeViewController"];
+                [creator setTimeEntryActivityList:_timeEntryActivityList];
+                [creator setIssueData:_issueData];
+                [self.navigationController pushViewController:creator animated:YES];
             }break;
-
+                
             default:
                 break;
         }

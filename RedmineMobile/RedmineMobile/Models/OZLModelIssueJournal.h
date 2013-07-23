@@ -1,8 +1,8 @@
 //
-//  OZLProjectViewController.h
+//  OZLModelIssueJournal.h
 //  RedmineMobile
 //
-//  Created by Lee Zhijie on 7/14/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -26,20 +26,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "OZLModelProject.h"
 
-@interface OZLProjectViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *issuesTableview;
-@property (nonatomic,strong) OZLModelProject* projectData;
-- (IBAction)onNewIssue:(id)sender;
-- (IBAction)onSortSetting:(id)sender;
+#import <Foundation/Foundation.h>
+#import "OZLModelUser.h"
+#import "OZLModelIssueJournalDetail.h"
 
+/*
+ {
+ "id": 12353,
+ "user": {
+ "id": 20043,
+ "name": "wang lei"
+ },
+ "notes": "fdfcasvawefqwf\r\n\r\nasdfasd\r\nasdfasdf",
+ "created_on": "2013-07-22T08:47:47Z",
+ "details": [
+ {
+ "property": "attr",
+ "name": "done_ratio",
+ "old_value": "0",
+ "new_value": "20"
+ }
+ ]
+ }
 
-@property (strong, nonatomic) NSArray* trackerList;
-@property (strong, nonatomic) NSArray* priorityList;
-@property (strong, nonatomic) NSArray* statusList;
-@property (strong, nonatomic) NSArray* userList;
-@property (strong, nonatomic) NSArray* timeEntryActivityList;
+ */
+@interface OZLModelIssueJournal : NSObject
+
+@property(nonatomic) int index;
+@property(nonatomic, strong) NSString* notes;
+@property(nonatomic, strong) NSString* createdOn;
+@property(nonatomic, strong) OZLModelUser* user;
+@property(nonatomic, strong) NSArray* detailArray;
+
+-(id)initWithDictionary:(NSDictionary*)dic;
+-(NSMutableDictionary*) toParametersDic;
+
 
 @end

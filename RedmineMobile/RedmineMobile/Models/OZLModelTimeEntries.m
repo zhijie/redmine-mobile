@@ -38,9 +38,22 @@
         return nil;
     }
     _index = [[dic objectForKey:@"id"] intValue];
-    _project = [[OZLModelProject alloc] initWithDictionary:[dic objectForKey:@"project"]];
-    _user = [[OZLModelUser alloc] initWithDictionary:[dic objectForKey:@"user"] ];
-    _issue = [[OZLModelIssue alloc] initWithDictionary:[dic objectForKey:@"issue"]];
+    id project = [dic objectForKey:@"project"];
+    if (project != nil) {
+        _project = [[OZLModelProject alloc] initWithDictionary:project];
+    }
+    id user = [dic objectForKey:@"user"];
+    if (user != nil) {
+        _user = [[OZLModelUser alloc] initWithDictionary: user];
+    }
+    id issue = [dic objectForKey:@"issue"];
+    if (issue != nil ) {
+        _issue = [[OZLModelIssue alloc] initWithDictionary:issue];
+    }
+    id activity = [dic objectForKey:@"activity"];
+    if (activity != nil) {
+        _activity = [[OZLModelTimeEntryActivity alloc] initWithDictionary:activity];
+    }
     _hours = [[dic objectForKey:@"hours"] floatValue];
     _comments = [dic objectForKey:@"comments"];
     _spentOn = [dic objectForKey:@"spent_on"];
@@ -51,7 +64,24 @@
 
 -(NSMutableDictionary*) toParametersDic
 {
-
+    NSMutableDictionary* entryDic = [[NSMutableDictionary alloc] init];
+    [entryDic setObject:[NSNumber numberWithFloat:_hours] forKey:@"hours"];//required
+    if (_issue) {
+        [entryDic setObject:[NSNumber numberWithInt:_issue.index] forKey:@"issue_id"];
+    }else if(_project){
+        [entryDic setObject:[NSNumber numberWithInt:_project.index] forKey:@"project_id"];
+    }
+    if (_spentOn) {
+        [entryDic setObject:_spentOn forKey:@"spent_on"];
+    }
+    if (_activity) {
+        [entryDic setObject:[NSNumber numberWithInt:_activity.index] forKey:@"activity_id"];
+    }
+    if (_comments) {
+        [entryDic setObject:_comments forKey:@"comments"];
+    }
+    
+    return [[NSMutableDictionary alloc] initWithObjectsAndKeys:entryDic,@"time_entry",nil];
 }
 
 

@@ -149,6 +149,7 @@
     _issueListOption = [[NSMutableDictionary alloc] init];
 
     static int doneCount = 0;
+    const int totalCount = 5;
     [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
         if (!error) {
             _trackerList = result;
@@ -156,7 +157,7 @@
             NSLog(@"get tracker list error : %@",error.description);
         }
         doneCount ++;
-        if (doneCount == 4) {
+        if (doneCount == totalCount) {
             [self loadProjectDetail];
             doneCount = 0;
         }
@@ -169,7 +170,7 @@
             NSLog(@"get issue status list error : %@",error.description);
         }
         doneCount ++;
-        if (doneCount == 4) {
+        if (doneCount == totalCount) {
             [self loadProjectDetail];
             doneCount = 0;
         }
@@ -181,7 +182,7 @@
             NSLog(@"get priority list error : %@",error.description);
         }
         doneCount ++;
-        if (doneCount == 4) {
+        if (doneCount == totalCount) {
             [self loadProjectDetail];
             doneCount = 0;
         }
@@ -193,7 +194,20 @@
             NSLog(@"get user list error : %@",error.description);
         }
         doneCount ++;
-        if (doneCount == 4) {
+        if (doneCount == totalCount) {
+            [self loadProjectDetail];
+            doneCount = 0;
+        }
+    }];
+
+    [OZLNetwork getTimeEntryListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        if (!error) {
+            _timeEntryActivityList = result;
+        }else {
+            NSLog(@"get user list error : %@",error.description);
+        }
+        doneCount ++;
+        if (doneCount == totalCount) {
             [self loadProjectDetail];
             doneCount = 0;
         }
@@ -340,6 +354,7 @@
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueDetailViewController" bundle:nil];
     OZLIssueDetailViewController* detail = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueDetailViewController"];
     [detail setIssueData:[_issuesList objectAtIndex:indexPath.row]];
+    [detail setTimeEntryActivityList:_timeEntryActivityList];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
