@@ -28,9 +28,13 @@
 
 #import <UIKit/UIKit.h>
 #import "OZLModelIssue.h"
+#import "OZLModelTimeEntryActivity.h"
 
 @interface OZLIssueDetailViewController : UITableViewController
-@property(nonatomic,strong) OZLModelIssue* issueData;
+
+@property(nonatomic, strong) OZLModelIssue* issueData;
+@property(nonatomic, strong) NSArray* timeEntryActivityList;
+
 @property (weak, nonatomic) IBOutlet UILabel *subject;
 @property (weak, nonatomic) IBOutlet UILabel *description;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressbar;

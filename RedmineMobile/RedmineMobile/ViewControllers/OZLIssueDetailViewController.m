@@ -27,6 +27,10 @@
 // THE SOFTWARE.
 
 #import "OZLIssueDetailViewController.h"
+#import "OZLIssueHistoryViewController.h"
+#import "OZLIssueLogtimeViewController.h"
+#import "OZLSingleton.h"
+#import "OZLIssueCreateOrUpdateViewController.h"
 
 @interface OZLIssueDetailViewController ()
 
@@ -56,6 +60,8 @@
 {
     [super viewDidLoad];
 
+    _timeEntryActivityList = [[OZLSingleton sharedInstance] timeEntryActivityList];
+
     _subject.text = _issueData.subject;
     _description.text = _issueData.description;
     _progressbar.progress = _issueData.doneRatio/100;
@@ -65,6 +71,8 @@
     _assignedTo.text = _issueData.assignedTo.login;
     _startTime.text = _issueData.startDate;
     _dueTime.text = _issueData.dueDate;
+
+    [self.navigationItem setTitle:@"Issue Details"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,87 +81,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 2;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-//
-///*
-//// Override to support conditional editing of the table view.
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//*/
-//
-///*
-//// Override to support editing the table view.
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        // Delete the row from the data source
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    }   
-//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//    }   
-//}
-//*/
-//
-///*
-//// Override to support rearranging the table view.
-//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-//{
-//}
-//*/
-//
-///*
-//// Override to support conditional rearranging of the table view.
-//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Return NO if you do not want the item to be re-orderable.
-//    return YES;
-//}
-//*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
         switch (indexPath.row) {
-            case 0:{
-
+            case 0:{//history
+                OZLIssueHistoryViewController* history = [[OZLIssueHistoryViewController alloc] init];
+                [history setIssueData:_issueData];
+                [self.navigationController pushViewController:history animated:YES];
             }break;
-            case 1:{
-
+            case 1:{// add sub task
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+                OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
+                [creator setParentIssue:_issueData];
+                [self.navigationController pushViewController:creator animated:YES];
             }break;
-            case 2:{
-
+            case 2:{//logtime
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueLogtimeViewController" bundle:nil];
+                OZLIssueLogtimeViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueLogtimeViewController"];
+                [creator setIssueData:_issueData];
+                [self.navigationController pushViewController:creator animated:YES];
             }break;
-
+            case 3:{ // update
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+                OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
+                [creator setIssueData:_issueData];
+                [creator setViewMode:OZLIssueInfoViewModeEdit];
+                [self.navigationController pushViewController:creator animated:YES];
+            }break;
             default:
                 break;
         }

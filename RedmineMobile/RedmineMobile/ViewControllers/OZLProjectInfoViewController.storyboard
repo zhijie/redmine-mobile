@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Project Create View Controller-->
+        <!--Project Info View Controller-->
         <scene sceneID="vob-xc-JJC">
             <objects>
-                <tableViewController storyboardIdentifier="OZLProjectCreateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jFX-Ub-f6B" customClass="OZLProjectCreateViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jCu-TM-JrT">
+                <tableViewController storyboardIdentifier="OZLProjectInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jFX-Ub-f6B" customClass="OZLProjectInfoViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jCu-TM-JrT">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -170,22 +170,6 @@
             <point key="canvasLocation" x="153" y="411"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OZLProjectCreateViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OZLProjectCreateViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onSave:"/>
-                <relationship kind="outlet" name="description" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="homepageUrl" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="identifier" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

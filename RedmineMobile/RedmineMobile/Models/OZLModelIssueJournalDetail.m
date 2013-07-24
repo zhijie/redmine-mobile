@@ -1,8 +1,8 @@
 //
-//  OZLConstants.m
+//  OZLModelIssueJournalDetail.m
 //  RedmineMobile
 //
-//  Created by lizhijie on 7/16/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -25,11 +25,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import "OZLConstants.h"
 
-NSString* NOTIFICATION_REDMINE_ACCOUNT_CHANGED = @"NOTIFICATION_REDMINE_ACCOUNT_CHANGED";
+#import "OZLModelIssueJournalDetail.h"
 
+@implementation OZLModelIssueJournalDetail
 
-@implementation OZLConstants
+-(id)initWithDictionary:(NSDictionary*)dic
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _name = [dic objectForKey:@"name"];
+    _property = [dic objectForKey:@"property"];
+    _oldValue = [dic objectForKey:@"old_value"];
+    _freshValue = [dic objectForKey:@"new_value"];
+    return self;
+}
 
+-(NSMutableDictionary*) toParametersDic
+{
+    return nil;
+}
 @end

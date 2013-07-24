@@ -1,8 +1,8 @@
 //
-//  OZLProjectDetailViewController.h
+//  OZLIssueHistoryViewController.h
 //  RedmineMobile
 //
-//  Created by lizhijie on 7/15/13.
+//  Created by lizhijie on 7/22/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -26,18 +26,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+
 #import <UIKit/UIKit.h>
-#import "OZLModelProject.h"
+#import "OZLModelIssue.h"
 
-@interface OZLProjectDetailViewController : UIViewController
+@interface OZLIssueHistoryViewController : UITableViewController
 
-@property(nonatomic, strong) OZLModelProject* projectData;
-
-@property (weak, nonatomic) IBOutlet UILabel *IDLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *parentIDlabel;
-@property (weak, nonatomic) IBOutlet UILabel *createTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *updateTimeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextview;
+@property(nonatomic,strong) OZLModelIssue* issueData;
 
 @end
