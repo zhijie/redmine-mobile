@@ -1,5 +1,5 @@
 //
-//  OZLIssueCreateViewController.m
+//  OZLIssueCreateOrUpdateViewController.m
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/16/13.
@@ -26,7 +26,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "OZLIssueCreateViewController.h"
+#import "OZLIssueCreateOrUpdateViewController.h"
 #import "OZLNetwork.h"
 #import "MBProgressHUD.h"
 #import "OZLModelIssuePriority.h"
@@ -36,7 +36,7 @@
 #import "MLTableAlert.h"
 #import "OZLSingleton.h"
 
-@interface OZLIssueCreateViewController () {
+@interface OZLIssueCreateOrUpdateViewController () {
 
     NSDate* _currentStartDate;
     NSDate* _currentDueDate;
@@ -47,7 +47,7 @@
 
 @end
 
-@implementation OZLIssueCreateViewController
+@implementation OZLIssueCreateOrUpdateViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -123,7 +123,7 @@
 
 -(void)initializeViewValues
 {
-    if (_isUpdatingIssue) { // initial values for ui elements
+    if (_viewMode == OZLIssueInfoViewModeEdit) { // initial values for ui elements
         _subjectTextField.text = _issueData.subject;
         if (_issueData.tracker) {
             _trackerLabel.text = _issueData.tracker.name;
@@ -146,8 +146,7 @@
         _estimatedHoursLabel.text = [NSString stringWithFormat:@"%f",_issueData.estimatedHours];
         _doneProgressLabel.text = [NSString stringWithFormat:@"%d %%",(int)_issueData.doneRatio];
         
-        
-    }else {
+    }else if(_viewMode == OZLIssueInfoViewModeCreate){
         _issueData = [[OZLModelIssue alloc] init];
     }
 
@@ -201,9 +200,9 @@
     }else if(_parentProject){
         _issueData.projectId = _parentProject.index;
     }
-    if (_isUpdatingIssue) {
+    if (_viewMode == OZLIssueInfoViewModeEdit) {
         _issueData.notes = _descriptionTextview.text;
-    }else {
+    }else if(_viewMode == OZLIssueInfoViewModeCreate) {
         _issueData.description = _descriptionTextview.text;
     }
     _issueData.startDate = _startDateLabel.text;
@@ -214,7 +213,7 @@
 
 
     _HUD.mode = MBProgressHUDModeIndeterminate;
-    if (_isUpdatingIssue) {
+    if (_viewMode == OZLIssueInfoViewModeEdit) {
         _HUD.labelText = @"Updating Issue ...";
         [_HUD show:YES];
         [OZLNetwork updateIssue:_issueData withParams:nil andBlock:^(BOOL success, NSError *error){
@@ -232,7 +231,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }];
-    }else {
+    }else if(_viewMode == OZLIssueInfoViewModeCreate){
         _HUD.labelText = @"Creating New Issue ...";
         [_HUD show:YES];
         [OZLNetwork createIssue:_issueData withParams:nil andBlock:^(BOOL success, NSError *error){
@@ -373,9 +372,9 @@
 {
     if (section == 0) {
         NSString* tip ;
-        if (_isUpdatingIssue) {
+        if (_viewMode == OZLIssueInfoViewModeEdit) {
             tip = [NSString stringWithFormat:@"Update issue #%d",_issueData.index];
-        }else {
+        }else if(_viewMode == OZLIssueInfoViewModeCreate){
             if (_parentIssue) {
                 tip = [NSString stringWithFormat:@"Add sub issue to #%d",_parentIssue.index];
             }else {
@@ -384,9 +383,9 @@
         }
         return tip;
     }else if(section == 3) {
-        if (_isUpdatingIssue) {
+        if (_viewMode == OZLIssueInfoViewModeEdit) {
             return @"Notes";
-        }else {
+        }else if(_viewMode == OZLIssueInfoViewModeCreate){
             return @"Description";
         }
     }

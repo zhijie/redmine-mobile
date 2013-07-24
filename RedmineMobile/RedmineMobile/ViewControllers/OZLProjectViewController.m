@@ -33,7 +33,7 @@
 #import "MBProgressHUD.h"
 #import "OZLProjectInfoViewController.h"
 #import "OZLIssueDetailViewController.h"
-#import "OZLIssueCreateViewController.h"
+#import "OZLIssueCreateOrUpdateViewController.h"
 #import "OZLIssueFilterViewController.h"
 #import "OZLSingleton.h"
 
@@ -357,10 +357,11 @@
 }
 
 - (IBAction)onNewIssue:(id)sender {
-    //OZLIssueCreateViewController* creator = [[OZLIssueCreateViewController alloc] initWithNibName:@"OZLIssueCreateViewController" bundle:nil];
-    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
-    OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
+    //OZLIssueCreateOrUpdateViewController* creator = [[OZLIssueCreateOrUpdateViewController alloc] initWithNibName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+    OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
     [creator setParentProject:_projectData];
+    [creator setViewMode:OZLIssueInfoViewModeCreate];
     //[self.navigationController presentModalViewController:creator animated:YES];
     [self.navigationController pushViewController:creator animated:YES];
 }

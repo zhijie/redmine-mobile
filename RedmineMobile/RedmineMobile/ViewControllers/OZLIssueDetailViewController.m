@@ -30,7 +30,7 @@
 #import "OZLIssueHistoryViewController.h"
 #import "OZLIssueLogtimeViewController.h"
 #import "OZLSingleton.h"
-#import "OZLIssueCreateViewController.h"
+#import "OZLIssueCreateOrUpdateViewController.h"
 
 @interface OZLIssueDetailViewController ()
 
@@ -93,8 +93,8 @@
                 [self.navigationController pushViewController:history animated:YES];
             }break;
             case 1:{// add sub task
-                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
-                OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+                OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
                 [creator setParentIssue:_issueData];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
@@ -105,10 +105,10 @@
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
             case 3:{ // update
-                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
-                OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
+                OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
                 [creator setIssueData:_issueData];
-                [creator setIsUpdatingIssue:YES];
+                [creator setViewMode:OZLIssueInfoViewModeEdit];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
             default:

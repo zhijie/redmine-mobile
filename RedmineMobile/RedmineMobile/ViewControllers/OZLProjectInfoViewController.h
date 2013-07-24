@@ -48,6 +48,6 @@ typedef enum {
 @property (nonatomic,strong) NSArray* projectList;
 
 @property (nonatomic, strong) OZLModelProject* projectData;
-@property (nonatomic) int viewMode;
+@property (nonatomic) OZLProjectInfoViewMode viewMode;
 
 @end
