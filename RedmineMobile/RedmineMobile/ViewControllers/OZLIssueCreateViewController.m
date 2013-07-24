@@ -172,10 +172,11 @@
     issueData.status = _currentStatus;
     issueData.priority = _currentPriority;
     issueData.assignedTo = _currentUser;
-    issueData.projectId = _parentProject.index;
-
     if (_parentIssue) {
         issueData.parentIssueId = _parentIssue.index;
+        issueData.projectId = _parentIssue.projectId;
+    }else {
+        issueData.projectId = _parentProject.index;
     }
     issueData.description = _descriptionTextview.text;
     issueData.startDate = _startDateLabel.text;
@@ -313,6 +314,20 @@
     }
 
     [self.tableView reloadData];
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        NSString* tip ;
+        if (_parentIssue) {
+            tip = [NSString stringWithFormat:@"Add sub issue to #%d",_parentIssue.index];
+        }else {
+            tip = [NSString stringWithFormat:@"Add issue to project:%@",_parentProject.name];
+        }
+        return tip;
+    }
+    return @"";
 }
 
 #pragma mark -

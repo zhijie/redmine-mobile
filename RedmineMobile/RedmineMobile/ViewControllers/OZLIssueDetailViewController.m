@@ -30,6 +30,7 @@
 #import "OZLIssueHistoryViewController.h"
 #import "OZLIssueLogtimeViewController.h"
 #import "OZLSingleton.h"
+#import "OZLIssueCreateViewController.h"
 
 @interface OZLIssueDetailViewController ()
 
@@ -92,7 +93,11 @@
                 [self.navigationController pushViewController:history animated:YES];
             }break;
             case 1:{// add sub task
-                
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
+                OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
+                [creator setParentIssue:_issueData];
+                //[self.navigationController presentModalViewController:creator animated:YES];
+                [self.navigationController pushViewController:creator animated:YES];
             }break;
             case 2:{//logtime
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueLogtimeViewController" bundle:nil];
