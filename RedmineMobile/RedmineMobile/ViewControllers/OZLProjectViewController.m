@@ -39,10 +39,12 @@
 
 
 @interface OZLProjectViewController () {
-    NSArray* _issuesList;
+    NSMutableArray* _issuesList;
 
     float _sideviewOffset;
     MBProgressHUD * _HUD;
+    UIBarButtonItem* _editBtn;
+    UIBarButtonItem* _doneBtn;
 
     NSMutableDictionary* _issueListOption;
 }
@@ -64,11 +66,9 @@
     [super viewDidLoad];
 //    [self changeSideViewOffset:40];
 
-//    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showProjectList)];
-//    [self.navigationItem setLeftBarButtonItem:projectListBtn];
-
-    UIBarButtonItem* inforBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showProjectDetail)];
-    [self.navigationItem setRightBarButtonItem:inforBtn];
+    _editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editIssueList:)];
+    _doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editIssueListDone:)];
+    [self.navigationItem setRightBarButtonItem:_editBtn];
 
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:_HUD];
@@ -134,8 +134,7 @@
                 if (error) {
                     NSLog(@"error getIssueListForProject: %@",error.description);
                 }else {
-                    _issuesList = result;
-
+                    _issuesList = [[NSMutableArray alloc] initWithArray: result];
                     [_issuesTableview reloadData];
                 }
                 [_HUD hide:YES];
@@ -237,15 +236,6 @@
 
 }
 
-- (void) showProjectDetail
-{
-    //OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OZLProjectDetailViewController" bundle:nil];
-    OZLProjectDetailViewController* detail = [storyboard instantiateViewControllerWithIdentifier:@"OZLProjectDetailViewController"];
-    [detail setProjectData:_projectData];
-    [self.navigationController pushViewController:detail animated:YES];
-}
-
 - (void) preloadLeft {
 //    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
 //    [self.revealSideViewController preloadViewController:c
@@ -322,6 +312,39 @@
     return cell;
 }
 
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        _HUD.labelText = @"Deleting Issue...";
+        [_HUD show:YES];
+        [OZLNetwork deleteIssue:[[_issuesList objectAtIndex:indexPath.row] index] withParams:nil andBlock:^(BOOL success, NSError *error) {
+            [_HUD hide:YES];
+            if (error) {
+                NSLog(@"failed to delete issue");
+                _HUD.mode = MBProgressHUDModeText;
+                _HUD.labelText = @"Sorry, something wrong while deleting issue.";
+                [_HUD show:YES];
+                [_HUD hide:YES afterDelay:1];
+            }else {
+                [_issuesList removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -345,5 +368,26 @@
 - (IBAction)onSortSetting:(id)sender {
     OZLIssueFilterViewController* filter = [[OZLIssueFilterViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:filter animated:YES];
+}
+
+- (IBAction)onShowInfo:(id)sender {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OZLProjectDetailViewController" bundle:nil];
+//    OZLProjectDetailViewController* detail = [storyboard instantiateViewControllerWithIdentifier:@"OZLProjectDetailViewController"];
+    OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
+    [detail setProjectData:_projectData];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+-(void)editIssueList:(id)sender
+{
+    [_issuesTableview setEditing:YES animated:YES];
+    self.navigationItem.rightBarButtonItem = _doneBtn;
+
+}
+
+-(void)editIssueListDone:(id)sender
+{
+    [_issuesTableview setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = _editBtn;
 }
 @end

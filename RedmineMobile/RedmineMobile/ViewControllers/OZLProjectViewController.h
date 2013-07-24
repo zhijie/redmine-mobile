@@ -34,6 +34,7 @@
 @property (nonatomic,strong) OZLModelProject* projectData;
 - (IBAction)onNewIssue:(id)sender;
 - (IBAction)onSortSetting:(id)sender;
+- (IBAction)onShowInfo:(id)sender;
 
 
 @property (strong, nonatomic) NSArray* trackerList;
