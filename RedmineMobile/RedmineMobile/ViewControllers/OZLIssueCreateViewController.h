@@ -55,5 +55,9 @@
 
 @property(nonatomic,strong) OZLModelProject* parentProject;
 @property(nonatomic,strong) OZLModelIssue* parentIssue;
-@property(nonatomic,strong) NSArray* issueList;
+@property(nonatomic, strong) OZLModelIssue* issueData;// used for update issue
+@property(nonatomic) int isUpdatingIssue;
+
+//@property(nonatomic,strong) NSArray* issueList;
+
 @end

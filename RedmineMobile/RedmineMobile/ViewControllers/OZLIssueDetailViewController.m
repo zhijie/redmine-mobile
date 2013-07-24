@@ -96,7 +96,6 @@
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
                 OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
                 [creator setParentIssue:_issueData];
-                //[self.navigationController presentModalViewController:creator animated:YES];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
             case 2:{//logtime
@@ -105,7 +104,13 @@
                 [creator setIssueData:_issueData];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
-                
+            case 3:{ // update
+                UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
+                OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
+                [creator setIssueData:_issueData];
+                [creator setIsUpdatingIssue:YES];
+                [self.navigationController pushViewController:creator animated:YES];
+            }break;
             default:
                 break;
         }

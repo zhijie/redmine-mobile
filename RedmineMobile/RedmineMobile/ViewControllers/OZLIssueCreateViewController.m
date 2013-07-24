@@ -38,11 +38,6 @@
 
 @interface OZLIssueCreateViewController () {
 
-    OZLModelTracker* _currentTracker;
-    OZLModelIssuePriority* _currentPriority;
-    OZLModelIssueStatus* _currentStatus;
-    OZLModelUser* _currentUser;
-
     NSDate* _currentStartDate;
     NSDate* _currentDueDate;
     int _currentEstimatedTime;//minutes
@@ -79,6 +74,7 @@
     [self.navigationItem setRightBarButtonItem:saveBtn];
 
     [self setupInputviews];
+    [self initializeViewValues];
 
     // hud
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -125,6 +121,38 @@
     _doneProgressLabel.delegate = self;
 }
 
+-(void)initializeViewValues
+{
+    if (_isUpdatingIssue) { // initial values for ui elements
+        _subjectTextField.text = _issueData.subject;
+        if (_issueData.tracker) {
+            _trackerLabel.text = _issueData.tracker.name;
+        }
+        if (_issueData.status) {
+            _statusLabel.text = _issueData.status.name;
+        }
+        if (_issueData.priority) {
+            _priorityLabel.text = _issueData.priority.name;
+        }
+        if (_issueData.assignedTo) {
+            _assigneeLabel.text = _issueData.assignedTo.name;
+        }
+        if (_issueData.startDate) {
+            _startDateLabel.text = _issueData.startDate;
+        }
+        if (_issueData.dueDate) {
+            _dueDateLabel.text = _issueData.dueDate;
+        }
+        _estimatedHoursLabel.text = [NSString stringWithFormat:@"%f",_issueData.estimatedHours];
+        _doneProgressLabel.text = [NSString stringWithFormat:@"%d %%",(int)_issueData.doneRatio];
+        
+        
+    }else {
+        _issueData = [[OZLModelIssue alloc] init];
+    }
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -144,21 +172,21 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    if (_currentUser == nil) {
+    if (_issueData.tracker == nil) {
         _HUD.mode = MBProgressHUDModeText;
         _HUD.labelText = @"tracker can not be empty.";
         [_HUD show:YES];
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    if (_currentStatus == nil) {
+    if (_issueData.status == nil) {
         _HUD.mode = MBProgressHUDModeText;
         _HUD.labelText = @"status can not be empty.";
         [_HUD show:YES];
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    if (_currentPriority == nil) {
+    if (_issueData.priority == nil) {
         _HUD.mode = MBProgressHUDModeText;
         _HUD.labelText = @"priority can not be empty.";
         [_HUD show:YES];
@@ -166,38 +194,63 @@
         return;
     }
 
-    OZLModelIssue* issueData = [[OZLModelIssue alloc] init];
-    issueData.subject = _subjectTextField.text;
-    issueData.tracker = _currentTracker;
-    issueData.status = _currentStatus;
-    issueData.priority = _currentPriority;
-    issueData.assignedTo = _currentUser;
+    _issueData.subject = _subjectTextField.text;
     if (_parentIssue) {
-        issueData.parentIssueId = _parentIssue.index;
-        issueData.projectId = _parentIssue.projectId;
-    }else {
-        issueData.projectId = _parentProject.index;
+        _issueData.parentIssueId = _parentIssue.index;
+        _issueData.projectId = _parentIssue.projectId;
+    }else if(_parentProject){
+        _issueData.projectId = _parentProject.index;
     }
-    issueData.description = _descriptionTextview.text;
-    issueData.startDate = _startDateLabel.text;
-    issueData.dueDate = _dueDateLabel.text;
-    issueData.doneRatio =  [_doneProgressLabel.text integerValue];
-    issueData.estimatedHours = _currentEstimatedTime/60.0f;
+    if (_isUpdatingIssue) {
+        _issueData.notes = _descriptionTextview.text;
+    }else {
+        _issueData.description = _descriptionTextview.text;
+    }
+    _issueData.startDate = _startDateLabel.text;
+    _issueData.dueDate = _dueDateLabel.text;
+    _issueData.doneRatio =  [_doneProgressLabel.text integerValue];
+    _issueData.estimatedHours = _currentEstimatedTime/60.0f;
     //TODO: is_public is not processed yet
 
 
     _HUD.mode = MBProgressHUDModeIndeterminate;
-    _HUD.labelText = @"Creating Project...";
-    [_HUD show:YES];
-    [OZLNetwork createIssue:issueData withParams:nil andBlock:^(BOOL success, NSError *error){
-        if (error) {
-            NSLog(@"create project error: %@",error.description);
-        }else {
+    if (_isUpdatingIssue) {
+        _HUD.labelText = @"Updating Issue ...";
+        [_HUD show:YES];
+        [OZLNetwork updateIssue:_issueData withParams:nil andBlock:^(BOOL success, NSError *error){
+            [_HUD hide:YES];
+            
+            if (error) {
+                NSLog(@"update issue error: %@",error.description);
 
-        }
-        [_HUD hide:YES];
-    }];
+                _HUD.mode = MBProgressHUDModeText;
+                _HUD.labelText = @"Sorry, something wrong while updating issue.";
+                [_HUD show:YES];
+                [_HUD hide:YES afterDelay:1];
 
+            }else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }else {
+        _HUD.labelText = @"Creating New Issue ...";
+        [_HUD show:YES];
+        [OZLNetwork createIssue:_issueData withParams:nil andBlock:^(BOOL success, NSError *error){
+            [_HUD hide:YES];
+            
+            if (error) {
+                NSLog(@"create issue error: %@",error.description);
+
+                _HUD.mode = MBProgressHUDModeText;
+                _HUD.labelText = @"Sorry, something wrong while creating issue.";
+                [_HUD show:YES];
+                [_HUD hide:YES afterDelay:1];
+
+            }else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
 }
 
 - (void)viewDidUnload {
@@ -248,16 +301,16 @@
             if (selectedIndex.row == 0) {
                 switch (indexPath.row) {
                     case 0:{//tracker
-                        _currentTracker = nil;
+                        _issueData.tracker = nil;
                     }break;
                     case 1:{//status
-                        _currentStatus = nil;
+                        _issueData.status = nil;
                     }break;
                     case 2:{//priority
-                        _currentPriority = nil;
+                        _issueData.priority = nil;
                     }break;
                     case 3:{//assignee
-                        _currentUser = nil;
+                        _issueData.assignedTo = nil;
                     }break;
                     default:
                         break;
@@ -268,16 +321,16 @@
                 id data = [[dataArray objectAtIndex:indexPath.row ] objectAtIndex:selectedIndex.row - 1];
                 switch (indexPath.row) {
                     case 0:{//tracker
-                        _currentUser = data;
+                        _issueData.tracker = data;
                     }break;
                     case 1:{//status
-                        _currentStatus = data;
+                        _issueData.status = data;
                     }break;
                     case 2:{//priority
-                        _currentPriority = data;
+                        _issueData.priority = data;
                     }break;
                     case 3:{//assignee
-                        _currentUser = data;
+                        _issueData.assignedTo = data;
                     }break;
 
                     default:
@@ -320,13 +373,24 @@
 {
     if (section == 0) {
         NSString* tip ;
-        if (_parentIssue) {
-            tip = [NSString stringWithFormat:@"Add sub issue to #%d",_parentIssue.index];
+        if (_isUpdatingIssue) {
+            tip = [NSString stringWithFormat:@"Update issue #%d",_issueData.index];
         }else {
-            tip = [NSString stringWithFormat:@"Add issue to project:%@",_parentProject.name];
+            if (_parentIssue) {
+                tip = [NSString stringWithFormat:@"Add sub issue to #%d",_parentIssue.index];
+            }else {
+                tip = [NSString stringWithFormat:@"Add issue to project:%@",_parentProject.name];
+            }
         }
         return tip;
+    }else if(section == 3) {
+        if (_isUpdatingIssue) {
+            return @"Notes";
+        }else {
+            return @"Description";
+        }
     }
+
     return @"";
 }
 
