@@ -78,7 +78,6 @@
 {
 
     OZLSingleton* singleton =[OZLSingleton sharedInstance];
-
     [singleton setIssueListFilterType:_checkedCell[0]];
     [singleton setIssueListSortType:_checkedCell[1]];
     [singleton setIssueListSortAscending:_checkedCell[2]];

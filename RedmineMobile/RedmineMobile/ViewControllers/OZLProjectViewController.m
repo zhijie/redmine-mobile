@@ -148,70 +148,85 @@
 {
     _issueListOption = [[NSMutableDictionary alloc] init];
 
-    static int doneCount = 0;
-    const int totalCount = 5;
-    [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _trackerList = result;
-        }else {
-            NSLog(@"get tracker list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == totalCount) {
-            [self loadProjectDetail];
-            doneCount = 0;
-        }
-    }];
+    OZLSingleton* singleton = [OZLSingleton sharedInstance];
+    if (singleton.userList != nil) {
+        _trackerList = singleton.trackerList;
+        _statusList = singleton.statusList;
+        _userList = singleton.userList;
+        _priorityList = singleton.priorityList;
+        _timeEntryActivityList = singleton.timeEntryActivityList;
+        [self loadProjectDetail];
+    }else {
+        static int doneCount = 0;
+        const int totalCount = 5;
+        [OZLNetwork getTrackerListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            if (!error) {
+                _trackerList = result;
+                singleton.trackerList = _trackerList;
+            }else {
+                NSLog(@"get tracker list error : %@",error.description);
+            }
+            doneCount ++;
+            if (doneCount == totalCount) {
+                [self loadProjectDetail];
+                doneCount = 0;
+            }
+        }];
 
-    [OZLNetwork getIssueStatusListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _statusList = result;
-        }else {
-            NSLog(@"get issue status list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == totalCount) {
-            [self loadProjectDetail];
-            doneCount = 0;
-        }
-    }];
-    [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _priorityList = result;
-        }else {
-            NSLog(@"get priority list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == totalCount) {
-            [self loadProjectDetail];
-            doneCount = 0;
-        }
-    }];
-    [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _userList = result;
-        }else {
-            NSLog(@"get user list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == totalCount) {
-            [self loadProjectDetail];
-            doneCount = 0;
-        }
-    }];
+        [OZLNetwork getIssueStatusListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            if (!error) {
+                _statusList = result;
+                singleton.statusList = _statusList;
+            }else {
+                NSLog(@"get issue status list error : %@",error.description);
+            }
+            doneCount ++;
+            if (doneCount == totalCount) {
+                [self loadProjectDetail];
+                doneCount = 0;
+            }
+        }];
+        [OZLNetwork getPriorityListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            if (!error) {
+                _priorityList = result;
+                singleton.priorityList = _priorityList;
+            }else {
+                NSLog(@"get priority list error : %@",error.description);
+            }
+            doneCount ++;
+            if (doneCount == totalCount) {
+                [self loadProjectDetail];
+                doneCount = 0;
+            }
+        }];
+        [OZLNetwork getUserListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            if (!error) {
+                _userList = result;
+                singleton.userList = _userList;
+            }else {
+                NSLog(@"get user list error : %@",error.description);
+            }
+            doneCount ++;
+            if (doneCount == totalCount) {
+                [self loadProjectDetail];
+                doneCount = 0;
+            }
+        }];
 
-    [OZLNetwork getTimeEntryListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
-        if (!error) {
-            _timeEntryActivityList = result;
-        }else {
-            NSLog(@"get user list error : %@",error.description);
-        }
-        doneCount ++;
-        if (doneCount == totalCount) {
-            [self loadProjectDetail];
-            doneCount = 0;
-        }
-    }];
+        [OZLNetwork getTimeEntryListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+            if (!error) {
+                _timeEntryActivityList = result;
+                singleton.timeEntryActivityList = _timeEntryActivityList;
+            }else {
+                NSLog(@"get user list error : %@",error.description);
+            }
+            doneCount ++;
+            if (doneCount == totalCount) {
+                [self loadProjectDetail];
+                doneCount = 0;
+            }
+        }];
+    }
 }
 
 
@@ -307,45 +322,6 @@
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -354,7 +330,6 @@
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueDetailViewController" bundle:nil];
     OZLIssueDetailViewController* detail = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueDetailViewController"];
     [detail setIssueData:[_issuesList objectAtIndex:indexPath.row]];
-    [detail setTimeEntryActivityList:_timeEntryActivityList];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -363,10 +338,6 @@
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateViewController" bundle:nil];
     OZLIssueCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateViewController"];
     [creator setParentProject:_projectData];
-    creator.userList = _userList;
-    creator.trackerList = _trackerList;
-    creator.priorityList = _priorityList;
-    creator.statusList = _statusList;
     //[self.navigationController presentModalViewController:creator animated:YES];
     [self.navigationController pushViewController:creator animated:YES];
 }

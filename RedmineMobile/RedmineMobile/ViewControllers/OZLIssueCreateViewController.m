@@ -34,6 +34,7 @@
 #import "OZLModelUser.h"
 #import "OZLModelIssueStatus.h"
 #import "MLTableAlert.h"
+#import "OZLSingleton.h"
 
 @interface OZLIssueCreateViewController () {
 
@@ -65,6 +66,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    OZLSingleton* singleton = [OZLSingleton sharedInstance];
+    _trackerList = singleton.trackerList;
+    _statusList = singleton.statusList;
+    _userList = singleton.userList;
+    _priorityList = singleton.priorityList;
 
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancel:)];
     [self.navigationItem setLeftBarButtonItem:cancelBtn];

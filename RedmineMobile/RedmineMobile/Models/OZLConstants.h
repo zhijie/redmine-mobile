@@ -27,7 +27,7 @@
 // THE SOFTWARE.
 #import <Foundation/Foundation.h>
 
-extern const NSString* NOTIFICATION_REDMINE_ACCOUNT_CHANGED;
+extern NSString* NOTIFICATION_REDMINE_ACCOUNT_CHANGED;
 
 @interface OZLConstants : NSObject
 

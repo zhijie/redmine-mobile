@@ -29,6 +29,7 @@
 #import "OZLIssueDetailViewController.h"
 #import "OZLIssueHistoryViewController.h"
 #import "OZLIssueLogtimeViewController.h"
+#import "OZLSingleton.h"
 
 @interface OZLIssueDetailViewController ()
 
@@ -57,6 +58,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    _timeEntryActivityList = [[OZLSingleton sharedInstance] timeEntryActivityList];
 
     _subject.text = _issueData.subject;
     _description.text = _issueData.description;
@@ -94,7 +97,6 @@
             case 2:{//logtime
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueLogtimeViewController" bundle:nil];
                 OZLIssueLogtimeViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueLogtimeViewController"];
-                [creator setTimeEntryActivityList:_timeEntryActivityList];
                 [creator setIssueData:_issueData];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;

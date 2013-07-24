@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "MLTableAlert.h"
 #import "OZLNetwork.h"
+#import "OZLSingleton.h"
 
 @interface OZLIssueLogtimeViewController () {
     MBProgressHUD* _HUD;
@@ -35,6 +36,7 @@
     // initialize data
     _hourValue = 0;
     _entry = [[OZLModelTimeEntries alloc] init];
+    _timeEntryActivityList = [[OZLSingleton sharedInstance] timeEntryActivityList];
 
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancel:)];
     [self.navigationItem setLeftBarButtonItem:cancelBtn];
