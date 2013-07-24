@@ -46,6 +46,12 @@
 //app status
 @property(nonatomic) int lastProjectID;// last viewed project id
 
+// app data
+@property (strong, nonatomic) NSArray* trackerList;
+@property (strong, nonatomic) NSArray* priorityList;
+@property (strong, nonatomic) NSArray* statusList;
+@property (strong, nonatomic) NSArray* userList;
+@property (strong, nonatomic) NSArray* timeEntryActivityList;
 
 
 @end

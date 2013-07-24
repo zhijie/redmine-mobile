@@ -1,5 +1,5 @@
 //
-//  OZLProjectCreateViewController.m
+//  OZLProjectInfoViewController.m
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/16/13.
@@ -26,19 +26,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "OZLProjectCreateViewController.h"
+#import "OZLProjectInfoViewController.h"
 #import "MBProgressHUD.h"
 #import "OZLNetwork.h"
 #import "MLTableAlert.h"
 
-@interface OZLProjectCreateViewController () {
+@interface OZLProjectInfoViewController () {
     MBProgressHUD * _HUD;
     
 }
 
 @end
 
-@implementation OZLProjectCreateViewController
+@implementation OZLProjectInfoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,15 +53,45 @@
 {
     [super viewDidLoad];
 
+
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:_HUD];
+	_HUD.labelText = @"Loading...";
+
+    if (_viewMode == OZLProjectInfoViewModeCreate) {
+        [self prepareViewForCreate];
+    }else if(_viewMode == OZLProjectInfoViewModeDisplay) {
+        [self prepareViewForDisplay];
+    }else if(_viewMode == OZLProjectInfoViewModeEdit) {
+        
+    }
+}
+
+-(void)prepareViewForDisplay
+{
+    self.navigationItem.title = @"Project Details";
+
+    _name.userInteractionEnabled = NO;
+    _identifier.userInteractionEnabled = NO;
+    _homepageUrl.userInteractionEnabled = NO;
+    _description.userInteractionEnabled = NO;
+
+    _name.text = _projectData.name;
+    _identifier.text = _projectData.identifier;
+    _homepageUrl.text = _projectData.homepage;
+    _description.text = _projectData.description;
+}
+
+-(void)prepareViewForCreate
+{
+
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancel:)];
     [self.navigationItem setLeftBarButtonItem:cancelBtn];
     UIBarButtonItem* saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(onSave:)];
     [self.navigationItem setRightBarButtonItem:saveBtn];
 
+    self.navigationItem.title = @"New Project";
 
-    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.view addSubview:_HUD];
-	_HUD.labelText = @"Loading...";
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,6 +156,9 @@
     [super viewDidUnload];
 }
 
+#pragma mark tableview datasource
+
+#pragma mark tableview delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section ==0 && indexPath.row == 4) {//parent project

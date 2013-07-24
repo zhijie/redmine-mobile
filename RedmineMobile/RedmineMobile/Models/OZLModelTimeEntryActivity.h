@@ -1,8 +1,8 @@
 //
-//  OZLProjectCreateViewController.h
+//  OZLModelTimeEntryActivity.h
 //  RedmineMobile
 //
-//  Created by lizhijie on 7/16/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -26,18 +26,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "OZLModelProject.h"
+#import <Foundation/Foundation.h>
 
-@interface OZLProjectCreateViewController : UITableViewController
-- (IBAction)onCancel:(id)sender;
-- (IBAction)onSave:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *identifier;
-@property (weak, nonatomic) IBOutlet UITextField *homepageUrl;
-@property (weak, nonatomic) IBOutlet UITextView *description;
-@property (nonatomic) BOOL isPublic;
-@property (nonatomic,strong) OZLModelProject* parentProject;
-@property (nonatomic,strong) NSArray* projectList;
+@interface OZLModelTimeEntryActivity : NSObject
+
+@property(nonatomic) int index;
+@property(nonatomic,strong) NSString* name;
+
+-(id)initWithDictionary:(NSDictionary*)dic;
+-(NSMutableDictionary*) toParametersDic;
 
 @end

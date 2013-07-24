@@ -1,5 +1,5 @@
 //
-//  OZLIssueCreateViewController.h
+//  OZLIssueCreateOrUpdateViewController.h
 //  RedmineMobile
 //
 //  Created by lizhijie on 7/16/13.
@@ -30,7 +30,13 @@
 #import "OZLModelIssue.h"
 #import "OZLModelProject.h"
 
-@interface OZLIssueCreateViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+typedef enum {
+	OZLIssueInfoViewModeCreate,
+//    OZLIssueInfoViewModeDisplay,
+    OZLIssueInfoViewModeEdit
+} OZLIssueInfoViewMode;
+
+@interface OZLIssueCreateOrUpdateViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 - (IBAction)onCancel:(id)sender;
 - (IBAction)onSave:(id)sender;
 
@@ -55,5 +61,9 @@
 
 @property(nonatomic,strong) OZLModelProject* parentProject;
 @property(nonatomic,strong) OZLModelIssue* parentIssue;
-@property(nonatomic,strong) NSArray* issueList;
+@property(nonatomic, strong) OZLModelIssue* issueData;// used for update issue
+@property(nonatomic) OZLIssueInfoViewMode viewMode;
+
+//@property(nonatomic,strong) NSArray* issueList;
+
 @end

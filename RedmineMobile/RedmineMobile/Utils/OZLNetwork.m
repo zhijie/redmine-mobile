@@ -335,6 +335,37 @@
     }];
 }
 
++(void)getJournalListForIssue:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = [NSString stringWithFormat:@"/issues/%d.json?include=journals",issueid];
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+
+            NSMutableArray* journals = [[NSMutableArray alloc] init];
+
+            NSArray* journalsDic = [[responseObject objectForKey:@"issue"] objectForKey:@"journals"];
+            for (NSDictionary* p in journalsDic) {
+                [journals addObject:[[OZLModelIssueJournal alloc] initWithDictionary:p]];
+            }
+            block(journals,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+        
+    }];
+}
 
 #pragma mark -
 #pragma mark priority api
@@ -472,4 +503,114 @@
         }
     }];
 }
+
+
+#pragma mark -
+#pragma mark time entries
+// time entries
++(void)getTimeEntriesWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/time_entries.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* priorities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"time_entries"];
+            for (NSDictionary* p in dic) {
+                [priorities addObject:[[OZLModelTimeEntries alloc] initWithDictionary:p]];
+            }
+            block(priorities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+
+}
+
++(void)getTimeEntriesForIssueId:(int)issueid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSDictionary* param = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:issueid],@"issue_id", nil];
+    [OZLNetwork getTimeEntriesWithParams:param andBlock:block];
+}
+
++(void)getTimeEntriesForProjectId:(int)projectid withParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+
+    NSDictionary* param = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:projectid],@"project_id", nil];
+    [OZLNetwork getTimeEntriesWithParams:param andBlock:block];
+}
+
++(void)getTimeEntryListWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *result, NSError *error))block
+{
+    NSString* path = @"/enumerations/time_entry_activities.json";
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] setAuthorizationHeader];
+    [[OZLNetworkBase sharedClient] getPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            NSMutableArray* activities = [[NSMutableArray alloc] init];
+
+            NSArray* dic = [responseObject objectForKey:@"time_entry_activities"];
+            for (NSDictionary* p in dic) {
+                [activities addObject:[[OZLModelTimeEntryActivity alloc] initWithDictionary:p]];
+            }
+            block(activities,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
++(void)createTimeEntry:(OZLModelTimeEntries*)timeEntry withParams:(NSDictionary*)params andBlock:(void (^)(BOOL success, NSError *error))block
+{
+    NSString* path = [NSString stringWithFormat:@"/time_entries.json"];
+
+    //project info
+    NSMutableDictionary* paramsDic = [[NSMutableDictionary alloc] initWithDictionary:params];
+    [paramsDic addEntriesFromDictionary:[timeEntry toParametersDic]];
+
+    NSString* accessKey = [[OZLSingleton sharedInstance] redmineUserKey];
+    if (accessKey.length > 0) {
+        [paramsDic setObject:accessKey forKey:@"key"];
+    }
+
+    [[OZLNetworkBase sharedClient] postPath:path parameters:paramsDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if (block) {
+            NSLog(@"the repsonse:%@",responseObject);
+            block(YES,nil);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (block) {
+            block(NO, error);
+        }
+        
+    }];
+}
+
+
 @end

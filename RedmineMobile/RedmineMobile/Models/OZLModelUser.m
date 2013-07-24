@@ -45,7 +45,11 @@
     _createdOn = [dic objectForKey:@"created_on"];
     _lastLoginIn = [dic objectForKey:@"last_login_on"];
 
-    _name = _login;
+    _name = [dic objectForKey:@"name"];
+    if (_name == nil) {
+        _name = _login;
+    }
+
     return  self;
 }
 

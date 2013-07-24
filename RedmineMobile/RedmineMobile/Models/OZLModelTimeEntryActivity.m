@@ -1,8 +1,8 @@
 //
-//  OZLConstants.m
+//  OZLModelTimeEntryActivity.m
 //  RedmineMobile
 //
-//  Created by lizhijie on 7/16/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -25,11 +25,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import "OZLConstants.h"
 
-NSString* NOTIFICATION_REDMINE_ACCOUNT_CHANGED = @"NOTIFICATION_REDMINE_ACCOUNT_CHANGED";
+#import "OZLModelTimeEntryActivity.h"
 
+@implementation OZLModelTimeEntryActivity
+-(id)initWithDictionary:(NSDictionary*)dic
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _index = [[dic objectForKey:@"id"] intValue];
+    _name = [dic objectForKey:@"name"];
+    return self;
+}
 
-@implementation OZLConstants
+-(NSMutableDictionary*) toParametersDic
+{
+    return nil;
+}
 
 @end

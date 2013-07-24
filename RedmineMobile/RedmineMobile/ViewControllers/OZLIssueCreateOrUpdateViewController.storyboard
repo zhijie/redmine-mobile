@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Issue Create View Controller-->
+        <!--Issue Create Or Update View Controller-->
         <scene sceneID="GEH-4c-FXE">
             <objects>
-                <tableViewController storyboardIdentifier="OZLIssueCreateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ttR-PV-prh" customClass="OZLIssueCreateViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="OZLIssueCreateOrUpdateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ttR-PV-prh" customClass="OZLIssueCreateOrUpdateViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bcd-EK-AUb">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,6 +289,25 @@
             <point key="canvasLocation" x="196" y="43"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="OZLIssueCreateOrUpdateViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OZLIssueCreateOrUpdateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onSave:"/>
+                <relationship kind="outlet" name="assigneeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionTextview" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="doneProgressLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dueDateLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="estimatedHoursLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="priorityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startDateLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="trackerLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -1,8 +1,8 @@
 //
-//  OZLConstants.m
+//  OZLModelIssueJournal.m
 //  RedmineMobile
 //
-//  Created by lizhijie on 7/16/13.
+//  Created by lizhijie on 7/23/13.
 
 // This code is distributed under the terms and conditions of the MIT license.
 
@@ -25,11 +25,36 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import "OZLConstants.h"
 
-NSString* NOTIFICATION_REDMINE_ACCOUNT_CHANGED = @"NOTIFICATION_REDMINE_ACCOUNT_CHANGED";
+#import "OZLModelIssueJournal.h"
+
+@implementation OZLModelIssueJournal
 
 
-@implementation OZLConstants
+-(id)initWithDictionary:(NSDictionary*)dic
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _index = [[dic objectForKey:@"index"] intValue];
+    _notes = [dic objectForKey:@"notes"];
+    _createdOn = [dic objectForKey:@"created_on"];
+    _user = [[ OZLModelUser alloc] initWithDictionary:[dic objectForKey:@"user"]];
+    NSMutableArray* detailItems = [[NSMutableArray alloc] init];
+    NSArray* dataArray = [dic objectForKey:@"details"];
+    for (NSDictionary* detailDic in dataArray) {
+        OZLModelIssueJournalDetail* detail = [[OZLModelIssueJournalDetail alloc] initWithDictionary:detailDic];
+        [detailItems addObject:detail];
+    }
+    _detailArray = detailItems;
+    return self;
+
+}
+
+-(NSMutableDictionary*) toParametersDic
+{
+    return  nil;
+}
 
 @end
