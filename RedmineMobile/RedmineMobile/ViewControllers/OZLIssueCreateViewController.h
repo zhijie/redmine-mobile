@@ -30,6 +30,13 @@
 #import "OZLModelIssue.h"
 #import "OZLModelProject.h"
 
+typedef enum {
+	OZLIssueInfoViewModeCreate,
+    OZLIssueInfoViewModeDisplay,
+    OZLIssueInfoViewModeEdit
+} OZLIssueInfoViewMode;
+
+
 @interface OZLIssueCreateViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 - (IBAction)onCancel:(id)sender;
 - (IBAction)onSave:(id)sender;

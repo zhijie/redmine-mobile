@@ -31,7 +31,7 @@
 #import "OZLProjectListViewController.h"
 #import "OZLNetwork.h"
 #import "MBProgressHUD.h"
-#import "OZLProjectDetailViewController.h"
+#import "OZLProjectInfoViewController.h"
 #import "OZLIssueDetailViewController.h"
 #import "OZLIssueCreateViewController.h"
 #import "OZLIssueFilterViewController.h"
@@ -371,10 +371,10 @@
 }
 
 - (IBAction)onShowInfo:(id)sender {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OZLProjectDetailViewController" bundle:nil];
-//    OZLProjectDetailViewController* detail = [storyboard instantiateViewControllerWithIdentifier:@"OZLProjectDetailViewController"];
-    OZLProjectDetailViewController* detail = [[OZLProjectDetailViewController alloc] initWithNibName:@"OZLProjectDetailViewController" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"OZLProjectInfoViewController" bundle:nil];
+    OZLProjectInfoViewController* detail = [storyboard instantiateViewControllerWithIdentifier:@"OZLProjectInfoViewController"];
     [detail setProjectData:_projectData];
+    [detail setViewMode:OZLProjectInfoViewModeDisplay];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

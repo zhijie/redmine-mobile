@@ -30,7 +30,7 @@
 #import "PPRevealSideViewController.h"
 #import "OZLProjectViewController.h"
 #import "OZLAccountViewController.h"
-#import "OZLProjectCreateViewController.h"
+#import "OZLProjectInfoViewController.h"
 #import "OZLNetwork.h"
 #import "OZLModelProject.h"
 #import "MBProgressHUD.h"
@@ -137,11 +137,10 @@
 }
 
 - (IBAction)createProject:(id)sender {
-    //OZLProjectCreateViewController* creator = [[OZLProjectCreateViewController alloc] initWithNibName:@"OZLProjectCreateViewController" bundle:nil];
-    //[self.navigationController presentModalViewController:creator animated:YES];
-    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLProjectCreateViewController" bundle:nil];
-    OZLProjectCreateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectCreateViewController"];
+    UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLProjectInfoViewController" bundle:nil];
+    OZLProjectInfoViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectInfoViewController"];
     [creator setProjectList:_projectList];
+    [creator setViewMode:OZLProjectInfoViewModeCreate];
     [self.navigationController pushViewController:creator animated:YES];
 }
 
