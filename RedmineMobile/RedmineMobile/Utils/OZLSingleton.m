@@ -64,6 +64,7 @@ static OZLSingleton* sharedInstance = nil;
     return sharedInstance;
 }
 
+#pragma mark getter and setter
 -(NSString*)redmineHomeURL
 {
     NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
@@ -160,4 +161,48 @@ static OZLSingleton* sharedInstance = nil;
     [userdefaults setObject:[NSNumber numberWithInt:issueListSortType] forKey:USER_DEFAULTS_ISSUE_LIST_SORT];
     [userdefaults synchronize];
 }
+
+
+#pragma mark -
+#pragma mark data retrival
+-(OZLModelTracker*)trackerWithId:(int)index
+{
+    for (OZLModelTracker* tracker in _trackerList) {
+        if (tracker.index == index) {
+            return tracker;
+        }
+    }
+    return nil;
+}
+-(OZLModelIssuePriority*)issuePriorityWithId:(int)index
+{
+    for (OZLModelIssuePriority* priority in _priorityList) {
+        if (priority.index == index) {
+            return priority;
+        }
+    }
+    return nil;
+
+}
+-(OZLModelIssueStatus*)issueStatusWithId:(int)index
+{
+    for (OZLModelIssueStatus* status in _statusList) {
+        if (status.index == index) {
+            return status;
+        }
+    }
+    return nil;
+
+}
+-(OZLModelUser*)userWithId:(int)index
+{
+    for (OZLModelUser* user in _userList) {
+        if (user.index == index) {
+            return user;
+        }
+    }
+    return nil;
+
+}
+
 @end

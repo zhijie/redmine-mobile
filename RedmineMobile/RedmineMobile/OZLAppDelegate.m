@@ -67,11 +67,11 @@
     if (lastProjectID < 0) {
         
     }else {
-        OZLProjectViewController* projectview = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
-        OZLModelProject* data = [[OZLModelProject alloc] init];
-        data.index = lastProjectID;
-        [projectview setProjectData:data];
-        [_navigationController pushViewController:projectview animated:NO];
+//        OZLProjectViewController* projectview = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
+//        OZLModelProject* data = [[OZLModelProject alloc] init];
+//        data.index = lastProjectID;
+//        [projectview setProjectData:data];
+//        [_navigationController pushViewController:projectview animated:NO];
     }
 
     self.window.rootViewController = _navigationController;
