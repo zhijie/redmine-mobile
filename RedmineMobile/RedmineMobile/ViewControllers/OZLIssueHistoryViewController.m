@@ -64,7 +64,6 @@
 
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:_HUD];
-	_HUD.labelText = @"Refreshing...";
     
     [self.navigationItem setTitle:@"History"];
 }
@@ -72,13 +71,24 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+	_HUD.labelText = @"Refreshing...";
+    _HUD.detailsLabelText = @"";
+    _HUD.mode = MBProgressHUDModeIndeterminate;
     [_HUD show:YES];
     // refresh journal list
     [OZLNetwork getJournalListForIssue:_issueData.index withParams:nil andBlock:^(NSArray *result, NSError *error) {
-        NSLog(@"respond:%@",result.description);
-        _journalList = [[NSMutableArray alloc] initWithArray: result];
-        [self.tableView reloadData];
-        [_HUD hide:YES];
+        if (error) {
+            NSLog(@"getJournalListForIssue error: %@",error.description);
+            _HUD.mode = MBProgressHUDModeText;
+            _HUD.labelText = @"Connection Failed";
+            _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+            [_HUD hide:YES afterDelay:3];
+        }else {
+            NSLog(@"respond:%@",result.description);
+            _journalList = [[NSMutableArray alloc] initWithArray: result];
+            [self.tableView reloadData];
+            [_HUD hide:YES];
+        }
     }];
 
 }
@@ -147,7 +157,7 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView* view = [[UIView alloc ] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    view.backgroundColor = [UIColor lightGrayColor];
+    view.backgroundColor = [UIColor colorWithHue:0.6 saturation:0.33 brightness:0.65 alpha:0.7];
     
     OZLModelIssueJournal* journal = [_journalList objectAtIndex:section];
     UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 160, 20)];

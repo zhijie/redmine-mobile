@@ -65,7 +65,6 @@
 
     _HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:_HUD];
-	_HUD.labelText = @"Refreshing...";
 
     UIBarButtonItem* accountBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_user"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView:)];
     [self.navigationItem setLeftBarButtonItem:accountBtn];
@@ -80,18 +79,28 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-//    if (_needRefresh) {
-//        _needRefresh = NO;
+	_HUD.labelText = @"Refreshing...";
+    _HUD.detailsLabelText = @"";
+    _HUD.mode = MBProgressHUDModeIndeterminate;
+    [_HUD show:YES];
+    // refresh project list
+    [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        
+        if (error) {
+            NSLog(@"error load projects");
+            _HUD.mode = MBProgressHUDModeText;
+            _HUD.labelText = @"Connection Failed";
+            _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+            [_HUD hide:YES afterDelay:3];
 
-        [_HUD show:YES];
-        // refresh project list
-        [OZLNetwork getProjectListWithParams:nil andBlock:^(NSArray *result, NSError *error) {
+        }else {
             NSLog(@"respond:%@",result.description);
             _projectList = [[NSMutableArray alloc] initWithArray: result];
             [_projectsTableview reloadData];
             [_HUD hide:YES];
-        }];
-//    }
+        }
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning

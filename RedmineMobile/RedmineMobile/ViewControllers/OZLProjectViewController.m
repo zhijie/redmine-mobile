@@ -326,18 +326,20 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         _HUD.labelText = @"Deleting Issue...";
+        _HUD.detailsLabelText = @"";
+        _HUD.mode = MBProgressHUDModeIndeterminate;
         [_HUD show:YES];
         [OZLNetwork deleteIssue:[[_issuesList objectAtIndex:indexPath.row] index] withParams:nil andBlock:^(BOOL success, NSError *error) {
-            [_HUD hide:YES];
             if (error) {
                 NSLog(@"failed to delete issue");
                 _HUD.mode = MBProgressHUDModeText;
-                _HUD.labelText = @"Sorry, something wrong while deleting issue.";
-                [_HUD show:YES];
-                [_HUD hide:YES afterDelay:1];
+                _HUD.labelText = @"Connection Failed";
+                _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+                [_HUD hide:YES afterDelay:3];
             }else {
                 [_issuesList removeObjectAtIndex:indexPath.row];
                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [_HUD hide:YES];
             }
         }];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
