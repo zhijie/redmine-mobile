@@ -67,7 +67,7 @@
 	[self.view addSubview:_HUD];
 	_HUD.labelText = @"Refreshing...";
 
-    UIBarButtonItem* accountBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAccountView:)];
+    UIBarButtonItem* accountBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_user"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView:)];
     [self.navigationItem setLeftBarButtonItem:accountBtn];
     _editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editProjectList:)];
     _doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editProjectListDone:)];
