@@ -86,6 +86,7 @@
 {
     _HUD.mode = MBProgressHUDModeIndeterminate;
     _HUD.labelText = @"Logging time ...";
+    _HUD.detailsLabelText = @"";
     [_HUD show:YES];
 
     // build entry
@@ -101,12 +102,14 @@
     [OZLNetwork createTimeEntry:_entry withParams:nil andBlock:^(BOOL success, NSError *error){
         if (error) {
             NSLog(@"log time error: %@",error.description);
+            _HUD.mode = MBProgressHUDModeText;
+            _HUD.labelText = @"Connection Failed";
+            _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+            [_HUD hide:YES afterDelay:3];
         }else {
-
             [self.navigationController popViewControllerAnimated:YES];
-
+            [_HUD hide:YES];
         }
-        [_HUD hide:YES];
     }];
 }
 

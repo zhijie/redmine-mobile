@@ -31,8 +31,12 @@
 #import "OZLIssueLogtimeViewController.h"
 #import "OZLSingleton.h"
 #import "OZLIssueCreateOrUpdateViewController.h"
+#import "MBProgressHUD.h"
 
-@interface OZLIssueDetailViewController ()
+@interface OZLIssueDetailViewController () {
+    MBProgressHUD * _HUD;
+    
+}
 
 @end
 
@@ -72,6 +76,11 @@
     _startTime.text = _issueData.startDate;
     _dueTime.text = _issueData.dueDate;
 
+
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:_HUD];
+	_HUD.labelText = @"Loading...";
+    
     [self.navigationItem setTitle:@"Issue Details"];
 }
 
@@ -93,18 +102,42 @@
                 [self.navigationController pushViewController:history animated:YES];
             }break;
             case 1:{// add sub task
+                if (![OZLSingleton isUserLoggedIn] ) {
+                    _HUD.mode = MBProgressHUDModeText;
+                    _HUD.labelText = @"No available";
+                    _HUD.detailsLabelText = @"You need to log in to do this.";
+                    [_HUD show:YES];
+                    [_HUD hide:YES afterDelay:2];
+                    return;
+                }
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
                 OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
                 [creator setParentIssue:_issueData];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
             case 2:{//logtime
+                if (![OZLSingleton isUserLoggedIn] ) {
+                    _HUD.mode = MBProgressHUDModeText;
+                    _HUD.labelText = @"No available";
+                    _HUD.detailsLabelText = @"You need to log in to do this.";
+                    [_HUD show:YES];
+                    [_HUD hide:YES afterDelay:2];
+                    return;
+                }
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueLogtimeViewController" bundle:nil];
                 OZLIssueLogtimeViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueLogtimeViewController"];
                 [creator setIssueData:_issueData];
                 [self.navigationController pushViewController:creator animated:YES];
             }break;
             case 3:{ // update
+                if (![OZLSingleton isUserLoggedIn] ) {
+                    _HUD.mode = MBProgressHUDModeText;
+                    _HUD.labelText = @"No available";
+                    _HUD.detailsLabelText = @"You need to log in to do this.";
+                    [_HUD show:YES];
+                    [_HUD hide:YES afterDelay:2];
+                    return;
+                }
                 UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
                 OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
                 [creator setIssueData:_issueData];
