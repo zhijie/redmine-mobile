@@ -27,6 +27,10 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "OZLModelTracker.h"
+#import "OZLModelUser.h"
+#import "OZLModelIssueStatus.h"
+#import "OZLModelIssuePriority.h"
 
 @interface OZLSingleton : NSObject
 
@@ -52,6 +56,11 @@
 @property (strong, nonatomic) NSArray* statusList;
 @property (strong, nonatomic) NSArray* userList;
 @property (strong, nonatomic) NSArray* timeEntryActivityList;
+-(OZLModelTracker*)trackerWithId:(int)index;
+-(OZLModelIssuePriority*)issuePriorityWithId:(int)index;
+-(OZLModelIssueStatus*)issueStatusWithId:(int)index;
+-(OZLModelUser*)userWithId:(int)index;
 
++(BOOL) isUserLoggedIn;
 
 @end

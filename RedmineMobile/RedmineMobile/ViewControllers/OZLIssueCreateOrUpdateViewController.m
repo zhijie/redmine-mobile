@@ -212,23 +212,21 @@
     //TODO: is_public is not processed yet
 
 
+    _HUD.detailsLabelText = @"";
     _HUD.mode = MBProgressHUDModeIndeterminate;
     if (_viewMode == OZLIssueInfoViewModeEdit) {
         _HUD.labelText = @"Updating Issue ...";
         [_HUD show:YES];
         [OZLNetwork updateIssue:_issueData withParams:nil andBlock:^(BOOL success, NSError *error){
-            [_HUD hide:YES];
-            
             if (error) {
                 NSLog(@"update issue error: %@",error.description);
-
                 _HUD.mode = MBProgressHUDModeText;
-                _HUD.labelText = @"Sorry, something wrong while updating issue.";
-                [_HUD show:YES];
-                [_HUD hide:YES afterDelay:1];
-
+                _HUD.labelText = @"Connection Failed";
+                _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+                [_HUD hide:YES afterDelay:3];
             }else {
                 [self.navigationController popViewControllerAnimated:YES];
+                [_HUD hide:YES];
             }
         }];
     }else if(_viewMode == OZLIssueInfoViewModeCreate){
