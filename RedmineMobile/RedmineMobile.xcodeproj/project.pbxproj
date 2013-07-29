@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B45383E17A65CBD00649D12 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B45383C17A65CBD00649D12 /* Icon.png */; };
-		2B45383F17A65CBD00649D12 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B45383D17A65CBD00649D12 /* Icon@2x.png */; };
 		2B45384117A65D7100649D12 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B45384017A65D7100649D12 /* Icon.png */; };
 		2B45384317A65DD100649D12 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B45384217A65DD100649D12 /* Icon@2x.png */; };
 		2B62D0DF1796498800AC3C19 /* OZLIssueCreateOrUpdateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B62D0DE1796498800AC3C19 /* OZLIssueCreateOrUpdateViewController.storyboard */; };
@@ -256,10 +254,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B45383C17A65CBD00649D12 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		2B45383D17A65CBD00649D12 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		2B45384017A65D7100649D12 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		2B45384217A65DD100649D12 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2B45384017A65D7100649D12 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		2B45384217A65DD100649D12 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		2B62D0DE1796498800AC3C19 /* OZLIssueCreateOrUpdateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueCreateOrUpdateViewController.storyboard; path = ViewControllers/OZLIssueCreateOrUpdateViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E0179649A800AC3C19 /* OZLIssueDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLIssueDetailViewController.storyboard; path = ViewControllers/OZLIssueDetailViewController.storyboard; sourceTree = "<group>"; };
 		2B62D0E21796A15C00AC3C19 /* OZLProjectInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OZLProjectInfoViewController.storyboard; path = ViewControllers/OZLProjectInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -852,8 +848,6 @@
 		D5DB804D1792F2BF0081662A = {
 			isa = PBXGroup;
 			children = (
-				2B45384217A65DD100649D12 /* Icon@2x.png */,
-				2B45384017A65D7100649D12 /* Icon.png */,
 				D5DB80761792F3EE0081662A /* Libs */,
 				D5DB805F1792F2BF0081662A /* RedmineMobile */,
 				2BC4DD8F179928C80090F52C /* RedmineMobileUnitTest */,
@@ -903,8 +897,8 @@
 		D5DB80601792F2BF0081662A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2B45383C17A65CBD00649D12 /* Icon.png */,
-				2B45383D17A65CBD00649D12 /* Icon@2x.png */,
+				2B45384217A65DD100649D12 /* Icon@2x.png */,
+				2B45384017A65D7100649D12 /* Icon.png */,
 				D5DB80611792F2BF0081662A /* RedmineMobile-Info.plist */,
 				D5DB80621792F2BF0081662A /* InfoPlist.strings */,
 				D5DB80651792F2BF0081662A /* main.m */,
@@ -1300,8 +1294,6 @@
 				2BEA49BC17A117C3008DBAF9 /* icon_window_lock.png in Resources */,
 				2BEA49BD17A117C3008DBAF9 /* icon_zoom_in.png in Resources */,
 				2BEA49BE17A117C3008DBAF9 /* icon_zoom_out.png in Resources */,
-				2B45383E17A65CBD00649D12 /* Icon.png in Resources */,
-				2B45383F17A65CBD00649D12 /* Icon@2x.png in Resources */,
 				2B45384117A65D7100649D12 /* Icon.png in Resources */,
 				2B45384317A65DD100649D12 /* Icon@2x.png in Resources */,
 			);
@@ -1513,6 +1505,7 @@
 				INFOPLIST_FILE = "RedmineMobile/RedmineMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1525,6 +1518,7 @@
 				INFOPLIST_FILE = "RedmineMobile/RedmineMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

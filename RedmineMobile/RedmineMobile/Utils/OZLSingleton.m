@@ -64,6 +64,11 @@ static OZLSingleton* sharedInstance = nil;
     return sharedInstance;
 }
 
++(BOOL) isUserLoggedIn
+{
+    return [[[OZLSingleton sharedInstance] redmineUserName] length] > 0;
+}
+
 #pragma mark getter and setter
 -(NSString*)redmineHomeURL
 {

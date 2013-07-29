@@ -134,9 +134,17 @@
 
 -(void)editProjectList:(id)sender
 {
+    if (![OZLSingleton isUserLoggedIn] ) {
+        _HUD.mode = MBProgressHUDModeText;
+        _HUD.labelText = @"No available";
+        _HUD.detailsLabelText = @"You need to log in to do this.";
+        [_HUD show:YES];
+        [_HUD hide:YES afterDelay:2];
+        return;
+    }
     [_projectsTableview setEditing:YES animated:YES];
     self.navigationItem.rightBarButtonItem = _doneBtn;
-
+    
 }
 
 -(void)editProjectListDone:(id)sender
@@ -146,6 +154,15 @@
 }
 
 - (IBAction)createProject:(id)sender {
+    if (![OZLSingleton isUserLoggedIn] ) {
+        _HUD.mode = MBProgressHUDModeText;
+        _HUD.labelText = @"No available";
+        _HUD.detailsLabelText = @"You need to log in to do this.";
+        [_HUD show:YES];
+        [_HUD hide:YES afterDelay:2];
+        return;
+    }
+
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLProjectInfoViewController" bundle:nil];
     OZLProjectInfoViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectInfoViewController"];
     [creator setProjectList:_projectList];

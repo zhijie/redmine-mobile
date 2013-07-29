@@ -61,4 +61,6 @@
 -(OZLModelIssueStatus*)issueStatusWithId:(int)index;
 -(OZLModelUser*)userWithId:(int)index;
 
++(BOOL) isUserLoggedIn;
+
 @end

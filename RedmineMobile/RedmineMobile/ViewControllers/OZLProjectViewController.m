@@ -359,6 +359,14 @@
 }
 
 - (IBAction)onNewIssue:(id)sender {
+    if (![OZLSingleton isUserLoggedIn] ) {
+        _HUD.mode = MBProgressHUDModeText;
+        _HUD.labelText = @"No available";
+        _HUD.detailsLabelText = @"You need to log in to do this.";
+        [_HUD show:YES];
+        [_HUD hide:YES afterDelay:2];
+        return;
+    }
     //OZLIssueCreateOrUpdateViewController* creator = [[OZLIssueCreateOrUpdateViewController alloc] initWithNibName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
     UIStoryboard *tableViewStoryboard = [UIStoryboard storyboardWithName:@"OZLIssueCreateOrUpdateViewController" bundle:nil];
     OZLIssueCreateOrUpdateViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLIssueCreateOrUpdateViewController"];
@@ -383,6 +391,14 @@
 
 -(void)editIssueList:(id)sender
 {
+    if (![OZLSingleton isUserLoggedIn] ) {
+        _HUD.mode = MBProgressHUDModeText;
+        _HUD.labelText = @"No available";
+        _HUD.detailsLabelText = @"You need to log in to do this.";
+        [_HUD show:YES];
+        [_HUD hide:YES afterDelay:2];
+        return;
+    }
     [_issuesTableview setEditing:YES animated:YES];
     self.navigationItem.rightBarButtonItem = _doneBtn;
 
