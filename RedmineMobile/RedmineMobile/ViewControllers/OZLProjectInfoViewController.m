@@ -102,7 +102,11 @@
 
 - (IBAction)onCancel:(id)sender {
 
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_viewMode == OZLProjectInfoViewModeCreate) {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)onSave:(id)sender {
@@ -141,10 +145,15 @@
     [OZLNetwork createProject:projectData withParams:nil andBlock:^(BOOL success, NSError *error) {
         if (error) {
             NSLog(@"create project error: %@",error.description);
+            _HUD.mode = MBProgressHUDModeText;
+            _HUD.labelText = @"Connection Failed";
+            _HUD.detailsLabelText = @" Please check network connection or your account setting.";
+            [_HUD hide:YES afterDelay:3];
+
         }else {
-            
+            [_HUD hide:YES];
+            [self onCancel:nil];
         }
-        [_HUD hide:YES];
     }];
 }
 

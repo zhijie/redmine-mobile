@@ -125,8 +125,13 @@
 - (IBAction)showAccountView:(id)sender {
     OZLAccountViewController *c = [[OZLAccountViewController alloc] initWithNibName:@"OZLAccountViewController" bundle:nil];
 
-    [self.navigationController pushViewController:c animated:YES];
-    
+    [UIView animateWithDuration:0.75
+                     animations:^{
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                         [self.navigationController pushViewController:c animated:NO];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                     }];
+
 //    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:c];
 //    [self.revealSideViewController popViewControllerWithNewCenterController:n
 //                                                                   animated:YES];
@@ -167,7 +172,10 @@
     OZLProjectInfoViewController* creator = [tableViewStoryboard instantiateViewControllerWithIdentifier:@"OZLProjectInfoViewController"];
     [creator setProjectList:_projectList];
     [creator setViewMode:OZLProjectInfoViewModeCreate];
-    [self.navigationController pushViewController:creator animated:YES];
+
+
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:creator];
+    [self.navigationController presentModalViewController:nav animated:YES];
 }
 
 - (void)viewDidUnload {

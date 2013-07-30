@@ -27,7 +27,6 @@
 // THE SOFTWARE.
 
 #import "OZLAccountViewController.h"
-#import "PPRevealSideViewController.h"
 #import "OZLProjectListViewController.h"
 #import "OZLSingleton.h"
 #import "OZLConstants.h"
@@ -53,10 +52,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self changeSideViewOffset:40];
 
-//    UIBarButtonItem* projectListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showProjectList)];
-//    [self.navigationItem setLeftBarButtonItem:projectListBtn];
+    UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onOk:)];
+    [self.navigationItem setRightBarButtonItem:doneBtn];
+
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(showProjectList)];
+    [self.navigationItem setLeftBarButtonItem:cancelBtn];
 
     _redmineHomeURL.text = [[OZLSingleton sharedInstance] redmineHomeURL];
     _redmineUserKey.text = [[OZLSingleton sharedInstance] redmineUserKey];
@@ -72,39 +73,13 @@
     [self.view endEditing:YES];
 }
 
-- (void) preloadLeft {
-    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
-    [self.revealSideViewController preloadViewController:c
-                                                 forSide:PPRevealSideDirectionLeft
-                                              withOffset:_sideviewOffset];
-    PP_RELEASE(c);
-}
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preloadLeft) object:nil];
-    [self performSelector:@selector(preloadLeft) withObject:nil afterDelay:0.3];
-}
-
 - (void) showProjectList {
-    [self.navigationController popViewControllerAnimated:YES];
-
-//    OZLProjectListViewController *c = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
-//    [c setNeedRefresh:YES];
-//    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:c];
-//    [self.revealSideViewController pushViewController:navigationController onDirection:PPRevealSideDirectionLeft withOffset:_sideviewOffset animated:YES];
-//    PP_RELEASE(c);
-}
-
-- (IBAction)changeSideViewOffset:(int)offset {
-    _sideviewOffset = offset;
-    [self.revealSideViewController changeOffset:_sideviewOffset
-                                   forDirection:PPRevealSideDirectionRight];
-    [self.revealSideViewController changeOffset:_sideviewOffset
-                                   forDirection:PPRevealSideDirectionLeft];
-    [self.revealSideViewController changeOffset:_sideviewOffset
-                                   forDirection:PPRevealSideDirectionTop];
-    [self.revealSideViewController changeOffset:_sideviewOffset
-                                   forDirection:PPRevealSideDirectionBottom];
+    [UIView animateWithDuration:0.75
+                     animations:^{
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+                     }];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,6 +95,7 @@
     [self setPassword:nil];
     [super viewDidUnload];
 }
+
 - (IBAction)onOk:(id)sender {
     [[OZLSingleton sharedInstance] setRedmineUserKey:_redmineUserKey.text];
     [[OZLSingleton sharedInstance] setRedmineHomeURL:_redmineHomeURL.text];
@@ -129,7 +105,7 @@
 
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
     [center postNotificationName:NOTIFICATION_REDMINE_ACCOUNT_CHANGED object:nil];
-    
+
     [self showProjectList];
 }
 @end

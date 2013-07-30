@@ -38,28 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = PP_AUTORELEASE([[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]);
-/*
-    id main = nil;
-    int lastProjectID = [[OZLSingleton sharedInstance] lastProjectID];
-    if (lastProjectID < 0) {
-        main = [[OZLAccountViewController alloc] initWithNibName:@"OZLAccountViewController" bundle:nil];
-    }else {
-        main = [[OZLProjectViewController alloc] initWithNibName:@"OZLProjectViewController" bundle:nil];
-        OZLModelProject* data = [[OZLModelProject alloc] init];
-        data.index = lastProjectID;
-        [main setProjectData:data];
-    }
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
-    _revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:nav];
-    
-    _revealSideViewController.delegate = self;
-    
-    self.window.rootViewController = _revealSideViewController;
-    
-    PP_RELEASE(main);
-    PP_RELEASE(nav);
-*/
+
     OZLProjectListViewController* projectList = [[OZLProjectListViewController alloc] initWithNibName:@"OZLProjectListViewController" bundle:nil];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:projectList];
 
@@ -76,7 +55,7 @@
 
     self.window.rootViewController = _navigationController;
     
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
