@@ -6,6 +6,7 @@ Redmine Mobile is an iPhone/Android client for Redmine, which is a web-based pro
 *******************************
 It's available on App Store now:
 https://itunes.apple.com/app/redmine-mobile/id680505406?ls=1&mt=8
+And it's totally free and open source under MIT license.
 
 Features
 - View, add and edit projects
@@ -14,6 +15,7 @@ Features
 - Add and view subtasks, view issue relations
 - Filter and sort issues by different aspects
 - Use custom queries from your Redmine
+- More features are under development
 
 The app is compatible with Redmine installations from version 1.1 or higher, we recommend version 1.4 or higher. It also supports self-signed SSL certificates and Htaccess protected Redmines.
 
