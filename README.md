@@ -4,8 +4,8 @@ redmine-mobile
 Redmine Mobile is an iPhone/Android client for Redmine, which is a web-based project management and issue tracking tool. Redmine Mobile makes it possible to view, create and edit issues, keep track of activities wherever you take along your phone.
 
 *******************************
-It's available on App Store now:
-https://itunes.apple.com/app/redmine-mobile/id680505406?ls=1&mt=8
+It's available on [App Store](https://itunes.apple.com/app/redmine-mobile/id680505406?ls=1&mt=8) now.
+
 And it's totally free and open source under MIT license.
 
 Features
